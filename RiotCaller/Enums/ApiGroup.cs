@@ -5,7 +5,7 @@ namespace RiotCaller
     /// <summary>
     /// api version controls 
     /// </summary>
-    public enum ApiGroup
+    public enum apiGroup
     {
         [Version(1.4)]
         summoner,

@@ -5,75 +5,75 @@ namespace RiotCaller
     /// <summary>
     /// reference to api url 
     /// </summary>
-    public enum Suffix
+    public enum suffix
     {
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("")]
         summonerNone,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("by-name/{summonerNames}")]
         summonerByname,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("{summonerIds}/name")]
         summonerName,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("{summonerIds}")]
         summonerIds,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("{summonerIds}/masteries")]
         summonerMasteries,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.summoner)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.summoner)]
         [Value("{summonerIds}/runes")]
         summonerRunes,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("by-summoner/{summonerIds}")]
         leagueIds,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("by-summoner/{summonerIds}/entry")]
         leagueEntry,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("by-team/{teamIds}")]
         leagueTeamIds,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("by-team/{teamIds}/entry")]
         leagueTeamEntries,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("challenger")]
         leagueChallenger,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.league)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.league)]
         [Value("master")]
         leagueMaster,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.stats)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.stats)]
         [Value("by-summoner/{summonerId}/ranked")]
         statsRanked,
 
-        [ApiType(ApiType.nonStatic)]
-        [ApiGrop(ApiGroup.stats)]
+        [ApiType(apiType.nonStatic)]
+        [ApiGrop(apiGroup.stats)]
         [Value("by-summoner/{summonerId}/summary")]
         statsSummary
     }

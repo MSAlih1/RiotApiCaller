@@ -14,21 +14,21 @@ namespace RiotCaller
             return v.GetCustomAttribute<ValueAttribute>();
         }
 
-        public static ApiGroup GetApiGrop(this Suffix enumVal)
+        public static apiGroup GetApiGrop(this suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
             return v.GetCustomAttribute<ApiGropAttribute>().isStatic;
         }
 
-        public static ApiType GetApiType(this Suffix enumVal)
+        public static apiType GetApiType(this suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
             return v.GetCustomAttribute<ApiTypeAttribute>().ApiType;
         }
 
-        public static string GetVersion(this ApiGroup enumVal)
+        public static string GetVersion(this apiGroup enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());

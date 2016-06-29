@@ -50,12 +50,12 @@ namespace RiotCaller
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class IsStaticAttribute : Attribute
         {
-            private readonly ApiType value;
-            public ApiType isStatic { get { return value; } }
+            private readonly apiType value;
+            public apiType isStatic { get { return value; } }
 
             public IsStaticAttribute(bool _isStatic)
             {
-                this.value = _isStatic == true ? ApiType.Static : ApiType.nonStatic;
+                this.value = _isStatic == true ? apiType.Static : apiType.nonStatic;
             }
 
             public override string ToString()
@@ -70,10 +70,10 @@ namespace RiotCaller
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ApiGropAttribute : Attribute
         {
-            private readonly ApiGroup value;
-            public ApiGroup isStatic { get { return value; } }
+            private readonly apiGroup value;
+            public apiGroup isStatic { get { return value; } }
 
-            public ApiGropAttribute(ApiGroup _apigroup)
+            public ApiGropAttribute(apiGroup _apigroup)
             {
                 this.value = _apigroup;
             }
@@ -90,10 +90,10 @@ namespace RiotCaller
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ApiTypeAttribute : Attribute
         {
-            private readonly ApiType value;
-            public ApiType ApiType { get { return value; } }
+            private readonly apiType value;
+            public apiType ApiType { get { return value; } }
 
-            public ApiTypeAttribute(ApiType _apitype)
+            public ApiTypeAttribute(apiType _apitype)
             {
                 this.value = _apitype;
             }

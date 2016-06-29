@@ -3,7 +3,7 @@
     /// <summary>
     /// api url's parameters do not change type names! 
     /// </summary>
-    public enum ParamType
+    public enum paramType
     {
         /// <summary> Example Value => new List<string>() { summonerName1, summonerName2 } </summary>
         summonerNames,

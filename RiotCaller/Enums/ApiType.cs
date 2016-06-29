@@ -5,7 +5,7 @@ namespace RiotCaller
     /// <summary>
     /// do not change this values 
     /// </summary>
-    public enum ApiType
+    public enum apiType
     {
         [IsStatic(false)]
         [Value("{region}.api.pvp.net/api/lol")]
