@@ -29,12 +29,12 @@ namespace RiotCaller
                 val = value.ToString();
 
             apiurl.Url = apiurl.Url.Replace(string.Format("{{{0}}}", key.ToString()), val);
-            apiurl.Parameters.Add(key.ToString(), value);
+            //apiurl.Parameters.Add(key.ToString(), value);
         }
 
-        public static void CreateRequest<T>(this ApiUrl<T> apiurl, string _apikey) where T : class
+        public static void CreateRequest<T>(this ApiUrl<T> apiurl) where T : class
         {
-            apiurl.setApiKey(_apikey);
+            apiurl.Url = apiurl.Url.Replace("{api_key}", apikey.Key);
             string Json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl.Url);
             request.Method = "GET";
@@ -51,11 +51,11 @@ namespace RiotCaller
             }
             if (apiurl.Suffix == suffix.statsRanked || apiurl.Suffix == suffix.statsSummary)
             {
-                apiurl.DataResult.Add(JsonConvert.DeserializeObject<T>(Json));
+                apiurl.Result.Add(JsonConvert.DeserializeObject<T>(Json));
             }
             else
             {
-                apiurl.DataResult = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+                apiurl.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
             }
         }
     }

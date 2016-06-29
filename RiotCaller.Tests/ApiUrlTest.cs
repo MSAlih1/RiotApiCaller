@@ -16,8 +16,8 @@ namespace RiotCaller.Tests
             ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
             u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
             u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
+            u.CreateRequest();
+            Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
@@ -26,8 +26,8 @@ namespace RiotCaller.Tests
             ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
             u.AddParam(paramType.summonerIds, new List<long>() { 466244 });
             u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
+            u.CreateRequest();
+            Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
@@ -37,8 +37,8 @@ namespace RiotCaller.Tests
             u.AddParam(paramType.summonerId, 466244);
             u.AddParam(paramType.region, region.tr);
             u.AddParam(paramType.season, season.SEASON2016);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
+            u.CreateRequest();
+            Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
@@ -48,8 +48,8 @@ namespace RiotCaller.Tests
             u.AddParam(paramType.summonerId, 466244);
             u.AddParam(paramType.region, region.tr);
             u.AddParam(paramType.season, season.SEASON2016);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
+            u.CreateRequest();
+            Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
@@ -58,9 +58,9 @@ namespace RiotCaller.Tests
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
             u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
             u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
+            u.CreateRequest();
 
-            Assert.IsTrue(u.DataResult.Count > 0);
+            Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
@@ -69,8 +69,8 @@ namespace RiotCaller.Tests
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerIds);
             u.AddParam(paramType.summonerIds, new List<long>() { 466244, 311699 });
             u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
+            u.CreateRequest();
+            Assert.IsTrue(u.Result.Count > 0);
         }
     }
 }

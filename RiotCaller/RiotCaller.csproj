@@ -63,6 +63,7 @@
     <Compile Include="Enums\Suffix.cs" />
     <Compile Include="Extensions\ApiUrlExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\SummonerExtensions.cs" />
     <Compile Include="NonStaticApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticApi.cs" />

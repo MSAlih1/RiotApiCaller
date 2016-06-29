@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Attributes;
+using RiotCaller.Enums;
 using System;
 
 namespace RiotCaller.ApiEndPoints.Summoner
@@ -21,5 +22,7 @@ namespace RiotCaller.ApiEndPoints.Summoner
 
         [JsonProperty("summonerLevel")]
         public int SummonerLevel { get; set; }
+
+        public region Region;
     }
 }
