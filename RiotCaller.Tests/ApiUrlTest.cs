@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RiotCaller.Classes.Stats;
-using RiotCaller.Classes.Summoner;
-using RiotCaller.Classes.Team;
+using RiotCaller.ApiEndPoints.Stats;
+using RiotCaller.ApiEndPoints.Summoner;
+using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System.Collections.Generic;
 
@@ -13,21 +11,10 @@ namespace RiotCaller.Tests
     public class ApiUrlTest
     {
         [TestMethod]
-        public void summonerByname()
+        public void leagueTeamByIds()
         {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz","MustyMax" });
-            u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
-
-            Assert.IsTrue(u.DataResult.Count > 0);
-        }
-
-        [TestMethod]
-        public void summonersummonerIds()
-        {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerIds);
-            u.AddParam(paramType.summonerIds, new List<long>() { 466244, 311699 });
+            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
+            u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest(apikey.Key);
             Assert.IsTrue(u.DataResult.Count > 0);
@@ -44,16 +31,6 @@ namespace RiotCaller.Tests
         }
 
         [TestMethod]
-        public void leagueTeamByIds()
-        {
-            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
-            u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
-            u.AddParam(paramType.region, region.tr);
-            u.CreateRequest(apikey.Key);
-            Assert.IsTrue(u.DataResult.Count > 0);
-        }
-
-        [TestMethod]
         public void statsRanked()
         {
             ApiUrl<Ranked> u = new ApiUrl<Ranked>(suffix.statsRanked);
@@ -63,6 +40,7 @@ namespace RiotCaller.Tests
             u.CreateRequest(apikey.Key);
             Assert.IsTrue(u.DataResult.Count > 0);
         }
+
         [TestMethod]
         public void statsSummary()
         {
@@ -70,6 +48,27 @@ namespace RiotCaller.Tests
             u.AddParam(paramType.summonerId, 466244);
             u.AddParam(paramType.region, region.tr);
             u.AddParam(paramType.season, season.SEASON2016);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
+        }
+
+        [TestMethod]
+        public void summonerByname()
+        {
+            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
+            u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
+            u.AddParam(paramType.region, region.tr);
+            u.CreateRequest(apikey.Key);
+
+            Assert.IsTrue(u.DataResult.Count > 0);
+        }
+
+        [TestMethod]
+        public void summonerIds()
+        {
+            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerIds);
+            u.AddParam(paramType.summonerIds, new List<long>() { 466244, 311699 });
+            u.AddParam(paramType.region, region.tr);
             u.CreateRequest(apikey.Key);
             Assert.IsTrue(u.DataResult.Count > 0);
         }

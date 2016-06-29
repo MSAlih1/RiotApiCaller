@@ -30,7 +30,9 @@ namespace RiotCaller
 
             Url = Url.Replace("/team/team/", "/team/");//bug
         }
+
         public void setApiKey(string _apikey) => Url = Url.Replace("{api_key}", _apikey);
+
         /// <summary>
         /// suffixes may replace instead of CacheKey 
         /// </summary>

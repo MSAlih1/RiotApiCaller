@@ -1,7 +1,7 @@
 ﻿namespace RiotCaller
 {
     /// <summary>
-    /// api url's parameters do not change type names! 
+    /// api url's parameters do not change type names!
     /////// ONLY '{variables}' name here !!!
     /// </summary>
     public enum paramType
@@ -13,16 +13,17 @@
         summonerIds,
 
         /// <summary>
-        /// Example Value => "variable type is long OR type of RegionEnum } 
+        /// Example Value =&gt; "variable type is long OR type of RegionEnum } 
         /// </summary>
         region,
 
         /// <summary>
-        /// Example Value => variable type is long } 
+        /// Example Value =&gt; variable type is long } 
         /// </summary>
         summonerId,
 
-        /// <summary> Example Value => new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0", } </summary>
+        /// <summary> Example Value => new List<string>() {
+        /// "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0", } </summary>
         teamIds,
 
         season

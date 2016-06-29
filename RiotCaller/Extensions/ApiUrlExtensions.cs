@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 
 namespace RiotCaller
 {
@@ -26,10 +24,7 @@ namespace RiotCaller
             else if (value is List<int>)
                 val = string.Join(",", (value as List<int>));
             else if (value is DateTime)
-                throw new Exception("USE> DateTime to Long");
-            /*
-             NEED CONTROL FOR DATETIME
-             */
+                val = ((DateTime)value).Ticks.ToString();
             else
                 val = value.ToString();
 
@@ -54,9 +49,9 @@ namespace RiotCaller
                 reader.Close();
                 dataStream.Close();
             }
-            if (apiurl.Suffix == suffix.statsRanked|| apiurl.Suffix == suffix.statsSummary)
+            if (apiurl.Suffix == suffix.statsRanked || apiurl.Suffix == suffix.statsSummary)
             {
-              apiurl.DataResult.Add(JsonConvert.DeserializeObject<T>(Json));
+                apiurl.DataResult.Add(JsonConvert.DeserializeObject<T>(Json));
             }
             else
             {
