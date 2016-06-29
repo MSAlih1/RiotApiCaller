@@ -45,9 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="apikey.cs" />
     <Compile Include="ApiUrl.cs" />
+    <Compile Include="Attributes\DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
     <Compile Include="Classes\Summoner\Summoner.cs" />
+    <Compile Include="Classes\Team\Team.cs" />
     <Compile Include="Enums\ApiGroup.cs" />
     <Compile Include="Enums\ApiType.cs" />
     <Compile Include="Enums\ParamType.cs" />
@@ -60,8 +63,10 @@
     <Compile Include="StaticApi.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.Attributes;
 using System;
+using static RiotCaller.EnumAttributes;
 
 namespace RiotCaller.Classes.Summoner
 {
@@ -13,7 +15,8 @@ namespace RiotCaller.Classes.Summoner
 
         [JsonProperty("profileIconId")]
         public int ProfileIconId { get; set; }
-
+        
+        [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("revisionDate")]
         public DateTime RevisionDate { get; set; }
 

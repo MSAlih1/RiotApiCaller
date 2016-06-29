@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RiotCaller
 {
     public class ApiUrl<T> where T : class
     {
         public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
-        
-        public Object ResultData { get; set; }
+
+        public List<T> DataResult { get; set; }
 
         /// <summary>
         /// raw url 
@@ -25,12 +23,12 @@ namespace RiotCaller
             Suffix = _suffix;
             Url = string.Format("https://{0}/{{region}}/v{1}/{2}/{3}",
                 Suffix.GetApiType().GetValue(),
-                Suffix.GetApiGrop().GetVersion(),
-                Suffix.GetApiGrop(),
+                Suffix.GetApiGroup().GetVersion(),
+                Suffix.GetApiGroup(),
                 Suffix.GetValue()
                 );
         }
-
+        public void setApiKey(string _apikey) => Url =Url.Replace("{api_key}", _apikey);
         /// <summary>
         /// suffixes may replace instead of CacheKey 
         /// </summary>

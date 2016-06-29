@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 
@@ -24,6 +25,8 @@ namespace RiotCaller
                 val = string.Join(",", (value as List<string>));
             else if (value is List<int>)
                 val = string.Join(",", (value as List<int>));
+            else if (value is DateTime)
+                throw new Exception("USE> DateTime to Long");
             /*
              NEED CONTROL FOR DATETIME
              */
@@ -34,9 +37,10 @@ namespace RiotCaller
             apiurl.Parameters.Add(key.ToString(), value);
         }
 
-        public static void CreateRequest<T>(this ApiUrl<T> apiurl) where T : class
+        public static void CreateRequest<T>(this ApiUrl<T> apiurl, string _apikey) where T : class
         {
-            string JsonText = string.Empty;
+            apiurl.setApiKey(_apikey);
+            string Json = string.Empty;
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl.Url);
             request.Method = "GET";
             request.UserAgent = "RiotCaller";
@@ -46,11 +50,11 @@ namespace RiotCaller
             {
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream, System.Text.Encoding.UTF8);
-                JsonText = reader.ReadToEnd();
+                Json = reader.ReadToEnd();
                 reader.Close();
                 dataStream.Close();
             }
-            apiurl.ResultData = JsonConvert.DeserializeObject(JsonText);
+            apiurl.DataResult = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
         }
     }
 }

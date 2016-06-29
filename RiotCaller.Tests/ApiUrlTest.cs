@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RiotCaller.Classes.Summoner;
+using RiotCaller.Classes.Team;
 using RiotCaller.Enums;
 using System.Collections.Generic;
 
@@ -14,33 +15,40 @@ namespace RiotCaller.Tests
         public void summonerByname()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
+            u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz","MustyMax" });
             u.AddParam(paramType.region, region.tr);
-            string result = u.Url;
-            u.CreateRequest();
-            
-            Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.4/summoner/by-name/Kesintisiz,MustyMax", result);
+            u.CreateRequest(apikey.Key);
+
+            Assert.IsTrue(u.DataResult.Count > 0);
         }
 
         [TestMethod]
-        public void summonerMasteries()
+        public void summonersummonerIds()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerIds);
-            u.AddParam(paramType.summonerIds, new List<long>() { 466244, 457724 });
+            u.AddParam(paramType.summonerIds, new List<long>() { 466244, 311699 });
             u.AddParam(paramType.region, region.tr);
-            string result = u.Url;
-            Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.4/summoner/466244,457724", result);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
         }
 
         [TestMethod]
         public void leagueTeamIds()
         {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.leagueTeamIds);
-            u.AddParam(paramType.teamIds, new List<long>() { 80584218, 22155850 });
+            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
+            u.AddParam(paramType.summonerIds, new List<long>() { 466244 });
             u.AddParam(paramType.region, region.tr);
-            string result = u.Url;
-
-            Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v2.5/league/by-team/80584218,22155850", result);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
+        }
+        [TestMethod]
+        public void leagueTeamByIds()
+        {
+            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamByIds);
+            u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
+            u.AddParam(paramType.region, region.tr);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
         }
 
         [TestMethod]

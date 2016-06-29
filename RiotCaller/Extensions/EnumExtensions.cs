@@ -14,7 +14,7 @@ namespace RiotCaller
             return v.GetCustomAttribute<ValueAttribute>();
         }
 
-        public static apiGroup GetApiGrop(this suffix enumVal)
+        public static apiGroup GetApiGroup(this suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());

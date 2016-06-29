@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace RiotCaller
 {
@@ -103,5 +104,7 @@ namespace RiotCaller
                 return ApiType.ToString();
             }
         }
+        
+        
     }
 }

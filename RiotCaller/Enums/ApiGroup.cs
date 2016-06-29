@@ -14,6 +14,9 @@ namespace RiotCaller
         league,
 
         [Version(1.3)]
-        stats
+        stats,
+
+        [Version(2.4)]
+        team
     }
 }
