@@ -23,6 +23,8 @@
         summonerId,
 
         /// <summary> Example Value => new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0", } </summary>
-        teamIds
+        teamIds,
+
+        season
     }
 }

@@ -54,7 +54,14 @@ namespace RiotCaller
                 reader.Close();
                 dataStream.Close();
             }
-            apiurl.DataResult = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+            if (apiurl.Suffix == suffix.statsRanked|| apiurl.Suffix == suffix.statsSummary)
+            {
+              apiurl.DataResult.Add(JsonConvert.DeserializeObject<T>(Json));
+            }
+            else
+            {
+                apiurl.DataResult = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+            }
         }
     }
 }

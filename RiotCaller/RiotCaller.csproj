@@ -49,6 +49,9 @@
     <Compile Include="ApiUrl.cs" />
     <Compile Include="Attributes\DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
+    <Compile Include="Classes\Stats\Ranked.cs" />
+    <Compile Include="Classes\Stats\season.cs" />
+    <Compile Include="Classes\Stats\Summary.cs" />
     <Compile Include="Classes\Summoner\Summoner.cs" />
     <Compile Include="Classes\Team\Team.cs" />
     <Compile Include="Enums\ApiGroup.cs" />

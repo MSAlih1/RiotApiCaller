@@ -69,7 +69,7 @@ namespace RiotCaller
 
         [ApiType(apiType.nonStatic)]
         [ApiGrop(apiGroup.stats)]
-        [Value("by-summoner/{summonerId}/ranked?api_key={api_key}")]
+        [Value("by-summoner/{summonerId}/ranked?api_key={api_key}&season={season}")]
         statsRanked,
 
         [ApiType(apiType.nonStatic)]

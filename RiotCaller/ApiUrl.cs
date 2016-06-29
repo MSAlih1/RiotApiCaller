@@ -6,7 +6,7 @@ namespace RiotCaller
     {
         public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
 
-        public List<T> DataResult { get; set; }
+        public List<T> DataResult { get; set; } = new List<T>();
 
         /// <summary>
         /// raw url 
@@ -27,8 +27,10 @@ namespace RiotCaller
                 Suffix.GetApiGroup(),
                 Suffix.GetValue()
                 );
+
+            Url = Url.Replace("/team/team/", "/team/");//bug
         }
-        public void setApiKey(string _apikey) => Url =Url.Replace("{api_key}", _apikey);
+        public void setApiKey(string _apikey) => Url = Url.Replace("{api_key}", _apikey);
         /// <summary>
         /// suffixes may replace instead of CacheKey 
         /// </summary>

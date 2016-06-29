@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RiotCaller.Classes.Stats;
 using RiotCaller.Classes.Summoner;
 using RiotCaller.Classes.Team;
 using RiotCaller.Enums;
@@ -41,10 +42,11 @@ namespace RiotCaller.Tests
             u.CreateRequest(apikey.Key);
             Assert.IsTrue(u.DataResult.Count > 0);
         }
+
         [TestMethod]
         public void leagueTeamByIds()
         {
-            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamByIds);
+            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
             u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest(apikey.Key);
@@ -54,12 +56,22 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void statsRanked()
         {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.statsRanked);
+            ApiUrl<Ranked> u = new ApiUrl<Ranked>(suffix.statsRanked);
             u.AddParam(paramType.summonerId, 466244);
             u.AddParam(paramType.region, region.tr);
-            string result = u.Url;
-
-            Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.3/stats/by-summoner/466244/ranked", result);
+            u.AddParam(paramType.season, season.SEASON2016);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
+        }
+        [TestMethod]
+        public void statsSummary()
+        {
+            ApiUrl<Summary> u = new ApiUrl<Summary>(suffix.statsSummary);
+            u.AddParam(paramType.summonerId, 466244);
+            u.AddParam(paramType.region, region.tr);
+            u.AddParam(paramType.season, season.SEASON2016);
+            u.CreateRequest(apikey.Key);
+            Assert.IsTrue(u.DataResult.Count > 0);
         }
     }
 }
