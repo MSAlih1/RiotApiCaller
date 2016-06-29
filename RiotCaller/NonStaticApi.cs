@@ -1,5 +1,6 @@
 ﻿using RiotCaller.ApiEndPoints.Stats;
 using RiotCaller.ApiEndPoints.Summoner;
+using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,44 @@ namespace RiotCaller
             u.AddParam(paramType.season, season);
             u.CreateRequest();
             return u.Result.FirstOrDefault();
+        }
+
+        public Team GetTeam(string teamName, season season = season.SEASON2016, region region = region.tr)
+        {
+            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
+            u.AddParam(paramType.teamIds, new List<string>() { teamName });
+            u.AddParam(paramType.region, region);
+            u.CreateRequest();
+            return u.Result.FirstOrDefault();
+        }
+
+        public Team GetTeam(long teamId, season season = season.SEASON2016, region region = region.tr)
+        {
+            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
+            u.AddParam(paramType.summonerIds, new List<long>() { teamId });
+            u.AddParam(paramType.region, region.tr);
+            u.CreateRequest();
+            return u.Result.FirstOrDefault().FirstOrDefault();
+        }
+
+
+        public List<Team> GetTeams(List<string> teamNames, season season = season.SEASON2016, region region = region.tr)
+        {
+            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
+            u.AddParam(paramType.teamIds, teamNames);
+            u.AddParam(paramType.region, region);
+            u.CreateRequest();
+            return u.Result.ToList();
+        }
+
+        public List<Team> GetTeams(List<long> teamIds, season season = season.SEASON2016, region region = region.tr)
+        {
+            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
+            u.AddParam(paramType.summonerIds, teamIds);
+            u.AddParam(paramType.region, region);
+            u.CreateRequest();
+            //return u.Result.ToList();//<== orginal
+            return u.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
 
     }

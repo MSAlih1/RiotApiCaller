@@ -1,4 +1,5 @@
 ﻿using RiotCaller.ApiEndPoints.Stats;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RiotCaller.ApiEndPoints.Summoner
@@ -21,6 +22,15 @@ namespace RiotCaller.ApiEndPoints.Summoner
             u.AddParam(paramType.summonerId, sum.Id);
             u.AddParam(paramType.region, sum.Region);
             u.AddParam(paramType.season, season);
+            u.CreateRequest();
+            return u.Result.FirstOrDefault();
+        }
+
+        public static List<Team.Team> GetTeams(this Summoner sum, season season = season.SEASON2016)
+        {
+            ApiUrl<List<Team.Team>> u = new ApiUrl<List<Team.Team>>(suffix.teamIds);
+            u.AddParam(paramType.summonerIds, new List<long>() { sum.Id });
+            u.AddParam(paramType.region, sum.Region);
             u.CreateRequest();
             return u.Result.FirstOrDefault();
         }

@@ -4,27 +4,37 @@ using RiotCaller.ApiEndPoints.Summoner;
 using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace RiotCaller.Tests
 {
     [TestClass]
     public class ApiUrlTest
     {
+        long summonerId1 = long.Parse(ConfigurationSettings.AppSettings["summonerId1"]);
+        long summonerId2 = long.Parse(ConfigurationSettings.AppSettings["summonerId2"]);
+
+        string summonerName1 = ConfigurationSettings.AppSettings["summonerName1"];
+        string summonerName2 = ConfigurationSettings.AppSettings["summonerName2"];
+
+        string teamName1 = ConfigurationSettings.AppSettings["teamId1"];
+        string teamName2 = ConfigurationSettings.AppSettings["teamId2"];
+
         [TestMethod]
-        public void leagueTeamByIds()
+        public void teamteamByIds()
         {
             ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
-            u.AddParam(paramType.teamIds, new List<string>() { "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0" });
+            u.AddParam(paramType.teamIds, new List<string>() { teamName1 });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest();
             Assert.IsTrue(u.Result.Count > 0);
         }
 
         [TestMethod]
-        public void leagueTeamIds()
+        public void teamteamIds()
         {
             ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
-            u.AddParam(paramType.summonerIds, new List<long>() { 466244 });
+            u.AddParam(paramType.summonerIds, new List<long>() { summonerId1, summonerId1 });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest();
             Assert.IsTrue(u.Result.Count > 0);
@@ -56,7 +66,7 @@ namespace RiotCaller.Tests
         public void summonerByname()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
+            u.AddParam(paramType.summonerNames, new List<string>() { summonerName1, summonerName1 });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest();
 
@@ -67,7 +77,7 @@ namespace RiotCaller.Tests
         public void summonerIds()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerIds);
-            u.AddParam(paramType.summonerIds, new List<long>() { 466244, 311699 });
+            u.AddParam(paramType.summonerIds, new List<long>() { summonerId1, summonerId1 });
             u.AddParam(paramType.region, region.tr);
             u.CreateRequest();
             Assert.IsTrue(u.Result.Count > 0);
