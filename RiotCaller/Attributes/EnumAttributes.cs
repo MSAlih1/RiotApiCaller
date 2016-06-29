@@ -5,7 +5,7 @@ namespace RiotCaller
     public class EnumAttributes
     {
         /// <summary>
-        /// for enum string value
+        /// for enum string value 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ValueAttribute : Attribute
@@ -25,7 +25,7 @@ namespace RiotCaller
         }
 
         /// <summary>
-        /// api url version sets
+        /// api url version sets 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class VersionAttribute : Attribute
@@ -45,7 +45,7 @@ namespace RiotCaller
         }
 
         /// <summary>
-        /// checks if static or non-static
+        /// checks if static or non-static 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class IsStaticAttribute : Attribute
@@ -65,7 +65,7 @@ namespace RiotCaller
         }
 
         /// <summary>
-        /// Instead of overload methods
+        /// Instead of overload methods 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ApiGropAttribute : Attribute
@@ -85,7 +85,7 @@ namespace RiotCaller
         }
 
         /// <summary>
-        /// static and non-static api urls
+        /// static and non-static api urls 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ApiTypeAttribute : Attribute

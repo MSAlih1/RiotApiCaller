@@ -2,6 +2,9 @@
 
 namespace RiotCaller
 {
+    /// <summary>
+    /// do not change this values 
+    /// </summary>
     public enum ApiType
     {
         [IsStatic(false)]

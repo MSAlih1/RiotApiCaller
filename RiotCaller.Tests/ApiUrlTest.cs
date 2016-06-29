@@ -11,8 +11,8 @@ namespace RiotCaller.Tests
         public void summonerByname()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(Suffix.summonerByname);
-            u.AddParam(ParamTypes.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
-            u.AddParam(ParamTypes.region, "tr");
+            u.AddParam(ParamType.summonerNames, new List<string>() { "Kesintisiz", "MustyMax" });
+            u.AddParam(ParamType.region, "tr");
 
             string result = u.Url;
             Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.4/summoner/by-name/Kesintisiz,MustyMax", result);
@@ -22,8 +22,8 @@ namespace RiotCaller.Tests
         public void summonerMasteries()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(Suffix.summonerIds);
-            u.AddParam(ParamTypes.summonerIds, new List<long>() { 466244, 457724 });
-            u.AddParam(ParamTypes.region, "tr");
+            u.AddParam(ParamType.summonerIds, new List<long>() { 466244, 457724 });
+            u.AddParam(ParamType.region, "tr");
             string result = u.Url;
             Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.4/summoner/466244,457724", result);
         }
@@ -32,8 +32,8 @@ namespace RiotCaller.Tests
         public void leagueTeamIds()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(Suffix.leagueTeamIds);
-            u.AddParam(ParamTypes.teamIds, new List<long>() { 80584218, 22155850 });
-            u.AddParam(ParamTypes.region, "tr");
+            u.AddParam(ParamType.teamIds, new List<long>() { 80584218, 22155850 });
+            u.AddParam(ParamType.region, "tr");
             string result = u.Url;
 
             Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v2.5/league/by-team/80584218,22155850", result);
@@ -43,8 +43,8 @@ namespace RiotCaller.Tests
         public void statsRanked()
         {
             ApiUrl<Summoner> u = new ApiUrl<Summoner>(Suffix.statsRanked);
-            u.AddParam(ParamTypes.summonerId, 466244);
-            u.AddParam(ParamTypes.region, "tr");
+            u.AddParam(ParamType.summonerId, 466244);
+            u.AddParam(ParamType.region, "tr");
             string result = u.Url;
 
             Assert.AreEqual("https://tr.api.pvp.net/api/lol/tr/v1.3/stats/by-summoner/466244/ranked", result);

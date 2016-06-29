@@ -35,11 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Summoner\Summoner.cs" />
-    <Compile Include="Enums\ApiGroups.cs" />
+    <Compile Include="Enums\ApiGroup.cs" />
     <Compile Include="Enums\ApiType.cs" />
     <Compile Include="ApiUrl.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
-    <Compile Include="Enums\ParamTypes.cs" />
+    <Compile Include="Enums\ParamType.cs" />
     <Compile Include="Extensions\ApiUrlExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Enums\Suffix.cs" />

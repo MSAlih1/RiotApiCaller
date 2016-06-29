@@ -7,14 +7,14 @@ namespace RiotCaller
 {
     public static class EnumsHelper
     {
-        public static Attribute GetString(this Enum enumVal)
+        public static Attribute GetValue(this Enum enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
             return v.GetCustomAttribute<ValueAttribute>();
         }
 
-        public static ApiGroup GetGroup(this Suffix enumVal)
+        public static ApiGroup GetApiGrop(this Suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());

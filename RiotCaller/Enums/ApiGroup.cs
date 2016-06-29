@@ -2,6 +2,9 @@
 
 namespace RiotCaller
 {
+    /// <summary>
+    /// api version controls 
+    /// </summary>
     public enum ApiGroup
     {
         [Version(1.4)]

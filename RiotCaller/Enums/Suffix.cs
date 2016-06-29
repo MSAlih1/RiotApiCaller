@@ -3,7 +3,7 @@
 namespace RiotCaller
 {
     /// <summary>
-    /// suffixes may replace instead of CacheKey 
+    /// reference to api url 
     /// </summary>
     public enum Suffix
     {
