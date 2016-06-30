@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using RiotCaller.Enums;
-
-namespace RiotCaller.ApiEndPoints.Enums
+﻿namespace RiotCaller.EndPoints.Enums
 {
     public enum playerStatsSummaryType
     {

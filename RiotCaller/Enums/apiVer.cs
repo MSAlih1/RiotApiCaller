@@ -1,4 +1,4 @@
-﻿using static RiotCaller.Attributes.EnumAttributes;
+﻿using RiotCaller.Attributes;
 
 namespace RiotCaller.Enums
 {

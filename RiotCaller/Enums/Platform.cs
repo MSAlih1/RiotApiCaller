@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-
-namespace RiotCaller.Enums
+﻿namespace RiotCaller.Enums
 {
     public enum Platform
     {
         TR1,
-        
+
         NA1,
 
         BR1,

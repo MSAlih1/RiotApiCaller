@@ -2,43 +2,43 @@
 {
     public enum region
     {
-        ///<summary>    Turkey   
+        ///<summary>    Turkey
         ///</summary>
         tr,
 
-        ///<summary>    Russia   
+        ///<summary>    Russia
         ///</summary>
         ru,
 
-        ///<summary>    South Latin America   
+        ///<summary>    South Latin America
         ///</summary>
         las,
 
-        ///<summary>    North Latin America   
+        ///<summary>    North Latin America
         ///</summary>
         lan,
 
-        ///<summary>    Oceania   
+        ///<summary>    Oceania
         ///</summary>
         oce,
 
-        ///<summary>    South Korea   
+        ///<summary>    South Korea
         ///</summary>
         kr,
 
-        ///<summary>    North America   
+        ///<summary>    North America
         ///</summary>
         na,
 
-        ///<summary>    Western Europe   
+        ///<summary>    Western Europe
         ///</summary>
         euw,
 
-        ///<summary>    Brasil  
+        ///<summary>    Brasil
         ///</summary>
         br,
 
-        ///<summary>    North-Eastern Europe   
+        ///<summary>    North-Eastern Europe
         ///</summary>
         eune
     }

@@ -1,4 +1,4 @@
-﻿using static RiotCaller.Attributes.EnumAttributes;
+﻿using RiotCaller.Attributes;
 
 namespace RiotCaller.Enums
 {
@@ -7,38 +7,40 @@ namespace RiotCaller.Enums
     /// </summary>
     public enum suffix
     {
-        /// <param name="region">Region</param>
+        /// <param name="region">
+        /// Region 
+        /// </param>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.summoner)]
         [Value("?api_key={api_key}")]
         summonerNone,
+
         /// <summary>
-        /// <param name="string[]">summonerNames</param>
-        /// <param name="region">Region</param>
+        /// <param name="string[]"> summonerNames </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.summoner)]
         [Value("by-name/{summonerNames}?api_key={api_key}")]
         summonerByname,
-        
+
         /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="long[]"> summonerIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.summoner)]
         [Value("{summonerIds}?api_key={api_key}")]
         summonerIds,
 
-        /// <param name="region">Region</param>
+        /// <param name="region">
+        /// Region 
+        /// </param>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.summoner)]
         [Value("{summonerIds}/masteries?api_key={api_key}")]
         summonerMasteries,
 
         /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="long[]"> summonerIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.summoner)]
@@ -46,8 +48,7 @@ namespace RiotCaller.Enums
         summonerRunes,
 
         /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="long[]"> summonerIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
@@ -55,18 +56,15 @@ namespace RiotCaller.Enums
         leagueByIds,
 
         /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="long[]"> summonerIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
         [Value("by-summoner/{summonerIds}/entry?api_key={api_key}")]
         leagueByIdsEntry,
 
-
         /// <summary>
-        /// <param name="string[]">teamIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="string[]"> teamIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
@@ -74,29 +72,31 @@ namespace RiotCaller.Enums
         leagueTeamByIds,
 
         /// <summary>
-        /// <param name="string[]">teamIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="string[]"> teamIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
         [Value("by-team/{teamIds}/entry?api_key={api_key}")]
         leagueTeamByIdsEntries,
 
-        /// <param name="region">Region</param>
+        /// <param name="region">
+        /// Region 
+        /// </param>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
         [Value("challenger?api_key={api_key}")]
         leagueChallenger,
 
-        /// <param name="region">Region</param>
+        /// <param name="region">
+        /// Region 
+        /// </param>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.league)]
         [Value("master?api_key={api_key}")]
         leagueMaster,
 
         /// <summary>
-        /// <param name="long">summonerId</param>
-        /// <param name="region">Region</param>
+        /// <param name="long"> summonerId </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.stats)]
@@ -104,8 +104,7 @@ namespace RiotCaller.Enums
         statsRanked,
 
         /// <summary>
-        /// <param name="long">summonerId</param>
-        /// <param name="region">Region</param>
+        /// <param name="long"> summonerId </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.stats)]
@@ -113,8 +112,7 @@ namespace RiotCaller.Enums
         statsSummary,
 
         /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="long[]"> summonerIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.team)]
@@ -122,38 +120,28 @@ namespace RiotCaller.Enums
         teamIds,
 
         /// <summary>
-        /// <param name="string[]">teamIds</param>
-        /// <param name="region">Region</param>
+        /// <param name="string[]"> teamIds </param><param name="region"> Region </param> 
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.team)]
         [Value("team/{teamIds}?api_key={api_key}")]
         teamByIds,
 
-
         /// <summary>
-        /// <param name="long">summonerId</param>
-        /// <param name="long[]">championIds</param>
-        /// <param name="Queues[]">rankedQueues</param>
-        /// <param name="season[]">seasons</param>
-        /// <param name="DatetTime">beginTime</param>
-        /// <param name="DatetTime">endTime</param>
-        /// <param name="int">beginIndex</param>
-        /// <param name="int">endIndex</param>
-        /// <param name="region">Region</param>
+        /// <param name="long"> summonerId </param><param name="long[]"> championIds
+        /// </param><param name="Queues[]"> rankedQueues </param><param name="season[]"> seasons
+        /// </param><param name="DatetTime"> beginTime </param><param name="DatetTime"> endTime
+        /// </param><param name="int"> beginIndex </param><param name="int"> endIndex
+        /// </param><param name="region"> Region </param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.matchlist)]
         [Value("by-summoner/{summonerId}?api_key={api_key}&championIds={championIds}&rankedQueues={rankedQueues}&seasons={seasons}&beginTime={beginTime}&endTime={endTime}&beginIndex={beginIndex}&endIndex={endIndex}")]
         matchlist,
 
-
-
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.match)]
         [Value("{matchId}?api_key={api_key}&includeTimeline={includeTimeline}")]
         matchdetail,
-
-
     }
 }

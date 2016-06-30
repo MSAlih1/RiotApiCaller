@@ -1,7 +1,6 @@
 ﻿using RiotCaller.Enums;
 using System.Collections.Generic;
 
-
 namespace RiotCaller
 {
     public class RiotApiCaller<T> where T : class
@@ -34,7 +33,7 @@ namespace RiotCaller
 
             Url = Url.Replace("/team/team/", "/team/");//bug (for => suffix.teamByIds)
         }
-        
+
         /// <summary>
         /// suffixes may replace instead of CacheKey 
         /// </summary>

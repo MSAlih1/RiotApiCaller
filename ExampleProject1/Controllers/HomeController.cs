@@ -1,7 +1,8 @@
 ﻿using ExampleProject2.Repositories;
 using RiotCaller;
 using RiotCaller.ApiEndPoints;
-using RiotCaller.ApiEndPoints.Stats;
+using RiotCaller.EndPoints;
+using RiotCaller.EndPoints.Stats;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,9 @@ namespace ExampleProject2.Controllers
 
             //GetStatsRanked TYPE 3
             var ranked3 = summoner1.GetStatsRanked();
+
+            //GetStatsRanked TYPE 4
+            var ranked4 = SummonerExtensions.GetStatsRanked(summoner1);
             ///////////////////////////////////////////////////
 
             ViewBag.Summoner = summoner1;

@@ -27,12 +27,12 @@
         teamIds,
 
         /// <summary>
-        /// one variable
+        /// one variable 
         /// </summary>
         season,
 
         /// <summary>
-        /// more than one variables
+        /// more than one variables 
         /// </summary>
         seasons,
 
@@ -49,12 +49,12 @@
         endIndex,
 
         /// <summary>
-        /// gameId
+        /// gameId 
         /// </summary>
         matchId,
 
         /// <summary>
-        /// true or false
+        /// true or false 
         /// </summary>
         includeTimeline
     }

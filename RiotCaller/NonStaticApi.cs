@@ -1,9 +1,9 @@
 ﻿using RiotCaller.ApiEndPoints;
-using RiotCaller.ApiEndPoints.League;
-using RiotCaller.ApiEndPoints.Match;
-using RiotCaller.ApiEndPoints.MatchList;
-using RiotCaller.ApiEndPoints.Stats;
-using RiotCaller.ApiEndPoints.Team;
+using RiotCaller.EndPoints.League;
+using RiotCaller.EndPoints.Match;
+using RiotCaller.EndPoints.MatchList;
+using RiotCaller.EndPoints.Stats;
+using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,7 @@ namespace RiotCaller
             else
                 return null;
         }
+
         public List<List<League>> GetLeagues(List<long> _summonerIds, region _region)
         {
             RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
@@ -38,7 +39,6 @@ namespace RiotCaller
             caller.AddParam(param.region, _region);
             caller.CreateRequest();
             return caller.Result;
-
         }
 
         public MatchList GetMatchList(long _summonerId, region _region, List<long> _championIds = null,

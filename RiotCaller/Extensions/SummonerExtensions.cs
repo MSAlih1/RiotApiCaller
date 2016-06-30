@@ -1,30 +1,30 @@
-﻿using RiotCaller.ApiEndPoints.MatchList;
-using RiotCaller.ApiEndPoints.League;
-using RiotCaller.ApiEndPoints.Stats;
+﻿using RiotCaller.EndPoints.League;
+using RiotCaller.EndPoints.MatchList;
+using RiotCaller.EndPoints.Stats;
+using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq; 
-
+using System.Linq;
 
 namespace RiotCaller.ApiEndPoints
 {
     public static class SummonerExtensions
     {
-        public static League.League GetLeague(this Summoner sum)
+        public static League GetLeague(this Summoner sum)
         {
-            RiotApiCaller<List<League.League>> caller = new RiotApiCaller<List<League.League>>(suffix.leagueByIds);
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
             caller.AddParam(param.summonerIds, sum.Id);
             caller.AddParam(param.region, sum.Region);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault().FirstOrDefault();
         }
 
-        public static MatchList.MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,
+        public static MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,
             List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
             int? _beginIndex = null, int? _endIndex = null)
         {
-            RiotApiCaller<MatchList.MatchList> caller = new RiotApiCaller<MatchList.MatchList>(suffix.matchlist);
+            RiotApiCaller<MatchList> caller = new RiotApiCaller<MatchList>(suffix.matchlist);
             caller.AddParam(param.summonerId, new List<long>() { sum.Id });
             caller.AddParam(param.region, sum.Region);
 
@@ -94,9 +94,9 @@ namespace RiotCaller.ApiEndPoints
             return caller.Result.FirstOrDefault();
         }
 
-        public static List<Team.Team> GetTeams(this Summoner sum)
+        public static List<Team> GetTeams(this Summoner sum)
         {
-            RiotApiCaller<List<Team.Team>> caller = new RiotApiCaller<List<Team.Team>>(suffix.teamIds);
+            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
             caller.AddParam(param.summonerIds, new List<long>() { sum.Id });
             caller.AddParam(param.region, sum.Region);
             caller.CreateRequest();

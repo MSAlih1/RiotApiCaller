@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RiotCaller.Enums
+﻿namespace RiotCaller.Enums
 {
     public enum role
     {
@@ -15,7 +9,6 @@ namespace RiotCaller.Enums
         SOLO,
 
         DUO_CARRY,
-
 
         DUO_SUPPORT
     }

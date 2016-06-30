@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
-using RiotCaller.ApiEndPoints.League;
-using RiotCaller.ApiEndPoints.Match;
-using RiotCaller.ApiEndPoints.MatchList;
-using RiotCaller.ApiEndPoints.Team;
+using RiotCaller.EndPoints.League;
+using RiotCaller.EndPoints.Match;
+using RiotCaller.EndPoints.MatchList;
+using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;

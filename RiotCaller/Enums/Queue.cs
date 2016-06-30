@@ -1,19 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RiotCaller.Enums
+﻿namespace RiotCaller.Enums
 {
     /// <summary>
-    /// for matchlist and league queries
+    /// for matchlist and league queries 
     /// </summary>
     public enum queue
     {
         /// <summary>
-        /// use only matchlist query
+        /// use only matchlist query 
         /// </summary>
         TEAM_BUILDER_DRAFT_RANKED_5x5,
 
@@ -22,7 +15,7 @@ namespace RiotCaller.Enums
         RANKED_TEAM_5x5,
 
         /// <summary>
-        /// use only matchlist query
+        /// use only matchlist query 
         /// </summary>
         TEAM_BUILDER_DRAFT_UNRANKED_5x5,
 
