@@ -73,6 +73,13 @@ Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends
 ```c#
             var ranked3 = summoner1.GetStatsRanked();
 ```
+##### GetStatsRanked TYPE 4:
+```c#
+            Summoner summoner1 = LolApi.Api.GetSummoner("[summonerName]", [region]);
+            var ranked4 =  SummonerExtensions.GetStatsRanked(summoner1);
+        	 OR 	
+            var ranked4 =  SummonerExtensions.GetStatsRanked(new Summoner() { Id = [summonerId] });
+```
 
 ## Libraries used
 -.NET MVC and dependency injection (not  finished also half)
