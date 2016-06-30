@@ -46,9 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiEndPoints\League\Entry.cs" />
     <Compile Include="ApiEndPoints\League\League.cs" />
+    <Compile Include="ApiEndPoints\League\MiniSeries.cs" />
+    <Compile Include="ApiEndPoints\MatchList\Match.cs" />
     <Compile Include="ApiEndPoints\MatchList\MatchList.cs" />
-    <Compile Include="ApiEndPoints\Match\Match.cs" />
+    <Compile Include="ApiEndPoints\Match\Ban.cs" />
+    <Compile Include="ApiEndPoints\Match\Event.cs" />
+    <Compile Include="ApiEndPoints\Match\Frame.cs" />
+    <Compile Include="ApiEndPoints\Match\Mastery.cs" />
+    <Compile Include="ApiEndPoints\Match\MatchDetail.cs" />
+    <Compile Include="ApiEndPoints\Match\MatchDetailTeam.cs" />
+    <Compile Include="ApiEndPoints\Match\MatchDetailTimeline.cs" />
+    <Compile Include="ApiEndPoints\Match\Participant.cs" />
+    <Compile Include="ApiEndPoints\Match\ParticipantFrames.cs" />
+    <Compile Include="ApiEndPoints\Match\ParticipantIdentity.cs" />
+    <Compile Include="ApiEndPoints\Match\ParticipantStats.cs" />
+    <Compile Include="ApiEndPoints\Match\ParticipantTimeline.cs" />
+    <Compile Include="ApiEndPoints\Match\ParticipantTimelineDeltas.cs" />
+    <Compile Include="ApiEndPoints\Match\Player.cs" />
+    <Compile Include="ApiEndPoints\Match\Position.cs" />
+    <Compile Include="ApiEndPoints\Match\Rune.cs" />
+    <Compile Include="ApiEndPoints\Stats\Summary\AggregatedStats.cs" />
+    <Compile Include="ApiEndPoints\Stats\Summary\PlayerStatSummary.cs" />
+    <Compile Include="ApiEndPoints\Stats\Ranked\Champion.cs" />
+    <Compile Include="ApiEndPoints\Stats\Ranked\Stats.cs" />
+    <Compile Include="ApiEndPoints\Team\MemberList.cs" />
+    <Compile Include="ApiEndPoints\Team\Roster.cs" />
+    <Compile Include="ApiEndPoints\Team\TeamStatDetail.cs" />
     <Compile Include="apikey.cs" />
     <Compile Include="Enums\Division.cs" />
     <Compile Include="Enums\Lane.cs" />
@@ -60,9 +85,9 @@
     <Compile Include="DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
     <Compile Include="Enums\PlayerStatSummaryType.cs" />
-    <Compile Include="ApiEndPoints\Stats\Ranked.cs" />
+    <Compile Include="ApiEndPoints\Stats\Ranked\Ranked.cs" />
     <Compile Include="Enums\Season.cs" />
-    <Compile Include="ApiEndPoints\Stats\Summary.cs" />
+    <Compile Include="ApiEndPoints\Stats\Summary\Summary.cs" />
     <Compile Include="ApiEndPoints\Summoner\Summoner.cs" />
     <Compile Include="ApiEndPoints\Team\Team.cs" />
     <Compile Include="Enums\apiVer.cs" />

@@ -1,31 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RiotCaller.Attributes;
-using System;
-using System.Collections.Generic;
 
 namespace RiotCaller.ApiEndPoints.Stats
 {
-    public class Champion
-    {
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
-        [JsonProperty("stats")]
-        public Stats Stats { get; set; }
-    }
-
-    public class Ranked
-    {
-        [JsonProperty("champions")]
-        public List<Champion> Champions { get; set; }
-
-        [JsonConverter(typeof(DateTimeFromLong))]
-        [JsonProperty("modifyDate")]
-        public DateTime ModifyDate { get; set; }
-        [JsonProperty("summonerId")]
-        public long SummonerId { get; set; }
-    }
-
     public class Stats
     {
         [JsonProperty("botGamesPlayed")]
@@ -122,8 +98,10 @@ namespace RiotCaller.ApiEndPoints.Stats
 
         [JsonProperty("totalTripleKills")]
         public int TotalTripleKills { get; set; }
+
         [JsonProperty("totalTurretsKilled")]
         public int TotalTurretsKilled { get; set; }
+
         [JsonProperty("totalUnrealKills")]
         public int TotalUnrealKills { get; set; }
     }

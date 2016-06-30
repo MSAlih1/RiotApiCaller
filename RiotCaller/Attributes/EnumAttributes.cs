@@ -9,10 +9,10 @@ namespace RiotCaller.Attributes
         /// Instead of overload methods 
         /// </summary>
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-        public class ApiGropAttribute : Attribute
+        public class apiVerAttribute : Attribute
         {
             private readonly apiVer value;
-            public ApiGropAttribute(apiVer _apigroup)
+            public apiVerAttribute(apiVer _apigroup)
             {
                 this.value = _apigroup;
             }

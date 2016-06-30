@@ -140,18 +140,18 @@ namespace RiotCaller
             return caller.Result;
         }
 
-        public Team GetTeam(string teamName, region region)
+        public MatchDetailTeam GetTeam(string teamName, region region)
         {
-            RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
+            RiotApiCaller<MatchDetailTeam> caller = new RiotApiCaller<MatchDetailTeam>(suffix.teamByIds);
             caller.AddParam(param.teamIds, new List<string>() { teamName });
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
 
-        public Team GetTeam(long teamId, region region)
+        public MatchDetailTeam GetTeam(long teamId, region region)
         {
-            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
+            RiotApiCaller<List<MatchDetailTeam>> caller = new RiotApiCaller<List<MatchDetailTeam>>(suffix.teamIds);
             caller.AddParam(param.summonerIds, new List<long>() { teamId });
             caller.AddParam(param.region, region.tr);
             caller.CreateRequest();
@@ -160,18 +160,18 @@ namespace RiotCaller
             return null;
         }
 
-        public List<Team> GetTeams(List<string> teamNames, region region)
+        public List<MatchDetailTeam> GetTeams(List<string> teamNames, region region)
         {
-            RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
+            RiotApiCaller<MatchDetailTeam> caller = new RiotApiCaller<MatchDetailTeam>(suffix.teamByIds);
             caller.AddParam(param.teamIds, teamNames);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             return caller.Result.ToList();
         }
 
-        public List<Team> GetTeams(List<long> teamIds, region region)
+        public List<MatchDetailTeam> GetTeams(List<long> teamIds, region region)
         {
-            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
+            RiotApiCaller<List<MatchDetailTeam>> caller = new RiotApiCaller<List<MatchDetailTeam>>(suffix.teamIds);
             caller.AddParam(param.summonerIds, teamIds);
             caller.AddParam(param.region, region);
             caller.CreateRequest();

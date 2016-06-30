@@ -9,7 +9,7 @@ namespace RiotCaller.Enums
     {
         /// <param name="region">Region</param>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.summoner)]
+        [apiVer(apiVer.summoner)]
         [Value("?api_key={api_key}")]
         summonerNone,
         /// <summary>
@@ -17,7 +17,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.summoner)]
+        [apiVer(apiVer.summoner)]
         [Value("by-name/{summonerNames}?api_key={api_key}")]
         summonerByname,
         
@@ -26,13 +26,13 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.summoner)]
+        [apiVer(apiVer.summoner)]
         [Value("{summonerIds}?api_key={api_key}")]
         summonerIds,
 
         /// <param name="region">Region</param>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.summoner)]
+        [apiVer(apiVer.summoner)]
         [Value("{summonerIds}/masteries?api_key={api_key}")]
         summonerMasteries,
 
@@ -41,7 +41,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.summoner)]
+        [apiVer(apiVer.summoner)]
         [Value("{summonerIds}/runes?api_key={api_key}")]
         summonerRunes,
 
@@ -50,7 +50,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("by-summoner/{summonerIds}?api_key={api_key}")]
         leagueByIds,
 
@@ -59,7 +59,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("by-summoner/{summonerIds}/entry?api_key={api_key}")]
         leagueByIdsEntry,
 
@@ -69,7 +69,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("by-team/{teamIds}?api_key={api_key}")]
         leagueTeamByIds,
 
@@ -78,19 +78,19 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("by-team/{teamIds}/entry?api_key={api_key}")]
         leagueTeamByIdsEntries,
 
         /// <param name="region">Region</param>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("challenger?api_key={api_key}")]
         leagueChallenger,
 
         /// <param name="region">Region</param>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.league)]
+        [apiVer(apiVer.league)]
         [Value("master?api_key={api_key}")]
         leagueMaster,
 
@@ -99,7 +99,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.stats)]
+        [apiVer(apiVer.stats)]
         [Value("by-summoner/{summonerId}/ranked?api_key={api_key}&season={season}")]
         statsRanked,
 
@@ -108,7 +108,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.stats)]
+        [apiVer(apiVer.stats)]
         [Value("by-summoner/{summonerId}/summary?api_key={api_key}")]
         statsSummary,
 
@@ -117,7 +117,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.team)]
+        [apiVer(apiVer.team)]
         [Value("by-summoner/{summonerIds}?api_key={api_key}")]
         teamIds,
 
@@ -126,7 +126,7 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.team)]
+        [apiVer(apiVer.team)]
         [Value("team/{teamIds}?api_key={api_key}")]
         teamByIds,
 
@@ -143,14 +143,14 @@ namespace RiotCaller.Enums
         /// <param name="region">Region</param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.matchlist)]
+        [apiVer(apiVer.matchlist)]
         [Value("by-summoner/{summonerId}?api_key={api_key}&championIds={championIds}&rankedQueues={rankedQueues}&seasons={seasons}&beginTime={beginTime}&endTime={endTime}&beginIndex={beginIndex}&endIndex={endIndex}")]
         matchlistId,
 
 
 
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiVer.match)]
+        [apiVer(apiVer.match)]
         [Value("{matchId}?api_key={api_key}")]
         matchId,
 

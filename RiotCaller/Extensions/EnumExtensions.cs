@@ -12,7 +12,7 @@ namespace RiotCaller
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
-            return v.GetCustomAttribute<ApiGropAttribute>().isStatic;
+            return v.GetCustomAttribute<apiVerAttribute>().isStatic;
         }
 
         public static apiType GetApiType(this suffix enumVal)

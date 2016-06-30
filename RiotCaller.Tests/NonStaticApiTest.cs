@@ -97,7 +97,7 @@ namespace RiotCaller.Tests
         public void GetTeam()
         {
             NonStaticApi api = new NonStaticApi();
-            Team data = api.GetTeam(teamName1, Region);
+            MatchDetailTeam data = api.GetTeam(teamName1, Region);
             Assert.IsNotNull(data);
         }
 
@@ -105,7 +105,7 @@ namespace RiotCaller.Tests
         public void GetTeam2()
         {
             NonStaticApi api = new NonStaticApi();
-            Team data = api.GetTeam(summonerId1, Region);
+            MatchDetailTeam data = api.GetTeam(summonerId1, Region);
             Assert.IsNotNull(data);
         }
 
@@ -113,7 +113,7 @@ namespace RiotCaller.Tests
         public void GetTeams()
         {
             NonStaticApi api = new NonStaticApi();
-            List<Team> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
+            List<MatchDetailTeam> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }
 
@@ -121,7 +121,7 @@ namespace RiotCaller.Tests
         public void GetTeams2()
         {
             NonStaticApi api = new NonStaticApi();
-            List<Team> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
+            List<MatchDetailTeam> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }
     }
