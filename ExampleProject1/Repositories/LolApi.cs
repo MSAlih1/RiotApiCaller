@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ExampleProject1.Repositories
+namespace ExampleProject2.Repositories
 {
     public class LolApi : ILolApi
     {

@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ExampleProject1.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ExampleProject1.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ExampleProject2.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ExampleProject2.App_Start.NinjectWebCommon), "Stop")]
 
-namespace ExampleProject1.App_Start
+namespace ExampleProject2.App_Start
 {
     using System;
     using System.Web;
@@ -11,20 +11,20 @@ namespace ExampleProject1.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Repositories;
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -32,7 +32,7 @@ namespace ExampleProject1.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -62,6 +62,6 @@ namespace ExampleProject1.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ILolApi>().To<LolApi>().InSingletonScope();
-        }
+        }        
     }
 }

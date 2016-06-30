@@ -1,11 +1,11 @@
-﻿using ExampleProject1.Repositories;
+﻿using ExampleProject2.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ExampleProject1.Controllers
+namespace ExampleProject2.Controllers
 {
     public class BaseController : Controller
     {

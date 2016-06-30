@@ -1,6 +1,6 @@
 ﻿using RiotCaller;
 
-namespace ExampleProject1.Repositories
+namespace ExampleProject2.Repositories
 {
     public interface ILolApi
     {
