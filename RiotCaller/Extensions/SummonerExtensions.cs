@@ -19,6 +19,7 @@ namespace RiotCaller.ApiEndPoints
             caller.CreateRequest();
             return caller.Result.FirstOrDefault().FirstOrDefault();
         }
+
         public static MatchList.MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,
             List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
             int? _beginIndex = null, int? _endIndex = null)

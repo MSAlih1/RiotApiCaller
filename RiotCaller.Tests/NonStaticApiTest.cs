@@ -3,6 +3,7 @@ using RiotCaller.ApiEndPoints;
 using RiotCaller.ApiEndPoints.League;
 using RiotCaller.ApiEndPoints.Match;
 using RiotCaller.ApiEndPoints.MatchList;
+using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,27 @@ namespace RiotCaller.Tests
 
         private long gameId1 = long.Parse(ConfigurationSettings.AppSettings["gameId1"]);
 
+
+        [TestMethod]
+        public void ExtensionMethods()
+        {
+            Summoner data = new Summoner() { Id = summonerId1, Region = Region };
+            object data1 = data.GetStatsRanked();//extension
+            Assert.IsNotNull(data1);
+
+            data1 = data.GetStatsSummary();//extension
+            Assert.IsNotNull(data1);
+
+            data1 = data.GetTeams();//extension
+            Assert.IsTrue((data1 as List<Team>).Count > 0);
+
+            data1 = data.GetMatchList();//extension
+            Assert.IsNotNull(data1 as MatchList);
+
+            data1 = data.GetLeague();//extension
+            Assert.IsNotNull(data1 as League);
+        }
+
         [TestMethod]
         public void GetMatchDetail()
         {
@@ -33,6 +55,7 @@ namespace RiotCaller.Tests
             MatchDetail data = api.GetMatchDetail(gameId1, Region, true);
             Assert.IsNotNull(data);
         }
+
         [TestMethod]
         public void GetLeague()
         {
@@ -40,6 +63,7 @@ namespace RiotCaller.Tests
             League data = api.GetLeague(summonerId1, Region);
             Assert.IsNotNull(data);
         }
+
         [TestMethod]
         public void GetLeagues()
         {
@@ -47,6 +71,7 @@ namespace RiotCaller.Tests
             List<List<League>> data = api.GetLeagues(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 1);
         }
+
         [TestMethod]
         public void GetMatchList()
         {
@@ -77,21 +102,6 @@ namespace RiotCaller.Tests
             NonStaticApi api = new NonStaticApi();
             Summoner data = api.GetSummoner(summonerName1, Region);
             Assert.IsNotNull(data);
-
-            object data1 = data.GetStatsRanked();//extension
-            Assert.IsNotNull(data1);
-
-            data1 = data.GetStatsSummary();//extension
-            Assert.IsNotNull(data1);
-
-            data1 = data.GetTeams();//extension
-            Assert.IsTrue((data1 as List<ApiEndPoints.Team.Team>).Count > 0);
-
-            data1 = data.GetMatchList();//extension
-            Assert.IsNotNull(data1 as MatchList);
-
-            data1 = data.GetLeague();//extension
-            Assert.IsNotNull(data1 as League);
         }
 
         [TestMethod]
@@ -106,7 +116,7 @@ namespace RiotCaller.Tests
         public void GetTeam()
         {
             NonStaticApi api = new NonStaticApi();
-            MatchDetailTeam data = api.GetTeam(teamName1, Region);
+            Team data = api.GetTeam(teamName1, Region);
             Assert.IsNotNull(data);
         }
 
@@ -114,7 +124,7 @@ namespace RiotCaller.Tests
         public void GetTeam2()
         {
             NonStaticApi api = new NonStaticApi();
-            MatchDetailTeam data = api.GetTeam(summonerId1, Region);
+            Team data = api.GetTeam(summonerId1, Region);
             Assert.IsNotNull(data);
         }
 
@@ -122,7 +132,7 @@ namespace RiotCaller.Tests
         public void GetTeams()
         {
             NonStaticApi api = new NonStaticApi();
-            List<MatchDetailTeam> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
+            List<Team> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }
 
@@ -130,7 +140,7 @@ namespace RiotCaller.Tests
         public void GetTeams2()
         {
             NonStaticApi api = new NonStaticApi();
-            List<MatchDetailTeam> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
+            List<Team> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }
     }

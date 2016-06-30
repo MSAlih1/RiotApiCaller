@@ -3,6 +3,7 @@ using RiotCaller.ApiEndPoints.League;
 using RiotCaller.ApiEndPoints.Match;
 using RiotCaller.ApiEndPoints.MatchList;
 using RiotCaller.ApiEndPoints.Stats;
+using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,11 @@ namespace RiotCaller
 
         public League GetLeague(long _summonerId, region _region)
         {
-            return GetLeagues(new List<long>() { _summonerId }, _region).FirstOrDefault().FirstOrDefault();
+            List<League> result = GetLeagues(new List<long>() { _summonerId }, _region).FirstOrDefault();
+            if (result.Count > 0)
+                return result.FirstOrDefault();
+            else
+                return null;
         }
         public List<List<League>> GetLeagues(List<long> _summonerIds, region _region)
         {
@@ -112,22 +117,20 @@ namespace RiotCaller
 
         public Summoner GetSummoner(string summonerName, region region)
         {
-            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
-            caller.AddParam(param.summonerNames, new List<string>() { summonerName });
-            caller.AddParam(param.region, region);
-            caller.CreateRequest();
-            caller.Result.FirstOrDefault().Region = region;
-            return caller.Result.FirstOrDefault();
+            List<Summoner> result = GetSummoners(new List<string>() { summonerName }, region);
+            if (result.Count > 0)
+                return result.FirstOrDefault();
+            else
+                return null;
         }
 
         public Summoner GetSummoner(long summonerId, region region)
         {
-            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
-            caller.AddParam(param.summonerNames, new List<long>() { summonerId });
-            caller.AddParam(param.region, region);
-            caller.CreateRequest();
-            caller.Result.FirstOrDefault().Region = region;
-            return caller.Result.FirstOrDefault();
+            List<Summoner> result = GetSummoners(new List<long>() { summonerId }, region);
+            if (result.Count > 0)
+                return result.FirstOrDefault();
+            else
+                return null;
         }
 
         public List<Summoner> GetSummoners(List<string> summonerNames, region region)
@@ -150,42 +153,40 @@ namespace RiotCaller
             return caller.Result;
         }
 
-        public MatchDetailTeam GetTeam(string teamName, region region)
+        public Team GetTeam(string teamName, region region)
         {
-            RiotApiCaller<MatchDetailTeam> caller = new RiotApiCaller<MatchDetailTeam>(suffix.teamByIds);
-            caller.AddParam(param.teamIds, new List<string>() { teamName });
-            caller.AddParam(param.region, region);
-            caller.CreateRequest();
-            return caller.Result.FirstOrDefault();
+            List<Team> result = GetTeams(new List<string>() { teamName }, region);
+            if (result.Count > 0)
+                return result.FirstOrDefault();
+            else
+                return null;
         }
 
-        public MatchDetailTeam GetTeam(long teamId, region region)
+        public Team GetTeam(long teamId, region region)
         {
-            RiotApiCaller<List<MatchDetailTeam>> caller = new RiotApiCaller<List<MatchDetailTeam>>(suffix.teamIds);
-            caller.AddParam(param.summonerIds, new List<long>() { teamId });
-            caller.AddParam(param.region, region.tr);
-            caller.CreateRequest();
-            if (caller.Result.FirstOrDefault() != null)
-                return caller.Result.FirstOrDefault().FirstOrDefault();
-            return null;
+            List<Team> result = GetTeams(new List<long>() { teamId }, region);
+            if (result.Count > 0)
+                return result.FirstOrDefault();
+            else
+                return null;
         }
 
-        public List<MatchDetailTeam> GetTeams(List<string> teamNames, region region)
+        public List<Team> GetTeams(List<string> teamNames, region region)
         {
-            RiotApiCaller<MatchDetailTeam> caller = new RiotApiCaller<MatchDetailTeam>(suffix.teamByIds);
+            RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
             caller.AddParam(param.teamIds, teamNames);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             return caller.Result.ToList();
         }
 
-        public List<MatchDetailTeam> GetTeams(List<long> teamIds, region region)
+        public List<Team> GetTeams(List<long> teamIds, region region)
         {
-            RiotApiCaller<List<MatchDetailTeam>> caller = new RiotApiCaller<List<MatchDetailTeam>>(suffix.teamIds);
+            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
             caller.AddParam(param.summonerIds, teamIds);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
-            //return u.Result.ToList();//<== orginal
+            //return caller.Result;//<== orginal
             return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
     }
