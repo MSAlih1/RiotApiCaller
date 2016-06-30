@@ -1,4 +1,4 @@
-# RiotCaller
+# RiotApiCaller
 Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends game)
 
   - generic class and method were used
