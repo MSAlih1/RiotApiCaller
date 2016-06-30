@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using RiotCaller.Attributes;
+using RiotCaller.Enums;
 
-namespace RiotCaller.ApiEndPoints.Stats
+namespace RiotCaller.ApiEndPoints.Enums
 {
-    [JsonConverter(typeof(StatsSummaryType))]
-    public enum PlayerStatsSummaryType
+    public enum playerStatsSummaryType
     {
         RankedPremade3x3,
 

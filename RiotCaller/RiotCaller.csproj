@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -45,20 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiEndPoints\MatchList\MatchList.cs" />
     <Compile Include="apikey.cs" />
-    <Compile Include="ApiUrl.cs" />
-    <Compile Include="Attributes\DateTimeFromLong.cs" />
+    <Compile Include="Enums\Lane.cs" />
+    <Compile Include="Enums\Platform.cs" />
+    <Compile Include="Enums\Queue.cs" />
+    <Compile Include="Enums\role.cs" />
+    <Compile Include="RiotApiCaller.cs" />
+    <Compile Include="DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
-    <Compile Include="Attributes\PlayerStatsSummaryType.cs" />
-    <Compile Include="ApiEndPoints\Stats\PlayerStatSummaryType.cs" />
+    <Compile Include="Enums\PlayerStatSummaryType.cs" />
     <Compile Include="ApiEndPoints\Stats\Ranked.cs" />
-    <Compile Include="ApiEndPoints\Stats\season.cs" />
+    <Compile Include="Enums\Season.cs" />
     <Compile Include="ApiEndPoints\Stats\Summary.cs" />
     <Compile Include="ApiEndPoints\Summoner\Summoner.cs" />
     <Compile Include="ApiEndPoints\Team\Team.cs" />
     <Compile Include="Enums\ApiGroup.cs" />
     <Compile Include="Enums\ApiType.cs" />
-    <Compile Include="Enums\ParamType.cs" />
+    <Compile Include="Enums\Param.cs" />
     <Compile Include="Enums\Region.cs" />
     <Compile Include="Enums\Suffix.cs" />
     <Compile Include="Extensions\ApiUrlExtensions.cs" />

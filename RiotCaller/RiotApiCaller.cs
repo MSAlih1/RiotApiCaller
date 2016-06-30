@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using RiotCaller.Enums;
+using System.Collections.Generic;
+
 
 namespace RiotCaller
 {
-    public class ApiUrl<T> where T : class
+    public class RiotApiCaller<T> where T : class
     {
+        private suffix summonerByname;
+
         //public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
 
         public List<T> Result { get; set; } = new List<T>();
@@ -18,7 +22,7 @@ namespace RiotCaller
         /// </summary>
         /// <param name="_suffix">
         /// </param>
-        public ApiUrl(suffix _suffix)
+        public RiotApiCaller(suffix _suffix)
         {
             Suffix = _suffix;
             Url = string.Format("https://{0}/{{region}}/v{1}/{2}/{3}",
@@ -28,7 +32,7 @@ namespace RiotCaller
                 Suffix.GetValue()
                 );
 
-            Url = Url.Replace("/team/team/", "/team/");//bug (suffix.teamByIds)
+            Url = Url.Replace("/team/team/", "/team/");//bug (for => suffix.teamByIds)
         }
         
         /// <summary>

@@ -59,7 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiUrlTest.cs" />
+    <Compile Include="RiotCallerTest.cs" />
     <Compile Include="NonStaticApiTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

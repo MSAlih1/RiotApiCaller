@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace RiotCaller.Attributes
+namespace RiotCaller
 {
-    public class DateTimeFromLong : Newtonsoft.Json.JsonConverter
+    public class DateTimeFromLong :JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

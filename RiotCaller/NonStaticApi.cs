@@ -1,7 +1,6 @@
-﻿using RiotCaller.ApiEndPoints.Stats;
-using RiotCaller.ApiEndPoints.Summoner;
-using RiotCaller.ApiEndPoints.Team;
+﻿using RiotCaller.ApiEndPoints;
 using RiotCaller.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,104 +8,156 @@ namespace RiotCaller
 {
     public class NonStaticApi
     {
-
-        public Summoner GetSummoner(string summonerName, region region = region.tr)
+        public MatchList GetMatchList(long _summonerId, region _region, List<long> _championIds = null,
+            List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
+            int? _beginIndex = null, int? _endIndex = null)
         {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, new List<string>() { summonerName });
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            u.Result.FirstOrDefault().Region = region;
-            return u.Result.FirstOrDefault();
-        }
+            RiotApiCaller<MatchList> u = new RiotApiCaller<MatchList>(suffix.matchlistId);
+            u.AddParam(param.summonerId, new List<long>() { _summonerId });
+            u.AddParam(param.region, _region);
 
-        public Summoner GetSummoner(long summonerId, region region = region.tr)
-        {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, new List<long>() { summonerId });
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            u.Result.FirstOrDefault().Region = region;
-            return u.Result.FirstOrDefault();
-        }
+            if (_championIds != null)
+                u.AddParam(param.championIds, _championIds);
+            else
+                u.RemoveParam(param.championIds);
 
-        public List<Summoner> GetSummoners(List<string> summonerNames, region region = region.tr)
-        {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, summonerNames);
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            u.Result.ForEach(p => p.Region = region);
-            return u.Result;
-        }
+            if (_queue != null)
+                u.AddParam(param.rankedQueues, _queue);
+            else
+                u.RemoveParam(param.rankedQueues);
 
-        public List<Summoner> GetSummoners(List<long> summonerIds, region region = region.tr)
-        {
-            ApiUrl<Summoner> u = new ApiUrl<Summoner>(suffix.summonerByname);
-            u.AddParam(paramType.summonerNames, summonerIds);
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            u.Result.ForEach(p => p.Region = region);
-            return u.Result;
-        }
+            if (_seasons != null)
+                u.AddParam(param.seasons, _seasons);
+            else
+                u.RemoveParam(param.seasons);
 
-        public Summary GetStatsSummary(long summonerId, season season = season.SEASON2016, region region = region.tr)
-        {
-            ApiUrl<Summary> u = new ApiUrl<Summary>(suffix.statsSummary);
-            u.AddParam(paramType.summonerId, summonerId);
-            u.AddParam(paramType.region, region);
-            u.AddParam(paramType.season, season);
+            if (_beginTime != null)
+                u.AddParam(param.beginTime, _beginTime.Value);
+            else
+                u.RemoveParam(param.beginTime);
+
+            if (_endTime != null)
+                u.AddParam(param.endTime, _endTime.Value);
+            else
+                u.RemoveParam(param.endTime);
+
+            if (_beginIndex != null)
+                u.AddParam(param.beginIndex, _beginIndex.Value);
+            else
+                u.RemoveParam(param.beginIndex);
+
+            if (_endIndex != null)
+                u.AddParam(param.endIndex, _endIndex.Value);
+            else
+                u.RemoveParam(param.endIndex);
+
             u.CreateRequest();
             return u.Result.FirstOrDefault();
         }
 
-        public Summary GetStatsRanked(long summonerId, season season = season.SEASON2016, region region = region.tr)
+        public Summary GetStatsRanked(long summonerId, region region, season? season = null)
         {
-            ApiUrl<Summary> u = new ApiUrl<Summary>(suffix.statsRanked);
-            u.AddParam(paramType.summonerId, summonerId);
-            u.AddParam(paramType.region, region);
-            u.AddParam(paramType.season, season);
-            u.CreateRequest();
-            return u.Result.FirstOrDefault();
+            RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.statsRanked);
+            caller.AddParam(param.summonerId, summonerId);
+            caller.AddParam(param.region, region);
+            if (season != null)
+                caller.AddParam(param.season, season.Value);
+            else
+                caller.RemoveParam(param.season);
+
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
         }
 
-        public Team GetTeam(string teamName, season season = season.SEASON2016, region region = region.tr)
+        public Summary GetStatsSummary(long summonerId, region region, season? season = null)
         {
-            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
-            u.AddParam(paramType.teamIds, new List<string>() { teamName });
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            return u.Result.FirstOrDefault();
+            RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.statsSummary);
+            caller.AddParam(param.summonerId, summonerId);
+            caller.AddParam(param.region, region);
+            if (season != null)
+                caller.AddParam(param.season, season.Value);
+            else
+                caller.RemoveParam(param.season);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
         }
 
-        public Team GetTeam(long teamId, season season = season.SEASON2016, region region = region.tr)
+        public Summoner GetSummoner(string summonerName, region region)
         {
-            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
-            u.AddParam(paramType.summonerIds, new List<long>() { teamId });
-            u.AddParam(paramType.region, region.tr);
-            u.CreateRequest();
-            return u.Result.FirstOrDefault().FirstOrDefault();
+            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
+            caller.AddParam(param.summonerNames, new List<string>() { summonerName });
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            caller.Result.FirstOrDefault().Region = region;
+            return caller.Result.FirstOrDefault();
         }
 
-
-        public List<Team> GetTeams(List<string> teamNames, season season = season.SEASON2016, region region = region.tr)
+        public Summoner GetSummoner(long summonerId, region region)
         {
-            ApiUrl<Team> u = new ApiUrl<Team>(suffix.teamByIds);
-            u.AddParam(paramType.teamIds, teamNames);
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
-            return u.Result.ToList();
+            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
+            caller.AddParam(param.summonerNames, new List<long>() { summonerId });
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            caller.Result.FirstOrDefault().Region = region;
+            return caller.Result.FirstOrDefault();
         }
 
-        public List<Team> GetTeams(List<long> teamIds, season season = season.SEASON2016, region region = region.tr)
+        public List<Summoner> GetSummoners(List<string> summonerNames, region region)
         {
-            ApiUrl<List<Team>> u = new ApiUrl<List<Team>>(suffix.teamIds);
-            u.AddParam(paramType.summonerIds, teamIds);
-            u.AddParam(paramType.region, region);
-            u.CreateRequest();
+            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
+            caller.AddParam(param.summonerNames, summonerNames);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            caller.Result.ForEach(p => p.Region = region);
+            return caller.Result;
+        }
+
+        public List<Summoner> GetSummoners(List<long> summonerIds, region region)
+        {
+            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
+            caller.AddParam(param.summonerNames, summonerIds);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            caller.Result.ForEach(p => p.Region = region);
+            return caller.Result;
+        }
+        public Team GetTeam(string teamName, region region)
+        {
+            RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
+            caller.AddParam(param.teamIds, new List<string>() { teamName });
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public Team GetTeam(long teamId, region region)
+        {
+            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
+            caller.AddParam(param.summonerIds, new List<long>() { teamId });
+            caller.AddParam(param.region, region.tr);
+            caller.CreateRequest();
+            if (caller.Result.FirstOrDefault() != null)
+                return caller.Result.FirstOrDefault().FirstOrDefault();
+            return null;
+        }
+
+        public List<Team> GetTeams(List<string> teamNames, region region)
+        {
+            RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
+            caller.AddParam(param.teamIds, teamNames);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            return caller.Result.ToList();
+        }
+
+        public List<Team> GetTeams(List<long> teamIds, region region)
+        {
+            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
+            caller.AddParam(param.summonerIds, teamIds);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
             //return u.Result.ToList();//<== orginal
-            return u.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+            return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
-
     }
 }

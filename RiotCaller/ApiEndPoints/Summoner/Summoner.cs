@@ -3,7 +3,7 @@ using RiotCaller.Attributes;
 using RiotCaller.Enums;
 using System;
 
-namespace RiotCaller.ApiEndPoints.Summoner
+namespace RiotCaller.ApiEndPoints
 {
     public class Summoner
     {

@@ -1,6 +1,7 @@
-﻿using static RiotCaller.EnumAttributes;
+﻿
+using static RiotCaller.Attributes.EnumAttributes;
 
-namespace RiotCaller
+namespace RiotCaller.Enums
 {
     /// <summary>
     /// do not change this values 

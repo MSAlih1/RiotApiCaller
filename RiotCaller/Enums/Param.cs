@@ -1,10 +1,10 @@
-﻿namespace RiotCaller
+﻿namespace RiotCaller.Enums
 {
     /// <summary>
     /// api url's parameters do not change type names!
     /////// ONLY '{variables}' name here !!!
     /// </summary>
-    public enum paramType
+    public enum param
     {
         /// <summary> Example Value => new List<string>() { summonerName1, summonerName2 } </summary>
         summonerNames,
@@ -13,7 +13,7 @@
         summonerIds,
 
         /// <summary>
-        /// Example Value =&gt; "variable type is long OR type of RegionEnum } 
+        /// Example Value =&gt; "variable type is int OR type of RegionEnum } 
         /// </summary>
         region,
 
@@ -26,6 +26,20 @@
         /// "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0", } </summary>
         teamIds,
 
-        season
+        season,
+
+        seasons,
+
+        championIds,
+
+        rankedQueues,
+
+        beginTime,
+
+        endTime,
+
+        beginIndex,
+
+        endIndex
     }
 }

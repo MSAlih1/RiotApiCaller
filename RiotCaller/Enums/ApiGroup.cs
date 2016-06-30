@@ -1,6 +1,6 @@
-﻿using static RiotCaller.EnumAttributes;
+﻿using static RiotCaller.Attributes.EnumAttributes;
 
-namespace RiotCaller
+namespace RiotCaller.Enums
 {
     /// <summary>
     /// api version controls 
@@ -17,6 +17,9 @@ namespace RiotCaller
         stats,
 
         [Version(2.4)]
-        team
+        team,
+
+        [Version(2.2)]
+        matchlist
     }
 }

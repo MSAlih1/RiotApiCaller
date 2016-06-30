@@ -1,6 +1,7 @@
-﻿using System;
+﻿using RiotCaller.Enums;
+using System;
 
-namespace RiotCaller
+namespace RiotCaller.Attributes
 {
     public class EnumAttributes
     {

@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.ApiEndPoints.Enums;
 using System.Collections.Generic;
 
-namespace RiotCaller.ApiEndPoints.Stats
+namespace RiotCaller.ApiEndPoints
 {
     public class AggregatedStats
     {
@@ -101,7 +102,7 @@ namespace RiotCaller.ApiEndPoints.Stats
         public object ModifyDate { get; set; }
 
         [JsonProperty("playerStatSummaryType")]
-        public PlayerStatsSummaryType PlayerStatSummaryType { get; set; }
+        public playerStatsSummaryType PlayerStatSummaryType { get; set; }
         [JsonProperty("wins")]
         public int Wins { get; set; }
     }
