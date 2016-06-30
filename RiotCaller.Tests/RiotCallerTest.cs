@@ -20,12 +20,14 @@ namespace RiotCaller.Tests
         private string teamName1 = ConfigurationSettings.AppSettings["teamId1"];
         private string teamName2 = ConfigurationSettings.AppSettings["teamId2"];
 
+        private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
+
         [TestMethod]
         public void leagueByIds()
         {
             RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.leagueByIds);
             caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
         }
@@ -35,7 +37,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.leagueByIdsEntry);
             caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
         }
@@ -48,7 +50,7 @@ namespace RiotCaller.Tests
             caller.AddParam(param.championIds, new List<long>() { 45, 25 });
             caller.AddParam(param.rankedQueues, new List<queue>() { queue.RANKED_SOLO_5x5, queue.TEAM_BUILDER_DRAFT_RANKED_5x5 });
             caller.AddParam(param.seasons, new List<season>() { season.SEASON2016 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.AddParam(param.beginTime, DateTime.Now.AddMonths(-1));
             caller.AddParam(param.endTime, DateTime.Now);
             caller.AddParam(param.beginIndex, 0);
@@ -61,7 +63,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<Ranked> caller = new RiotApiCaller<Ranked>(suffix.statsRanked);
             caller.AddParam(param.summonerId, 466244);
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.AddParam(param.season, season.SEASON2016);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
@@ -72,7 +74,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.statsSummary);
             caller.AddParam(param.summonerId, 466244);
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.AddParam(param.seasons, season.SEASON2016);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
@@ -83,7 +85,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
             caller.AddParam(param.summonerNames, new List<string>() { summonerName1, summonerName1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
 
             Assert.IsTrue(caller.Result.Count > 0);
@@ -94,7 +96,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerIds);
             caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
         }
@@ -104,7 +106,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);
             caller.AddParam(param.teamIds, new List<string>() { teamName1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
         }
@@ -114,7 +116,7 @@ namespace RiotCaller.Tests
         {
             RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);
             caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, region.tr);
+            caller.AddParam(param.region, Region);
             caller.CreateRequest();
             Assert.IsTrue(caller.Result.Count > 0);
         }

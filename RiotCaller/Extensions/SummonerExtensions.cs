@@ -81,6 +81,7 @@ namespace RiotCaller.ApiEndPoints
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public static List<Team> GetTeams(this Summoner sum)
         {
             RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.teamIds);

@@ -19,7 +19,7 @@ namespace RiotCaller.Tests
         private string teamName1 = ConfigurationSettings.AppSettings["teamId1"];
         private string teamName2 = ConfigurationSettings.AppSettings["teamId2"];
 
-        private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["examples_region"]);
+        private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
         [TestMethod]
         public void GetMatchList()

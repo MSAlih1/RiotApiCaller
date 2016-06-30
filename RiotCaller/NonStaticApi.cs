@@ -1,4 +1,5 @@
 ﻿using RiotCaller.ApiEndPoints;
+using RiotCaller.ApiEndPoints.Stats;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -55,9 +56,9 @@ namespace RiotCaller
             return u.Result.FirstOrDefault();
         }
 
-        public Summary GetStatsRanked(long summonerId, region region, season? season = null)
+        public Ranked GetStatsRanked(long summonerId, region region, season? season = null)
         {
-            RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.statsRanked);
+            RiotApiCaller<Ranked> caller = new RiotApiCaller<Ranked>(suffix.statsRanked);
             caller.AddParam(param.summonerId, summonerId);
             caller.AddParam(param.region, region);
             if (season != null)
@@ -121,6 +122,7 @@ namespace RiotCaller
             caller.Result.ForEach(p => p.Region = region);
             return caller.Result;
         }
+
         public Team GetTeam(string teamName, region region)
         {
             RiotApiCaller<Team> caller = new RiotApiCaller<Team>(suffix.teamByIds);

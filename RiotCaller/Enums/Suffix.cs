@@ -20,16 +20,7 @@ namespace RiotCaller.Enums
         [ApiGrop(apiGroup.summoner)]
         [Value("by-name/{summonerNames}?api_key={api_key}")]
         summonerByname,
-
-        /// <summary>
-        /// <param name="long[]">summonerIds</param>
-        /// <param name="region">Region</param>
-        /// </summary>
-        [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiGroup.summoner)]
-        [Value("{summonerIds}/name?api_key={api_key}")]
-        summonerName,
-
+        
         /// <summary>
         /// <param name="long[]">summonerIds</param>
         /// <param name="region">Region</param>

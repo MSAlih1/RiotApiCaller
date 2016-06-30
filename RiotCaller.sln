@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotCaller.Tests", "RiotCal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotCaller", "RiotCaller\RiotCaller.csproj", "{1D398266-3E42-4DCF-B833-4D4719975DEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleProject1", "ExampleProject1\ExampleProject1.csproj", "{6924BFAB-C725-42D4-95C3-B6ADCBC593FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1D398266-3E42-4DCF-B833-4D4719975DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D398266-3E42-4DCF-B833-4D4719975DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D398266-3E42-4DCF-B833-4D4719975DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6924BFAB-C725-42D4-95C3-B6ADCBC593FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6924BFAB-C725-42D4-95C3-B6ADCBC593FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6924BFAB-C725-42D4-95C3-B6ADCBC593FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6924BFAB-C725-42D4-95C3-B6ADCBC593FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

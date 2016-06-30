@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-md-6">
+        <h2>GetSummoner</h2>
+        name    :   @ViewBag.Summoner.Name<br />
+        level   :   @ViewBag.Summoner.SummonerLevel<br />
+        region  :   @ViewBag.Summoner.Region
+    </div>
+    <div class="col-md-6">
+        <h2>GetStatsRanked</h2>
+        Champion Count  :   @ViewBag.RankedStat.Champions.Count<br />
+        LastUpdate      :   @ViewBag.RankedStat.ModifyDate.ToString()<br />
+        SummonerId      :   @ViewBag.RankedStat.SummonerId
+    </div>
+</div>
