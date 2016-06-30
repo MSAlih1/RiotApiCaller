@@ -17,10 +17,10 @@ Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends
 >  - ApiType Attribute 
         
         -  (defining this apiurl is static OR is non-static, routing API SERVER URL)
->  - ApiGroup Attribute 
+>  - apiVer Attribute 
         
         -  (sometimes we need two keys, EXAMPLE: ( 'by-summoner/{summonerIds}' AND 'by-summoner/{summonerIds}/entry' )
-        AND both of them use GetSummoner() ,so ApiGroup reference to BASE API URL like 'Summoner'
+        AND both of them use GetSummoner() ,so apiVer reference to BASE API URL like 'Summoner'
 >  - Value Attribute 
 
         - this attribute separates and contains (suffix url) for each API
@@ -32,7 +32,7 @@ Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends
 
 ```c#
         [ApiType(apiType.nonStatic)]
-        [ApiGrop(apiGroup.league)]
+        [apiVer(apiVer.league)]
         [Value("by-summoner/{LeagueName}/entry?api_key={api_key}")]
         TEST
 ```
