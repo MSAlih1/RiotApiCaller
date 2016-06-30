@@ -79,7 +79,7 @@
     <Compile Include="Enums\Lane.cs" />
     <Compile Include="Enums\Platform.cs" />
     <Compile Include="Enums\Queue.cs" />
-    <Compile Include="Enums\role.cs" />
+    <Compile Include="Enums\Role.cs" />
     <Compile Include="Enums\Tier.cs" />
     <Compile Include="RiotApiCaller.cs" />
     <Compile Include="DateTimeFromLong.cs" />
@@ -90,7 +90,7 @@
     <Compile Include="ApiEndPoints\Stats\Summary\Summary.cs" />
     <Compile Include="ApiEndPoints\Summoner\Summoner.cs" />
     <Compile Include="ApiEndPoints\Team\Team.cs" />
-    <Compile Include="Enums\apiVer.cs" />
+    <Compile Include="Enums\ApiVer.cs" />
     <Compile Include="Enums\ApiType.cs" />
     <Compile Include="Enums\Param.cs" />
     <Compile Include="Enums\Region.cs" />

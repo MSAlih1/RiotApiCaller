@@ -4,7 +4,8 @@ using RiotCaller.ApiEndPoints.Stats;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq; 
+
 
 namespace RiotCaller.ApiEndPoints
 {
@@ -22,7 +23,7 @@ namespace RiotCaller.ApiEndPoints
             List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
             int? _beginIndex = null, int? _endIndex = null)
         {
-            RiotApiCaller<MatchList.MatchList> caller = new RiotApiCaller<MatchList.MatchList>(suffix.matchlistId);
+            RiotApiCaller<MatchList.MatchList> caller = new RiotApiCaller<MatchList.MatchList>(suffix.matchlist);
             caller.AddParam(param.summonerId, new List<long>() { sum.Id });
             caller.AddParam(param.region, sum.Region);
 

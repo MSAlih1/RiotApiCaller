@@ -145,14 +145,14 @@ namespace RiotCaller.Enums
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.matchlist)]
         [Value("by-summoner/{summonerId}?api_key={api_key}&championIds={championIds}&rankedQueues={rankedQueues}&seasons={seasons}&beginTime={beginTime}&endTime={endTime}&beginIndex={beginIndex}&endIndex={endIndex}")]
-        matchlistId,
+        matchlist,
 
 
 
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.match)]
-        [Value("{matchId}?api_key={api_key}")]
-        matchId,
+        [Value("{matchId}?api_key={api_key}&includeTimeline={includeTimeline}")]
+        matchdetail,
 
 
     }

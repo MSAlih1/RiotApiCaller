@@ -26,8 +26,14 @@
         /// "TEAM-6e7878e0-31a6-11e6-b7db-d4ae527241a0", } </summary>
         teamIds,
 
+        /// <summary>
+        /// one variable
+        /// </summary>
         season,
 
+        /// <summary>
+        /// more than one variables
+        /// </summary>
         seasons,
 
         championIds,
@@ -42,6 +48,14 @@
 
         endIndex,
 
-        matchId
+        /// <summary>
+        /// gameId
+        /// </summary>
+        matchId,
+
+        /// <summary>
+        /// true or false
+        /// </summary>
+        includeTimeline
     }
 }

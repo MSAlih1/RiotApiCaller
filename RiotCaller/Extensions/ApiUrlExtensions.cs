@@ -13,8 +13,10 @@ namespace RiotCaller
     /// </summary>
     public static class ApiUrlExtensions
     {
-        /// <summary> Example => AddParam(ParamTypes.summonerIds, new List<long>() { 466244, 457724
-        /// }); Example => AddParam(ParamTypes.region, "tr"); </summary>
+        /// <summary> 
+        /// Example => AddParam(ParamTypes.summonerIds, new List<long>() { 466244, 457724
+        /// }); Example => AddParam(ParamTypes.region, "tr");
+        /// </summary>
         public static void AddParam<T>(this RiotApiCaller<T> apiurl, param key, object value) where T : class
         {
             string val = "";
@@ -48,7 +50,7 @@ namespace RiotCaller
         public static void CreateRequest<T>(this RiotApiCaller<T> apiurl) where T : class
         {
             string Json = string.Empty;
-            apiurl.Url = apiurl.Url.Replace("{api_key}", apikey.Key);
+            apiurl.Url = apiurl.Url.Replace("{api_key}", apikey.Key);// <==  api key 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl.Url);
             request.Method = "GET";
             request.UserAgent = "RiotCaller";
@@ -65,7 +67,7 @@ namespace RiotCaller
                     reader.Close();
                     dataStream.Close();
                 }
-                if (apiurl.Suffix == suffix.statsRanked || apiurl.Suffix == suffix.statsSummary || apiurl.Suffix == suffix.matchlistId)
+                if (apiurl.Suffix == suffix.statsRanked || apiurl.Suffix == suffix.statsSummary || apiurl.Suffix == suffix.matchlist || apiurl.Suffix==suffix.matchdetail)
                 {
                     apiurl.Result.Add(JsonConvert.DeserializeObject<T>(Json));
                 }
@@ -79,5 +81,6 @@ namespace RiotCaller
                 throw e;
             }
         }
+
     }
 }

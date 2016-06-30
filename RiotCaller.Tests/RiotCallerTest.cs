@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.ApiEndPoints.League;
+using RiotCaller.ApiEndPoints.Match;
 using RiotCaller.ApiEndPoints.MatchList;
 using RiotCaller.ApiEndPoints.Stats;
 using RiotCaller.ApiEndPoints.Team;
@@ -25,18 +26,23 @@ namespace RiotCaller.Tests
 
         private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
-        public void match()
+        private long gameId1 = long.Parse(ConfigurationSettings.AppSettings["gameId1"]);
+
+        [TestMethod]
+        public void matchdetail()
         {
-            RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.matchId);
-            caller.AddParam(param.matchId, 0);
+            RiotApiCaller<MatchDetail> caller = new RiotApiCaller<MatchDetail>(suffix.matchdetail);
+            caller.AddParam(param.matchId, gameId1);
+            caller.AddParam(param.region, Region);
+            caller.AddParam(param.includeTimeline, false);
             caller.CreateRequest();
-            Assert.IsNotNull(caller.Result);
+            Assert.IsTrue(caller.Result.Count > 0);
         }
 
         [TestMethod]
         public void matchlist()
         {
-            RiotApiCaller<MatchList> caller = new RiotApiCaller<MatchList>(suffix.matchlistId);
+            RiotApiCaller<MatchList> caller = new RiotApiCaller<MatchList>(suffix.matchlist);
             caller.AddParam(param.summonerId, new List<long>() { summonerId1 });
             caller.AddParam(param.championIds, new List<long>() { 45, 25 });
             caller.AddParam(param.rankedQueues, new List<queue>() { queue.RANKED_SOLO_5x5, queue.TEAM_BUILDER_DRAFT_RANKED_5x5 });

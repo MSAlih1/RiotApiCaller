@@ -44,5 +44,10 @@ namespace RiotCaller
         /// api urls 
         /// </summary>
         public suffix Suffix { get; private set; }
+
+        public override string ToString()
+        {
+            return Url;
+        }
     }
 }
