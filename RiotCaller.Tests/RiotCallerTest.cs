@@ -22,25 +22,7 @@ namespace RiotCaller.Tests
 
         private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
-        [TestMethod]
-        public void leagueByIds()
-        {
-            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.leagueByIds);
-            caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, Region);
-            caller.CreateRequest();
-            Assert.IsTrue(caller.Result.Count > 0);
-        }
-
-        [TestMethod]
-        public void leagueByIdsEntry()
-        {
-            RiotApiCaller<List<Team>> caller = new RiotApiCaller<List<Team>>(suffix.leagueByIdsEntry);
-            caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
-            caller.AddParam(param.region, Region);
-            caller.CreateRequest();
-            Assert.IsTrue(caller.Result.Count > 0);
-        }
+    
 
         [TestMethod]
         public void matchlist()
@@ -95,6 +77,26 @@ namespace RiotCaller.Tests
         public void summonerIds()
         {
             RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerIds);
+            caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
+            caller.AddParam(param.region, Region);
+            caller.CreateRequest();
+            Assert.IsTrue(caller.Result.Count > 0);
+        }
+
+        [TestMethod]
+        public void leagueByIds()
+        {
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
+            caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
+            caller.AddParam(param.region, Region);
+            caller.CreateRequest();
+            Assert.IsTrue(caller.Result.Count > 0);
+        }
+
+        [TestMethod]
+        public void leagueByIdsEntry()
+        {
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIdsEntry);
             caller.AddParam(param.summonerIds, new List<long>() { summonerId1, summonerId1 });
             caller.AddParam(param.region, Region);
             caller.CreateRequest();

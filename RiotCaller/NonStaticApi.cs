@@ -9,6 +9,20 @@ namespace RiotCaller
 {
     public class NonStaticApi
     {
+        public League GetLeague(long _summonerId, region _region)
+        {
+            return GetLeagues(new List<long>() { _summonerId }, _region).FirstOrDefault().FirstOrDefault();
+        }
+        public List<List<League>> GetLeagues(List<long> _summonerIds, region _region)
+        {
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
+            caller.AddParam(param.summonerIds, _summonerIds);
+            caller.AddParam(param.region, _region);
+            caller.CreateRequest();
+            return caller.Result;
+
+        }
+
         public MatchList GetMatchList(long _summonerId, region _region, List<long> _championIds = null,
             List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
             int? _beginIndex = null, int? _endIndex = null)

@@ -46,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiEndPoints\League\League.cs" />
     <Compile Include="ApiEndPoints\MatchList\MatchList.cs" />
     <Compile Include="apikey.cs" />
+    <Compile Include="Enums\Division.cs" />
     <Compile Include="Enums\Lane.cs" />
     <Compile Include="Enums\Platform.cs" />
     <Compile Include="Enums\Queue.cs" />
     <Compile Include="Enums\role.cs" />
+    <Compile Include="Enums\Tier.cs" />
     <Compile Include="RiotApiCaller.cs" />
     <Compile Include="DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />

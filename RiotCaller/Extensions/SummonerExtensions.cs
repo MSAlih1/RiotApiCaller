@@ -8,6 +8,14 @@ namespace RiotCaller.ApiEndPoints
 {
     public static class SummonerExtensions
     {
+        public static League GetLeague(this Summoner sum)
+        {
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
+            caller.AddParam(param.summonerIds, sum.Id);
+            caller.AddParam(param.region, sum.Region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault().FirstOrDefault();
+        }
         public static MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,
             List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = null, DateTime? _endTime = null,
             int? _beginIndex = null, int? _endIndex = null)

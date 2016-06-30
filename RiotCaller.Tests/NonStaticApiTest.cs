@@ -22,6 +22,20 @@ namespace RiotCaller.Tests
         private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
         [TestMethod]
+        public void GetLeague()
+        {
+            NonStaticApi api = new NonStaticApi();
+            League data = api.GetLeague(summonerId1, Region);
+            Assert.IsNotNull(data);
+        }
+        [TestMethod]
+        public void GetLeagues()
+        {
+            NonStaticApi api = new NonStaticApi();
+            List<List<League>> data = api.GetLeagues(new List<long>() { summonerId1,summonerId2}, Region);
+            Assert.IsTrue(data.Count > 1);
+        }
+        [TestMethod]
         public void GetMatchList()
         {
             NonStaticApi api = new NonStaticApi();
@@ -63,6 +77,9 @@ namespace RiotCaller.Tests
 
             data1 = data.GetMatchList();//extension
             Assert.IsNotNull(data1 as MatchList);
+
+            data1 = data.GetLeague();//extension
+            Assert.IsNotNull(data1 as League);
         }
 
         [TestMethod]
