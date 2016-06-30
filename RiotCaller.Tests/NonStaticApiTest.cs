@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
+using RiotCaller.ApiEndPoints.League;
+using RiotCaller.ApiEndPoints.Match;
+using RiotCaller.ApiEndPoints.MatchList;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -73,7 +76,7 @@ namespace RiotCaller.Tests
             Assert.IsNotNull(data1);
 
             data1 = data.GetTeams();//extension
-            Assert.IsTrue((data1 as List<Team>).Count > 0);
+            Assert.IsTrue((data1 as List<ApiEndPoints.Team.Team>).Count > 0);
 
             data1 = data.GetMatchList();//extension
             Assert.IsNotNull(data1 as MatchList);

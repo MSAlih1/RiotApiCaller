@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ApiEndPoints\League\League.cs" />
     <Compile Include="ApiEndPoints\MatchList\MatchList.cs" />
+    <Compile Include="ApiEndPoints\Match\Match.cs" />
     <Compile Include="apikey.cs" />
     <Compile Include="Enums\Division.cs" />
     <Compile Include="Enums\Lane.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="ApiEndPoints\Stats\Summary.cs" />
     <Compile Include="ApiEndPoints\Summoner\Summoner.cs" />
     <Compile Include="ApiEndPoints\Team\Team.cs" />
-    <Compile Include="Enums\ApiGroup.cs" />
+    <Compile Include="Enums\apiVer.cs" />
     <Compile Include="Enums\ApiType.cs" />
     <Compile Include="Enums\Param.cs" />
     <Compile Include="Enums\Region.cs" />

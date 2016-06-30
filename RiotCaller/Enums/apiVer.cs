@@ -5,7 +5,7 @@ namespace RiotCaller.Enums
     /// <summary>
     /// api version controls 
     /// </summary>
-    public enum apiGroup
+    public enum apiVer
     {
         [Version(1.4)]
         summoner,
@@ -20,6 +20,9 @@ namespace RiotCaller.Enums
         team,
 
         [Version(2.2)]
-        matchlist
+        matchlist,
+
+        [Version(2.2)]
+        match
     }
 }

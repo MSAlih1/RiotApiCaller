@@ -1,4 +1,7 @@
 ﻿using RiotCaller.ApiEndPoints;
+using RiotCaller.ApiEndPoints.League;
+using RiotCaller.ApiEndPoints.Match;
+using RiotCaller.ApiEndPoints.MatchList;
 using RiotCaller.ApiEndPoints.Stats;
 using RiotCaller.Enums;
 using System;

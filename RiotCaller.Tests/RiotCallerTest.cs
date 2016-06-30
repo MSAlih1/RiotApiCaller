@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
+using RiotCaller.ApiEndPoints.League;
+using RiotCaller.ApiEndPoints.MatchList;
 using RiotCaller.ApiEndPoints.Stats;
+using RiotCaller.ApiEndPoints.Team;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -22,7 +25,13 @@ namespace RiotCaller.Tests
 
         private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
-    
+        public void match()
+        {
+            RiotApiCaller<Summary> caller = new RiotApiCaller<Summary>(suffix.matchId);
+            caller.AddParam(param.matchId, 0);
+            caller.CreateRequest();
+            Assert.IsNotNull(caller.Result);
+        }
 
         [TestMethod]
         public void matchlist()

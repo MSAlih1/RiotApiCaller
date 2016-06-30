@@ -11,13 +11,13 @@ namespace RiotCaller.Attributes
         [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
         public class ApiGropAttribute : Attribute
         {
-            private readonly apiGroup value;
-            public ApiGropAttribute(apiGroup _apigroup)
+            private readonly apiVer value;
+            public ApiGropAttribute(apiVer _apigroup)
             {
                 this.value = _apigroup;
             }
 
-            public apiGroup isStatic { get { return value; } }
+            public apiVer isStatic { get { return value; } }
             public override string ToString()
             {
                 return isStatic.ToString();

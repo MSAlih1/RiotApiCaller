@@ -2,7 +2,7 @@
 using RiotCaller.ApiEndPoints.Enums;
 using System.Collections.Generic;
 
-namespace RiotCaller.ApiEndPoints
+namespace RiotCaller.ApiEndPoints.Stats
 {
     public class AggregatedStats
     {

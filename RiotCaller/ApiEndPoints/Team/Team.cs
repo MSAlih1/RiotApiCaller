@@ -3,7 +3,7 @@ using RiotCaller.Attributes;
 using System;
 using System.Collections.Generic;
 
-namespace RiotCaller.ApiEndPoints
+namespace RiotCaller.ApiEndPoints.Team
 {
     public class MemberList
     {

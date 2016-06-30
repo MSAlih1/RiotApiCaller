@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiotCaller.ApiEndPoints
+namespace RiotCaller.ApiEndPoints.MatchList
 {
     public class MatchList
     {
