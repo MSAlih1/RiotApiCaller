@@ -63,13 +63,14 @@ namespace RiotCaller
                     reader.Close();
                     dataStream.Close();
                 }
-                if (apiurl.Suffix == suffix.statsRanked || apiurl.Suffix == suffix.statsSummary || apiurl.Suffix == suffix.matchlist || apiurl.Suffix == suffix.matchdetail)
-                {
-                    apiurl.Result.Add(JsonConvert.DeserializeObject<T>(Json));
-                }
-                else
+                try
                 {
                     apiurl.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Source == "Newtonsoft.Json")
+                        apiurl.Result.Add(JsonConvert.DeserializeObject<T>(Json));
                 }
             }
             catch (Exception e)

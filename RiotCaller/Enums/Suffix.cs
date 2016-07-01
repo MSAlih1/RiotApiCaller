@@ -128,10 +128,14 @@ namespace RiotCaller.Enums
         teamByIds,
 
         /// <summary>
-        /// <param name="long"> summonerId </param><param name="long[]"> championIds
-        /// </param><param name="Queues[]"> rankedQueues </param><param name="season[]"> seasons
-        /// </param><param name="DatetTime"> beginTime </param><param name="DatetTime"> endTime
-        /// </param><param name="int"> beginIndex </param><param name="int"> endIndex
+        /// <param name="long"> summonerId </param>
+        /// <param name="long[]"> championIds
+        /// </param><param name="Queues[]"> rankedQueues </param>
+        /// <param name="season[]"> seasons
+        /// </param><param name="DatetTime"> beginTime </param>
+        /// <param name="DatetTime"> endTime
+        /// </param><param name="int"> beginIndex </param>
+        /// <param name="int"> endIndex
         /// </param><param name="region"> Region </param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
@@ -143,5 +147,10 @@ namespace RiotCaller.Enums
         [apiVer(apiVer.match)]
         [Value("{matchId}?api_key={api_key}&includeTimeline={includeTimeline}")]
         matchdetail,
+
+        [ApiType(apiType.nonStatic)]
+        [apiVer(apiVer.game)]
+        [Value("by-summoner/{summonerId}/recent?api_key={api_key}")]
+        recentgames
     }
 }

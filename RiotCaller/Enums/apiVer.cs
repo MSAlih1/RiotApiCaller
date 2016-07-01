@@ -23,6 +23,9 @@ namespace RiotCaller.Enums
         matchlist,
 
         [Version(2.2)]
-        match
+        match,
+
+        [Version(1.3)]
+        game
     }
 }

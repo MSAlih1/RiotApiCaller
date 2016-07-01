@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndPoints\Game\FellowPlayer.cs" />
+    <Compile Include="EndPoints\Game\Game.cs" />
+    <Compile Include="EndPoints\Game\RecentGame.cs" />
+    <Compile Include="EndPoints\Game\Stats.cs" />
     <Compile Include="EndPoints\League\Entry.cs" />
     <Compile Include="EndPoints\League\League.cs" />
     <Compile Include="EndPoints\League\MiniSeries.cs" />

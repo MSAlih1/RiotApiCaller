@@ -1,4 +1,5 @@
-﻿using RiotCaller.EndPoints.League;
+﻿using RiotCaller.EndPoints.Game;
+using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.MatchList;
 using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
@@ -11,6 +12,14 @@ namespace RiotCaller.ApiEndPoints
 {
     public static class SummonerExtensions
     {
+        public static RecentGames GetRecentGames(this Summoner sum)
+        {
+            RiotApiCaller<RecentGames> caller = new RiotApiCaller<RecentGames>(suffix.recentgames);
+            caller.AddParam(param.summonerId, sum.Id);
+            caller.AddParam(param.region, sum.Region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
         public static League GetLeague(this Summoner sum)
         {
             RiotApiCaller<League> caller = new RiotApiCaller<League>(suffix.leagueByIds);

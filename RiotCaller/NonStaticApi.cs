@@ -1,4 +1,5 @@
 ﻿using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.Match;
 using RiotCaller.EndPoints.MatchList;
@@ -13,9 +14,16 @@ namespace RiotCaller
 {
     public class NonStaticApi : INonStaticApi
     {
+        public RecentGames GetRecentGames(long summonerId, region region)
+        {
+            return new Summoner() { Id = summonerId, Region = region }
+              .GetRecentGames();
+        }
+
         public League GetLeague(long summonerId, region region)
         {
-            return SummonerExtensions.GetLeague(new Summoner() { Id = summonerId, Region = region });
+            return new Summoner() { Id = summonerId, Region = region }
+            .GetLeague();
         }
 
         public List<List<League>> GetLeagues(List<long> summonerIds, region region)
@@ -41,17 +49,20 @@ namespace RiotCaller
             List<queue> queue = null, List<season> seasons = null, DateTime? beginTime = null, DateTime? endTime = null,
             int? beginIndex = null, int? endIndex = null)
         {
-            return SummonerExtensions.GetMatchList(new Summoner() { Id = summonerId, Region = region }, championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
+            return new Summoner() { Id = summonerId, Region = region }
+            .GetMatchList(championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
         }
 
         public Ranked GetStatsRanked(long summonerId, region region, season? season = null)
         {
-            return SummonerExtensions.GetStatsRanked(new Summoner() { Id = summonerId, Region = region }, season);
+            return new Summoner() { Id = summonerId, Region = region }
+            .GetStatsRanked(season);
         }
 
         public Summary GetStatsSummary(long summonerId, region region, season? season = null)
         {
-            return SummonerExtensions.GetStatsSummary(new Summoner() { Id = summonerId, Region = region }, season);
+            return new Summoner() { Id = summonerId, Region = region }
+           .GetStatsSummary(season);
         }
 
         public Summoner GetSummoner(string summonerName, region region)
