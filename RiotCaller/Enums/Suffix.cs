@@ -151,6 +151,10 @@ namespace RiotCaller.Enums
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.game)]
         [Value("by-summoner/{summonerId}/recent?api_key={api_key}")]
-        recentgames
+        recentgames,
+
+        [ApiType(apiType.nonStatic)]//<== featuredGames don't need apiVerAttribute
+        [Value("observer-mode/rest/featured?api_key={api_key}")]
+        featuredGames
     }
 }

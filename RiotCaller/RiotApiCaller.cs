@@ -24,14 +24,25 @@ namespace RiotCaller
         public RiotApiCaller(suffix _suffix)
         {
             Suffix = _suffix;
-            Url = string.Format("https://{0}/{{region}}/v{1}/{2}/{3}",
-                Suffix.GetApiType().GetValue(),
-                Suffix.GetApiGroup().GetVersion(),
-                Suffix.GetApiGroup(),
-                Suffix.GetValue()
-                );
+            if (_suffix != suffix.featuredGames)
+            {
+                Url = string.Format("https://{0}/{{region}}/v{1}/{2}/{3}",
+                    Suffix.GetApiType().GetValue(),
+                    Suffix.GetApiGroup().GetVersion(),
+                    Suffix.GetApiGroup(),
+                    Suffix.GetValue()
+                    );
+                Url = Url.Replace("/team/team/", "/team/");//bug (for => suffix.teamByIds)
+            }
+            else
+            {
+                Url = string.Format("https://{0}/{1}",
+                    Suffix.GetApiType().GetValue(),
+                       Suffix.GetValue()
+                       );
+                Url = Url.Replace("api/lol/", "");//bug (for => suffix.teamByIds)
+            }
 
-            Url = Url.Replace("/team/team/", "/team/");//bug (for => suffix.teamByIds)
         }
 
         /// <summary>

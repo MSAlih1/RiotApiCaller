@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.Match;
@@ -53,6 +54,14 @@ namespace RiotCaller.Tests
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             Summary data1 = data.GetStatsSummary();//extension
             Assert.IsNotNull(data1);
+        }
+
+        [TestMethod]
+        public void GetFuturedGames()
+        {
+            NonStaticApi api = new NonStaticApi();
+            FuturedGames data = api.GetFuturedGames( Region);
+            Assert.IsNotNull(data);
         }
 
         [TestMethod]

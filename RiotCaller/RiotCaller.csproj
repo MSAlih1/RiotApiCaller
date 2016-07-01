@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndPoints\FuturedGames\BannedChampion.cs" />
+    <Compile Include="EndPoints\FuturedGames\FuturedGames.cs" />
+    <Compile Include="EndPoints\FuturedGames\GameList.cs" />
+    <Compile Include="EndPoints\FuturedGames\Observers.cs" />
+    <Compile Include="EndPoints\FuturedGames\Participant.cs" />
     <Compile Include="EndPoints\Game\FellowPlayer.cs" />
     <Compile Include="EndPoints\Game\Game.cs" />
     <Compile Include="EndPoints\Game\RecentGame.cs" />
@@ -92,6 +97,7 @@
     <Compile Include="Enums\Platform.cs" />
     <Compile Include="Enums\Queue.cs" />
     <Compile Include="Enums\Role.cs" />
+    <Compile Include="Enums\Team.cs" />
     <Compile Include="Enums\Tier.cs" />
     <Compile Include="INonStaticApi.cs" />
     <Compile Include="RiotApiCaller.cs" />

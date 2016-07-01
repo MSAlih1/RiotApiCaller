@@ -25,7 +25,8 @@ namespace RiotCaller
             else if (value is List<int>)
                 val = string.Join(",", (value as List<int>));
             else if (value is DateTime)
-                val = ((long)((DateTime)value - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMilliseconds).ToString();
+                val = ((long)((DateTime)value - new DateTime(1970, 1, 1, 0, 0, 0, 0))
+                    .TotalMilliseconds).ToString();
             else if (value is List<queue>)
                 val = string.Join(",", (value as List<queue>));
             else if (value is List<season>)

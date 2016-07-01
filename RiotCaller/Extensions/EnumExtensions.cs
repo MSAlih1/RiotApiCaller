@@ -33,7 +33,7 @@ namespace RiotCaller
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
-            string version = v.GetCustomAttribute<VersionAttribute>().Description.ToString().Replace(",", ".");
+            string version = v.GetCustomAttribute<VersionAttribute>().Description.ToString("F1").Replace(",", ".");
             return version;
         }
 

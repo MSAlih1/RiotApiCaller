@@ -1,4 +1,5 @@
 ﻿using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.Match;
@@ -14,6 +15,14 @@ namespace RiotCaller
 {
     public class NonStaticApi : INonStaticApi
     {
+        public FuturedGames GetFuturedGames(region region)
+        {
+            RiotApiCaller<FuturedGames> caller = new RiotApiCaller<FuturedGames>(suffix.featuredGames);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
         public RecentGames GetRecentGames(long summonerId, region region)
         {
             return new Summoner() { Id = summonerId, Region = region }
