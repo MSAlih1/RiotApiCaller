@@ -64,7 +64,9 @@
 
         playerId,
 
-        count
+        count,
+
+        freeToPlay
 
     }
 }

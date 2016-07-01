@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
+using RiotCaller.EndPoints.ChampionRotation;
 using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
@@ -55,6 +56,22 @@ namespace RiotCaller.Tests
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             Summary data1 = data.GetStatsSummary();//extension
             Assert.IsNotNull(data1);
+        }
+
+        [TestMethod]
+        public void GetChampionRotation()
+        {
+            NonStaticApi api = new NonStaticApi();
+            ChampionRotation data = api.GetChampionRotation(region.tr, true);
+            Assert.IsTrue(data.Champions.Count > 0);
+        }
+
+        [TestMethod]
+        public void GetChampionRotationByChampId()
+        {
+            NonStaticApi api = new NonStaticApi();
+            ChampionStatus data = api.GetChampionRotationById(region.tr, championId1);
+            Assert.IsNotNull(data);
         }
 
         [TestMethod]

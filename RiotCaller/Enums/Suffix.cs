@@ -171,6 +171,16 @@ namespace RiotCaller.Enums
 
         [ApiType(apiType.nonStatic)]//<==  don't need a apiVerAttribute
         [Value("championmastery/location/{platformId}/player/{playerId}/champion/{championId}?api_key={api_key}")]
-        championMastery
+        championMastery,
+
+        [ApiType(apiType.nonStatic)]
+        [apiVer(apiVer.championRotation)]
+        [Value("champion?freeToPlay={freeToPlay}&api_key={api_key}")]
+        championRotation,
+
+        [ApiType(apiType.nonStatic)]
+        [apiVer(apiVer.championRotation)]
+        [Value("champion/{id}?api_key={api_key}")]
+        championRotationId
     }
 }

@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EndPoints\ChampionMastery\ChampionMastery.cs" />
+    <Compile Include="EndPoints\ChampionRotation\Champion.cs" />
+    <Compile Include="EndPoints\ChampionRotation\ChampionRotation.cs" />
     <Compile Include="EndPoints\FuturedGames\BannedChampion.cs" />
     <Compile Include="EndPoints\FuturedGames\FuturedGames.cs" />
     <Compile Include="EndPoints\FuturedGames\GameList.cs" />

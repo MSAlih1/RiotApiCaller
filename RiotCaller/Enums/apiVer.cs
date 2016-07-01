@@ -26,6 +26,9 @@ namespace RiotCaller.Enums
         match,
 
         [Version(1.3)]
-        game
+        game,
+
+        [Version(1.2)]
+        championRotation
     }
 }

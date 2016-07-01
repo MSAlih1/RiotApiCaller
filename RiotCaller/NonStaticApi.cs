@@ -1,5 +1,6 @@
 ﻿using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
+using RiotCaller.EndPoints.ChampionRotation;
 using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
@@ -16,6 +17,24 @@ namespace RiotCaller
 {
     public class NonStaticApi : INonStaticApi
     {
+        public ChampionStatus GetChampionRotationById(region region, long championId)
+        {
+            RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotation);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.championId, championId);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public ChampionRotation GetChampionRotation(region region, bool onlyFreeToPlay = true)
+        {
+            RiotApiCaller<ChampionRotation> caller = new RiotApiCaller<ChampionRotation>(suffix.championRotation);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.freeToPlay, onlyFreeToPlay);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
         public int GetChampionMasteryScore(long playerId, region region)
         {
             return new Summoner() { Id = playerId, Region = region }
