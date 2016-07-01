@@ -89,6 +89,7 @@
     <Compile Include="Enums\Queue.cs" />
     <Compile Include="Enums\Role.cs" />
     <Compile Include="Enums\Tier.cs" />
+    <Compile Include="INonStaticApi.cs" />
     <Compile Include="RiotApiCaller.cs" />
     <Compile Include="Converters\DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />

@@ -26,16 +26,14 @@ namespace RiotCaller.Tests
         private region Region = (region)Enum.Parse(typeof(region), ConfigurationSettings.AppSettings["region"]);
 
         private long gameId1 = long.Parse(ConfigurationSettings.AppSettings["gameId1"]);
-
+        
 
         [TestMethod]
         public void ExtensionMethods()
         {
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
-            object data1 = data.GetStatsRanked();//extension
-            Assert.IsNotNull(data1);
 
-            data1 = data.GetStatsSummary();//extension
+            object data1 = data.GetStatsSummary();//extension
             Assert.IsNotNull(data1);
 
             data1 = data.GetTeams();//extension
