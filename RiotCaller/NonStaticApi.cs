@@ -1,4 +1,5 @@
-﻿using RiotCaller.ApiEndPoints;
+﻿using Ninject.Modules;
+using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.Match;
 using RiotCaller.EndPoints.MatchList;
@@ -145,8 +146,8 @@ namespace RiotCaller
 
         public List<Summoner> GetSummoners(List<long> summonerIds, region region)
         {
-            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerByname);
-            caller.AddParam(param.summonerNames, summonerIds);
+            RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerIds);
+            caller.AddParam(param.summonerIds, summonerIds);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             caller.Result.ForEach(p => p.Region = region);
