@@ -1,4 +1,5 @@
-﻿using RiotCaller.EndPoints.Game;
+﻿using RiotCaller.EndPoints.ChampionMastery;
+using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.MatchList;
 using RiotCaller.EndPoints.Stats;
@@ -12,6 +13,48 @@ namespace RiotCaller.ApiEndPoints
 {
     public static class SummonerExtensions
     {
+        public static int GetChampionScore(this Summoner sum)
+        {
+            RiotApiCaller<ChampionMastery> caller = new RiotApiCaller<ChampionMastery>(suffix.championMasteryScore);
+            caller.AddParam(param.region, sum.Region);
+            caller.AddParam(param.platformId, sum.Region.ToPlatform());
+            caller.AddParam(param.playerId, sum.Id);
+            caller.CreateRequest();
+            return caller.ResultStruct;
+        }
+
+        public static List<ChampionMastery> GetChampionTop(this Summoner sum, int count = 3)
+        {
+            RiotApiCaller<List<ChampionMastery>> caller = new RiotApiCaller<List<ChampionMastery>>(suffix.championMasteryTop);
+            caller.AddParam(param.region, sum.Region);
+            caller.AddParam(param.platformId, sum.Region.ToPlatform());
+            caller.AddParam(param.playerId, sum.Id);
+            caller.AddParam(param.count, count);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public static ChampionMastery GetChampionMastery(this Summoner sum, long championId)
+        {
+            RiotApiCaller<ChampionMastery> caller = new RiotApiCaller<ChampionMastery>(suffix.championMastery);
+            caller.AddParam(param.region, sum.Region);
+            caller.AddParam(param.platformId, sum.Region.ToPlatform());
+            caller.AddParam(param.playerId, sum.Id);
+            caller.AddParam(param.championId, championId);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public static List<ChampionMastery> GetChampionMasteries(this Summoner sum)
+        {
+            RiotApiCaller<List<ChampionMastery>> caller = new RiotApiCaller<List<ChampionMastery>>(suffix.championMasteries);
+            caller.AddParam(param.region, sum.Region);
+            caller.AddParam(param.platformId, sum.Region.ToPlatform());
+            caller.AddParam(param.playerId, sum.Id);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
         public static RecentGames GetRecentGames(this Summoner sum)
         {
             RiotApiCaller<RecentGames> caller = new RiotApiCaller<RecentGames>(suffix.recentgames);
@@ -20,6 +63,7 @@ namespace RiotCaller.ApiEndPoints
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public static League GetLeague(this Summoner sum)
         {
             RiotApiCaller<League> caller = new RiotApiCaller<League>(suffix.leagueByIds);

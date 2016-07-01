@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.ChampionMastery;
 using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
@@ -57,10 +58,44 @@ namespace RiotCaller.Tests
         }
 
         [TestMethod]
+        public void GetChampionScore()
+        {
+            NonStaticApi api = new NonStaticApi();
+            int data = api.GetChampionMasteryScore(summonerId1, Region);
+            Assert.IsTrue(data > 0);
+
+        }
+
+        [TestMethod]
+        public void GetChampionTop()
+        {
+            NonStaticApi api = new NonStaticApi();
+            List<ChampionMastery> data = api.GetChampionMasteryTop(summonerId1, Region, 4);
+            Assert.IsTrue(data.Count == 4);
+
+        }
+
+        [TestMethod]
+        public void GetChampionMastery()
+        {
+            NonStaticApi api = new NonStaticApi();
+            ChampionMastery data = api.GetChampionMastery(summonerId1, championId1, Region);
+            Assert.IsNotNull(data);
+        }
+
+        [TestMethod]
+        public void GetChampionMasteries()
+        {
+            NonStaticApi api = new NonStaticApi();
+            List<ChampionMastery> data = api.GetChampionMasteries(summonerId1, Region);
+            Assert.IsTrue(data.Count > 0);
+        }
+
+        [TestMethod]
         public void GetFuturedGames()
         {
             NonStaticApi api = new NonStaticApi();
-            FuturedGames data = api.GetFuturedGames( Region);
+            FuturedGames data = api.GetFuturedGames(Region);
             Assert.IsNotNull(data);
         }
 
@@ -160,6 +195,7 @@ namespace RiotCaller.Tests
             Assert.IsTrue(data.Count > 0);
         }
 
+        private long championId1 = long.Parse(ConfigurationSettings.AppSettings["championId1"]);
         private long summonerId1 = long.Parse(ConfigurationSettings.AppSettings["summonerId1"]);
         private long summonerId2 = long.Parse(ConfigurationSettings.AppSettings["summonerId2"]);
         private string summonerName1 = ConfigurationSettings.AppSettings["summonerName1"];

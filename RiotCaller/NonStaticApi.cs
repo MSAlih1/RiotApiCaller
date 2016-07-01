@@ -1,4 +1,5 @@
 ﻿using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.ChampionMastery;
 using RiotCaller.EndPoints.FuturedGames;
 using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
@@ -15,6 +16,30 @@ namespace RiotCaller
 {
     public class NonStaticApi : INonStaticApi
     {
+        public int GetChampionMasteryScore(long playerId, region region)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+             .GetChampionScore();
+        }
+
+        public List<ChampionMastery> GetChampionMasteryTop(long playerId, region region, int count = 3)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+             .GetChampionTop(count);
+        }
+
+        public ChampionMastery GetChampionMastery(long playerId, long championId, region region)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+               .GetChampionMastery(championId);
+        }
+
+        public List<ChampionMastery> GetChampionMasteries(long playerId, region region)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+              .GetChampionMasteries();
+        }
+
         public FuturedGames GetFuturedGames(region region)
         {
             RiotApiCaller<FuturedGames> caller = new RiotApiCaller<FuturedGames>(suffix.featuredGames);
@@ -54,6 +79,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public MatchList GetMatchList(long summonerId, region region, List<long> championIds = null,
             List<queue> queue = null, List<season> seasons = null, DateTime? beginTime = null, DateTime? endTime = null,
             int? beginIndex = null, int? endIndex = null)
@@ -148,5 +174,6 @@ namespace RiotCaller
             //return caller.Result;//<== orginal
             return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
+
     }
 }

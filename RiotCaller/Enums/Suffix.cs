@@ -153,8 +153,24 @@ namespace RiotCaller.Enums
         [Value("by-summoner/{summonerId}/recent?api_key={api_key}")]
         recentgames,
 
-        [ApiType(apiType.nonStatic)]//<== featuredGames don't need apiVerAttribute
+        [ApiType(apiType.nonStatic)]//<==  don't need apiVerAttribute
         [Value("observer-mode/rest/featured?api_key={api_key}")]
-        featuredGames
+        featuredGames,
+
+        [ApiType(apiType.nonStatic)]//<==  don't need a apiVerAttribute
+        [Value("championmastery/location/{platformId}/player/{playerId}/champions?api_key={api_key}")]
+        championMasteries,
+
+        [ApiType(apiType.nonStatic)]//<==  don't need a apiVerAttribute
+        [Value("championmastery/location/{platformId}/player/{playerId}/score?api_key={api_key}")]
+        championMasteryScore,
+
+        [ApiType(apiType.nonStatic)]//<==  don't need a apiVerAttribute
+        [Value("championmastery/location/{platformId}/player/{playerId}/topchampions?count={count}&api_key={api_key}")]
+        championMasteryTop,
+
+        [ApiType(apiType.nonStatic)]//<==  don't need a apiVerAttribute
+        [Value("championmastery/location/{platformId}/player/{playerId}/champion/{championId}?api_key={api_key}")]
+        championMastery
     }
 }

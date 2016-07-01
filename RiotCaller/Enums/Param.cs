@@ -38,6 +38,8 @@
 
         championIds,
 
+        championId,
+
         rankedQueues,
 
         beginTime,
@@ -56,6 +58,13 @@
         /// <summary>
         /// true or false 
         /// </summary>
-        includeTimeline
+        includeTimeline,
+
+        platformId,
+
+        playerId,
+
+        count
+
     }
 }

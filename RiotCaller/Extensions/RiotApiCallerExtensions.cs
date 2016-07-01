@@ -76,7 +76,10 @@ namespace RiotCaller
             }
             catch (Exception e)
             {
-                throw e;
+                if (e.Source == "Newtonsoft.Json")
+                    apiurl.ResultStruct = int.Parse(Json);
+                else
+                    throw e;
             }
         }
     }
