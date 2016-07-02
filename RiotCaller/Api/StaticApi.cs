@@ -11,7 +11,7 @@ namespace RiotCaller
         {
             Cache = _cache;
         }
-        public StaticApi()
+        public StaticApi()//only for test project
         {
 
         }

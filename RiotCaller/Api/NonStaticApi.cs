@@ -22,15 +22,15 @@ namespace RiotCaller
         {
             Cache = _cache;
         }
-        public NonStaticApi()
+        public NonStaticApi()//only for test project
         {
 
         }
         public ChampionStatus GetChampionRotationById(region region, long championId)
         {
-            RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotation);
+            RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotationId);
             caller.AddParam(param.region, region);
-            caller.AddParam(param.championId, championId);
+            caller.AddParam(param.id, championId);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

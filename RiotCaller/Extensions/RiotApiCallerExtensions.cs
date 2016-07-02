@@ -44,11 +44,15 @@ namespace RiotCaller
             apiurl.Url = apiurl.Url.Replace(find, "");
         }
 
-        public static void CreateRequest<T>(this RiotApiCaller<T> apiurl) where T : class
+        public static void CreateRequest<T>(this RiotApiCaller<T> rac) where T : class
         {
             string Json = string.Empty;
-            apiurl.Url = apiurl.Url.Replace("{api_key}", apikey.Key);// <==  api key
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(apiurl.Url);
+
+            if (!rac.Url.EndsWith("&") && !rac.Url.EndsWith("?"))
+                rac.Url += "&";
+            rac.Url += string.Format("api_key={0}", apikey.Key);//api key joining
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(rac.Url);
             request.Method = "GET";
             request.UserAgent = "RiotCaller";
             request.Headers.Add("Accept-Language", "en-US");
@@ -66,18 +70,18 @@ namespace RiotCaller
                 }
                 try
                 {
-                    apiurl.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+                    rac.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
                 }
                 catch (Exception ex)
                 {
                     if (ex.Source == "Newtonsoft.Json")
-                        apiurl.Result.Add(JsonConvert.DeserializeObject<T>(Json));
+                        rac.Result.Add(JsonConvert.DeserializeObject<T>(Json));
                 }
             }
             catch (Exception e)
             {
                 if (e.Source == "Newtonsoft.Json")
-                    apiurl.ResultStruct = int.Parse(Json);//only for ChampionScore result
+                    rac.ResultStruct = int.Parse(Json);//only for ChampionScore() results
                 else
                     throw e;
             }
