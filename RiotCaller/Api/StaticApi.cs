@@ -4,8 +4,17 @@ using System.Linq;
 
 namespace RiotCaller
 {
-    public class StaticApi
+    public class StaticApi : IStaticApi
     {
+        public RiotApiCache Cache { get; set; }
+        public StaticApi(RiotApiCache _cache)
+        {
+            Cache = _cache;
+        }
+        public StaticApi()
+        {
+
+        }
         public Champions GetChampions(region region, language lang = language.tr_TR, champData? chamData = null)
         {
             RiotApiCaller<Champions> caller = new RiotApiCaller<Champions>(suffix.champions);
@@ -19,6 +28,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public ChampionData GetChampion(long championId, region region, language lang = language.tr_TR, champData? chamData = null)
         {
             RiotApiCaller<ChampionData> caller = new RiotApiCaller<ChampionData>(suffix.championsById);

@@ -50,10 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiService.cs" />
+    <Compile Include="ApiModel\IRiotApiCaller.cs" />
+    <Compile Include="Api\StatusApi.cs" />
     <Compile Include="Converters\ChampionTagConverter.cs" />
     <Compile Include="Enums\champData.cs" />
     <Compile Include="Enums\ChampionTag.cs" />
     <Compile Include="Enums\Language.cs" />
+    <Compile Include="Api\IApiController.cs" />
+    <Compile Include="Api\IStaticApi.cs" />
+    <Compile Include="RiotApiCache.cs" />
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\ChampionRotation.cs" />
@@ -106,8 +112,8 @@
     <Compile Include="Enums\Role.cs" />
     <Compile Include="Enums\Team.cs" />
     <Compile Include="Enums\Tier.cs" />
-    <Compile Include="INonStaticApi.cs" />
-    <Compile Include="RiotApiCaller.cs" />
+    <Compile Include="Api\INonStaticApi.cs" />
+    <Compile Include="ApiModel\RiotApiCaller.cs" />
     <Compile Include="Converters\DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
     <Compile Include="Enums\PlayerStatSummaryType.cs" />
@@ -124,9 +130,9 @@
     <Compile Include="Extensions\RiotApiCallerExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\SummonerExtensions.cs" />
-    <Compile Include="NonStaticApi.cs" />
+    <Compile Include="Api\NonStaticApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticApi.cs" />
+    <Compile Include="Api\StaticApi.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionBlock.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionData.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionInfo.cs" />

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace RiotCaller
 {
-    
-    public class RiotApiCaller<T> where T : class
+    public class RiotApiCaller<T> : IRiotApiCaller<T> where T : class
     {
         //public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
 

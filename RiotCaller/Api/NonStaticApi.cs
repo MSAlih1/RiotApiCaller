@@ -17,6 +17,15 @@ namespace RiotCaller
 {
     public class NonStaticApi : INonStaticApi
     {
+        public RiotApiCache Cache { get; set; }
+        public NonStaticApi(RiotApiCache _cache)
+        {
+            Cache = _cache;
+        }
+        public NonStaticApi()
+        {
+
+        }
         public ChampionStatus GetChampionRotationById(region region, long championId)
         {
             RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotation);

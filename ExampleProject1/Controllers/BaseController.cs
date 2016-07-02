@@ -1,4 +1,4 @@
-﻿using ExampleProject2.Repositories;
+﻿using RiotCaller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ namespace ExampleProject2.Controllers
 {
     public class BaseController : Controller
     {
-        public ILolApi LolApi  { get; private set; }
+        public IApiService LolService  { get; private set; }
 
-        public BaseController(ILolApi _lolapi)
+        public BaseController(IApiService _lolapi)
         {
-            LolApi = _lolapi;
+            LolService = _lolapi;
         }
     }
 }

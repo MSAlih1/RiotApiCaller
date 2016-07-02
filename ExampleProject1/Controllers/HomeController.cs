@@ -1,4 +1,4 @@
-﻿using ExampleProject2.Repositories;
+﻿
 using RiotCaller;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints;
@@ -14,7 +14,7 @@ namespace ExampleProject2.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(ILolApi _lolapi) 
+        public HomeController(IApiService _lolapi) 
             : base(_lolapi)
         {
         }
@@ -24,7 +24,7 @@ namespace ExampleProject2.Controllers
             //////////////////////////////////////////////////
 
             //GetSummoner TYPE 1
-            var summoner1 = LolApi.Api.GetSummoner("kesintisiz", region.tr);
+            var summoner1 = LolService.Api.GetSummoner("kesintisiz", region.tr);
 
             //GetSummoner TYPE 2
             var summoner2 = new RiotApiCaller<Summoner>(suffix.summonerByname);
@@ -34,7 +34,7 @@ namespace ExampleProject2.Controllers
             ///////////////////////////////////////////////////
 
             //GetStatsRanked TYPE 1
-            var ranked1 = LolApi.Api.GetStatsRanked(summoner1.Id, region.tr);
+            var ranked1 = LolService.Api.GetStatsRanked(summoner1.Id, region.tr);
 
             //GetStatsRanked TYPE 2
             var ranked2 = new RiotApiCaller<Ranked>(suffix.statsRanked);
