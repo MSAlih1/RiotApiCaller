@@ -1,5 +1,6 @@
 ﻿using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
+using RiotCaller.StaticEndPoints.Item;
 using System.Linq;
 
 namespace RiotCaller

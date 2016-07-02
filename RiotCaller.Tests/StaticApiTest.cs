@@ -11,6 +11,7 @@ using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
+using RiotCaller.StaticEndPoints.Item;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,7 +26,7 @@ namespace RiotCaller.Tests
         {
             StaticApi staticapi = new StaticApi();
             Items data = staticapi.GetItems(region.tr, language.tr_TR, itemListData.all);// null is basic information
-            Assert.IsTrue(data.Count > 0);
+            Assert.IsTrue(data.Data.Count > 0);
         }
 
         [TestMethod]

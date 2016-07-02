@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
-    public class Items
+    public class ChampionItems
     {
         [JsonProperty("id")]
         public int Id { get; set; }

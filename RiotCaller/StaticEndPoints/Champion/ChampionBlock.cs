@@ -13,7 +13,7 @@ namespace RiotCaller.StaticEndPoints.Champion
         public bool RecMath { get; set; }
 
         [JsonProperty("items")]
-        public List<Items> Items { get; set; }
+        public List<ChampionItems> Items { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -139,7 +139,7 @@
     <Compile Include="StaticEndPoints\Champion\ChampionInfo.cs" />
     <Compile Include="StaticEndPoints\Champion\Champions.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionImage.cs" />
-    <Compile Include="StaticEndPoints\Champion\Items.cs" />
+    <Compile Include="StaticEndPoints\Champion\ChampionItems.cs" />
     <Compile Include="StaticEndPoints\Champion\SpellLevelTip.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionPassive.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionRecommended.cs" />
