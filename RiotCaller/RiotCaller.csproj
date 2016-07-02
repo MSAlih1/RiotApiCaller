@@ -56,7 +56,7 @@
     <Compile Include="Converters\ChampionTagConverter.cs" />
     <Compile Include="Enums\champData.cs" />
     <Compile Include="Enums\ChampionTag.cs" />
-    <Compile Include="Enums\ItemListData.cs" />
+    <Compile Include="Enums\ItemData.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Api\IApiController.cs" />
     <Compile Include="Api\IStaticApi.cs" />

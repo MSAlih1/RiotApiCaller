@@ -83,6 +83,11 @@
         /// <summary>
         /// enum:itemListData
         /// </summary>
-        itemListData
+        itemListData,
+
+        /// <summary>
+        /// enum:itemListData
+        /// </summary>
+        itemData
     }
 }

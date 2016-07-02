@@ -22,6 +22,14 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetItem()
+        {
+            StaticApi staticapi = new StaticApi();
+            ItemData data = staticapi.GetItem(1410,region.tr, language.tr_TR, itemListData.all);// null is basic information
+            Assert.IsNotNull(data);
+        }
+
+        [TestMethod]
         public void GetItems()
         {
             StaticApi staticapi = new StaticApi();

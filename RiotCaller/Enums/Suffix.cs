@@ -214,5 +214,12 @@ namespace RiotCaller.Enums
         [Value("?locale={locale}&itemListData={itemListData}")]
         items,
 
+        /// <summary>
+        /// static item
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.item)]
+        [Value("{id}?locale={locale}&itemData={itemData}")]
+        item,
     }
 }
