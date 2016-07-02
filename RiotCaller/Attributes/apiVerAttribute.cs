@@ -20,7 +20,7 @@ namespace RiotCaller.Attributes
 
         public override string ToString()
         {
-            return isStatic.ToString();
+            return isStatic.ToString();//for language-strings;
         }
     }
 }

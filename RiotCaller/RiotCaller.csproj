@@ -157,11 +157,14 @@
     <Compile Include="StaticEndPoints\Item\Items.cs" />
     <Compile Include="StaticEndPoints\Item\ItemStats.cs" />
     <Compile Include="StaticEndPoints\Item\ItemTree.cs" />
+    <Compile Include="StaticEndPoints\LanguageStrings\LanguageStrings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="StaticEndPoints\Languages\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

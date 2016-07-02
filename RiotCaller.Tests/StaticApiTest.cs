@@ -12,6 +12,7 @@ using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
+using RiotCaller.StaticEndPoints.LanguageStrings;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,10 +23,25 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetLanguages()
+        {
+            StaticApi staticapi = new StaticApi();
+            List<language> data = staticapi.GetLanguages(region.tr);
+            Assert.IsTrue(data.Count > 0);
+        }
+        [TestMethod]
+        public void GetLanguageStrings()
+        {
+            StaticApi staticapi = new StaticApi();
+            LanguageStrings data = staticapi.GetLanguageStrings(region.tr,language.tr_TR);
+            Assert.IsTrue(data.Data.Count>0);
+        }
+
+        [TestMethod]
         public void GetItem()
         {
             StaticApi staticapi = new StaticApi();
-            ItemData data = staticapi.GetItem(1410,region.tr, language.tr_TR, itemListData.all);// null is basic information
+            ItemData data = staticapi.GetItem(itemId1, region.tr, language.tr_TR, itemListData.all);// null is basic information
             Assert.IsNotNull(data);
         }
 
@@ -53,6 +69,7 @@ namespace RiotCaller.Tests
             Assert.IsNotNull(data);
         }
 
+        private long itemId1 = long.Parse(ConfigurationSettings.AppSettings["itemId1"]);
         private long championId1 = long.Parse(ConfigurationSettings.AppSettings["championId1"]);
         private long summonerId1 = long.Parse(ConfigurationSettings.AppSettings["summonerId1"]);
         private long summonerId2 = long.Parse(ConfigurationSettings.AppSettings["summonerId2"]);

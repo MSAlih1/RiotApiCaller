@@ -37,7 +37,7 @@ namespace RiotCaller
                 Url = string.Format("https://{0}/{{region}}/v{1}/{2}/{3}",
                        Suffix.GetApiType().GetValue(),
                        Suffix.GetApiGroup().GetVersion(),
-                       Suffix.GetApiGroup(),
+                       Suffix.GetApiGroup().ToString2(),
                        Suffix.GetValue()
                        );
                 Url = Url.Replace("/team/team/", "/team/");//BUG: fix it (for => suffix.teamByIds)

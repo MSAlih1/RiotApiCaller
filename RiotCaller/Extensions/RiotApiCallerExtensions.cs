@@ -15,7 +15,7 @@ namespace RiotCaller
     {
         /// <summary> Example => AddParam(ParamTypes.summonerIds, new List<long>() { 466244, 457724
         /// }); Example => AddParam(ParamTypes.region, "tr"); </summary>
-        public static void AddParam<T>(this RiotApiCaller<T> apiurl, param key, object value) where T : class
+        public static void AddParam<T>(this RiotApiCaller<T> rac, param key, object value) where T : class
         {
             string val = "";
             if (value is List<long>)
@@ -34,14 +34,14 @@ namespace RiotCaller
             else
                 val = value.ToString();
 
-            apiurl.Url = apiurl.Url.Replace(string.Format("{{{0}}}", key.ToString()), val);
+            rac.Url = rac.Url.Replace(string.Format("{{{0}}}", key.ToString()), val);
             //apiurl.Parameters.Add(key.ToString(), value);
         }
 
-        public static void RemoveParam<T>(this RiotApiCaller<T> apiurl, param key) where T : class
+        public static void RemoveParam<T>(this RiotApiCaller<T> rac, param key) where T : class
         {
             string find = string.Format("&{0}={{{0}}}", key.ToString());
-            apiurl.Url = apiurl.Url.Replace(find, "");
+            rac.Url = rac.Url.Replace(find, "");
         }
 
         public static void CreateRequest<T>(this RiotApiCaller<T> rac) where T : class

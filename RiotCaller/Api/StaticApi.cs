@@ -1,6 +1,8 @@
 ﻿using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
+using RiotCaller.StaticEndPoints.LanguageStrings;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RiotCaller
@@ -16,7 +18,7 @@ namespace RiotCaller
         {
 
         }
-        public Champions GetChampions(region region, language lang = language.tr_TR, champData? chamData = null)
+        public Champions GetChampions(region region, language lang , champData? chamData = null)
         {
             RiotApiCaller<Champions> caller = new RiotApiCaller<Champions>(suffix.champions);
             caller.AddParam(param.region, region);
@@ -30,7 +32,7 @@ namespace RiotCaller
             return caller.Result.FirstOrDefault();
         }
 
-        public ChampionData GetChampion(long championId, region region, language lang = language.tr_TR, champData? chamData = null)
+        public ChampionData GetChampion(long championId, region region, language lang, champData? chamData = null)
         {
             RiotApiCaller<ChampionData> caller = new RiotApiCaller<ChampionData>(suffix.championsById);
             caller.AddParam(param.region, region);
@@ -45,7 +47,7 @@ namespace RiotCaller
             return caller.Result.FirstOrDefault();
         }
 
-        public Items GetItems(region region, language lang = language.tr_TR, itemListData? itemListData = null)
+        public Items GetItems(region region, language lang , itemListData? itemListData = null)
         {
             RiotApiCaller<Items> caller = new RiotApiCaller<Items>(suffix.items);
             caller.AddParam(param.region, region);
@@ -58,7 +60,8 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public ItemData GetItem(long itemId, region region, language lang = language.tr_TR, itemListData? itemData = null)
+
+        public ItemData GetItem(long itemId, region region, language lang, itemListData? itemData = null)
         {
             RiotApiCaller<ItemData> caller = new RiotApiCaller<ItemData>(suffix.item);
             caller.AddParam(param.region, region);
@@ -69,6 +72,22 @@ namespace RiotCaller
             else
                 caller.AddParam(param.itemData, "");//important for basic information
 
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public LanguageStrings GetLanguageStrings(region region, language lang)
+        {
+            RiotApiCaller<LanguageStrings> caller = new RiotApiCaller<LanguageStrings>(suffix.languageStrings);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+        public List<language> GetLanguages(region region)
+        {
+            RiotApiCaller<List<language>> caller = new RiotApiCaller<List<language>>(suffix.languages);
+            caller.AddParam(param.region, region);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

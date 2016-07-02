@@ -8,11 +8,17 @@ namespace RiotCaller
 {
     public static class EnumsHelper
     {
+        public static string ToString2(this apiVer enumVal)
+        {
+            return enumVal.ToString().Replace("_", "-");
+        }
+
         public static apiVer GetApiGroup(this suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
-            return v.GetCustomAttribute<apiVerAttribute>().isStatic;
+            apiVer y = v.GetCustomAttribute<apiVerAttribute>().isStatic;
+            return y;
         }
 
         public static apiType GetApiType(this suffix enumVal)

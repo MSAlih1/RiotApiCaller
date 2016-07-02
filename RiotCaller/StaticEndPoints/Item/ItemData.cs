@@ -6,6 +6,9 @@ namespace RiotCaller.StaticEndPoints.Item
 {
     public class ItemData
     {
+        
+        [JsonProperty("id")]
+        public long Id { get; set; }
 
         [JsonProperty("colloq")]
         public string Colloq { get; set; }
@@ -42,9 +45,6 @@ namespace RiotCaller.StaticEndPoints.Item
         [JsonProperty("hideFromAll")]
         public bool HideFromAll { get; set; }
 
-
-        [JsonProperty("id")]
-        public int Id { get; set; }
 
 
         [JsonProperty("image")]

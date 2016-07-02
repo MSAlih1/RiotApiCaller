@@ -11,6 +11,9 @@ namespace RiotCaller.StaticEndPoints.Champion
 {
     public class ChampionData
     {
+        [JsonProperty("id")]
+        public long Id { get; set; }
+
         [JsonConverter(typeof(ChampionTagConverter))]
         [JsonProperty("tags")]
         public List<championTag> Tags { get; set; }
@@ -41,9 +44,6 @@ namespace RiotCaller.StaticEndPoints.Champion
 
         [JsonProperty("lore")]
         public string Lore { get; set; }
-
-        [JsonProperty("id")]
-        public int Id { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

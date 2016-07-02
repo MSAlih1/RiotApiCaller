@@ -38,11 +38,15 @@ namespace RiotCaller.Enums
 
 
         /// <summary>
-        /// static api get champions list url
+        /// static api get champions list url (needs improve)
         /// </summary>
         [Version(1.2)]
         champion,
         [Version(1.2)]
-        item
+        item,
+        [Version(1.2)]
+        language_strings,
+        [Version(1.2)]
+        languages
     }
 }
