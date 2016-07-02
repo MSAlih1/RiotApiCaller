@@ -3,6 +3,7 @@ using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
+using RiotCaller.StaticEndPoints.Mastery;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +20,7 @@ namespace RiotCaller
         {
 
         }
-        public Champions GetChampions(region region, language lang , champData? chamData = null)
+        public Champions GetChampions(region region, language lang, champData? chamData = null)
         {
             RiotApiCaller<Champions> caller = new RiotApiCaller<Champions>(suffix.champions);
             caller.AddParam(param.region, region);
@@ -48,7 +49,7 @@ namespace RiotCaller
             return caller.Result.FirstOrDefault();
         }
 
-        public Items GetItems(region region, language lang , itemListData? itemListData = null)
+        public Items GetItems(region region, language lang, itemListData? itemListData = null)
         {
             RiotApiCaller<Items> caller = new RiotApiCaller<Items>(suffix.items);
             caller.AddParam(param.region, region);
@@ -99,6 +100,20 @@ namespace RiotCaller
             RiotApiCaller<MapData> caller = new RiotApiCaller<MapData>(suffix.map);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public MasteryData GetMasteries(region region, language lang, masteryListData? masteryData = null)
+        {
+            RiotApiCaller<MasteryData> caller = new RiotApiCaller<MasteryData>(suffix.mastery);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            if (masteryData != null)
+                caller.AddParam(param.masteryListData, masteryData);
+            else
+                caller.AddParam(param.masteryListData, "");//important for basic information
+
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

@@ -88,6 +88,11 @@
         /// <summary>
         /// enum:itemListData
         /// </summary>
-        itemData
+        itemData,
+
+        /// <summary>
+        /// enum:masteryListData
+        /// </summary>
+        masteryListData
     }
 }

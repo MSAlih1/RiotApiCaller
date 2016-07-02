@@ -49,6 +49,8 @@ namespace RiotCaller.Enums
         [Version(1.2)]
         languages,
         [Version(1.2)]
-        map
+        map,
+        [Version(1.2)]
+        mastery
     }
 }

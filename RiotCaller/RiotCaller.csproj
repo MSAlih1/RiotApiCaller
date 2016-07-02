@@ -60,6 +60,7 @@
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Api\IApiController.cs" />
     <Compile Include="Api\IStaticApi.cs" />
+    <Compile Include="Enums\MasteryListData.cs" />
     <Compile Include="RiotApiCache.cs" />
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
@@ -161,6 +162,12 @@
     <Compile Include="StaticEndPoints\Map\MapData.cs" />
     <Compile Include="StaticEndPoints\Map\MapDetail.cs" />
     <Compile Include="StaticEndPoints\Map\MapImage.cs" />
+    <Compile Include="StaticEndPoints\Mastery\Mastery.cs" />
+    <Compile Include="StaticEndPoints\Mastery\MasteryData.cs" />
+    <Compile Include="StaticEndPoints\Mastery\MasteryImage.cs" />
+    <Compile Include="StaticEndPoints\Mastery\MasteryTreeList.cs" />
+    <Compile Include="StaticEndPoints\Mastery\MasteryTreeListItem.cs" />
+    <Compile Include="StaticEndPoints\Mastery\MasteryTrees.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

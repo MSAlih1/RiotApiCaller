@@ -14,6 +14,7 @@ using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
+using RiotCaller.StaticEndPoints.Mastery;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,6 +24,14 @@ namespace RiotCaller.Tests
     [TestClass]
     public class StaticApiTest
     {
+        [TestMethod]
+        public void GetMasteries()
+        {
+            StaticApi staticapi = new StaticApi();
+            MasteryData data = staticapi.GetMasteries(region.tr, language.tr_TR);
+            Assert.IsTrue(data.Data.Count > 0);
+        }
+
         [TestMethod]
         public void GetMaps()
         {

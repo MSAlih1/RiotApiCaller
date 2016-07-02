@@ -250,5 +250,14 @@ namespace RiotCaller.Enums
         [apiVer(apiVer.map)]
         [Value("?locale={locale}")]
         map,
+
+
+        /// <summary>
+        /// static-data mastery
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.mastery)]
+        [Value("?masteryListData={masteryListData}")]
+        mastery,
     }
 }
