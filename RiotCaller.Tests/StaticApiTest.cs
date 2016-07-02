@@ -25,6 +25,14 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetMasteryById()
+        {
+            StaticApi staticapi = new StaticApi();
+            StaticEndPoints.Mastery.Mastery data = staticapi.GetMasteryById(6161, region.tr, language.tr_TR);
+            Assert.IsNotNull(data);
+        }
+
+        [TestMethod]
         public void GetMasteries()
         {
             StaticApi staticapi = new StaticApi();

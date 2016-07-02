@@ -93,6 +93,11 @@
         /// <summary>
         /// enum:masteryListData
         /// </summary>
-        masteryListData
+        masteryListData,
+
+        /// <summary>
+        /// enum:masteryListData
+        /// </summary>
+        masteryData
     }
 }

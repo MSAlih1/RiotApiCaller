@@ -117,5 +117,19 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+        public Mastery GetMasteryById(int masteryId,region region, language lang, masteryListData? masteryData = null)
+        {
+            RiotApiCaller<Mastery> caller = new RiotApiCaller<Mastery>(suffix.masteryById);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.id, masteryId);
+            if (masteryData != null)
+                caller.AddParam(param.masteryData, masteryData);
+            else
+                caller.AddParam(param.masteryData, "");//important for basic information
+
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
     }
 }
