@@ -77,6 +77,12 @@
         /// enum:champData
         /// </summary>
         champData,
-        id
+
+        id,
+
+        /// <summary>
+        /// enum:itemListData
+        /// </summary>
+        itemListData
     }
 }

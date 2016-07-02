@@ -183,6 +183,10 @@ namespace RiotCaller.Enums
         [Value("champion/{id}?")]
         championRotationId,
 
+        /////////////////////////////////////////////
+        ///////////STATIC DATA
+        /////////////////////////////////////////////
+
 
         /// <summary>
         /// static champion list url
@@ -199,6 +203,16 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Static)]
         [apiVer(apiVer.champion)]
         [Value("{id}?locale={locale}&champData={champData}")]
-        championsById
+        championsById,
+
+
+        /// <summary>
+        /// static item list url
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.item)]
+        [Value("?locale={locale}&itemListData={itemListData}")]
+        items,
+
     }
 }

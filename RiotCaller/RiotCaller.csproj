@@ -56,6 +56,7 @@
     <Compile Include="Converters\ChampionTagConverter.cs" />
     <Compile Include="Enums\champData.cs" />
     <Compile Include="Enums\ChampionTag.cs" />
+    <Compile Include="Enums\ItemListData.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Api\IApiController.cs" />
     <Compile Include="Api\IStaticApi.cs" />
@@ -146,6 +147,16 @@
     <Compile Include="StaticEndPoints\Champion\ChampionSpell.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionStats.cs" />
     <Compile Include="StaticEndPoints\Champion\SpellVar.cs" />
+    <Compile Include="StaticEndPoints\Item\Basic.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemData.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemEffect.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemGold.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemGroup.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemImage.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemRune.cs" />
+    <Compile Include="StaticEndPoints\Item\Items.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemStats.cs" />
+    <Compile Include="StaticEndPoints\Item\ItemTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

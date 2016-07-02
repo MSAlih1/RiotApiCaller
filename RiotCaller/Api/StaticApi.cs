@@ -43,5 +43,19 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
+        public Items GetItems(region region, language lang = language.tr_TR, itemListData? itemData = null)
+        {
+            RiotApiCaller<Items> caller = new RiotApiCaller<Items>(suffix.items);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            if (itemData != null)
+                caller.AddParam(param.itemListData, itemData.Value);
+            else
+                caller.AddParam(param.itemListData, "");//important for basic information
+
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
     }
 }
