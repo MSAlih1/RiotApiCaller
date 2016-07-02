@@ -189,7 +189,7 @@ namespace RiotCaller.Enums
 
 
         /// <summary>
-        /// static champion list url
+        /// static-data champion url's list
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.champion)]
@@ -198,7 +198,7 @@ namespace RiotCaller.Enums
 
 
         /// <summary>
-        /// static get champion byId url
+        /// static-data get champion byId url
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.champion)]
@@ -207,7 +207,7 @@ namespace RiotCaller.Enums
 
 
         /// <summary>
-        /// static item list url
+        /// static-data item list url
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.item)]
@@ -215,17 +215,17 @@ namespace RiotCaller.Enums
         items,
 
         /// <summary>
-        /// static item
+        /// static-data item
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.item)]
         [Value("{id}?locale={locale}&itemData={itemData}")]
         item,
 
-        
+
 
         /// <summary>
-        /// static item
+        /// static-data item
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.language_strings)]
@@ -240,6 +240,15 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Static)]
         [apiVer(apiVer.languages)]
         [Value("?")]
-        languages
+        languages,
+
+
+        /// <summary>
+        /// static-data map
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.map)]
+        [Value("?locale={locale}")]
+        map,
     }
 }

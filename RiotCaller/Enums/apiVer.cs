@@ -47,6 +47,8 @@ namespace RiotCaller.Enums
         [Version(1.2)]
         language_strings,
         [Version(1.2)]
-        languages
+        languages,
+        [Version(1.2)]
+        map
     }
 }

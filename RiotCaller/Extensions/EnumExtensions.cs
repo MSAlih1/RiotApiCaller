@@ -6,18 +6,18 @@ using System.Reflection;
 
 namespace RiotCaller
 {
-    public static class EnumsHelper
+    public static class EnumExtensions
     {
         public static string ToString2(this apiVer enumVal)
         {
-            return enumVal.ToString().Replace("_", "-");
+            return enumVal.ToString().Replace("_", "-");//for language_strings
         }
 
         public static apiVer GetApiGroup(this suffix enumVal)
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
-            apiVer y = v.GetCustomAttribute<apiVerAttribute>().isStatic;
+            apiVer y = v.GetCustomAttribute<apiVerAttribute>().ApiVer;
             return y;
         }
 

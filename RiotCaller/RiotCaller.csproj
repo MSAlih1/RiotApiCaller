@@ -158,6 +158,9 @@
     <Compile Include="StaticEndPoints\Item\ItemStats.cs" />
     <Compile Include="StaticEndPoints\Item\ItemTree.cs" />
     <Compile Include="StaticEndPoints\LanguageStrings\LanguageStrings.cs" />
+    <Compile Include="StaticEndPoints\Map\MapData.cs" />
+    <Compile Include="StaticEndPoints\Map\MapDetail.cs" />
+    <Compile Include="StaticEndPoints\Map\MapImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

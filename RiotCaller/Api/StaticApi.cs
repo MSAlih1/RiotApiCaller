@@ -2,6 +2,7 @@
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
+using RiotCaller.StaticEndPoints.Map;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -88,6 +89,16 @@ namespace RiotCaller
         {
             RiotApiCaller<List<language>> caller = new RiotApiCaller<List<language>>(suffix.languages);
             caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+
+        public MapData GetMaps(region region, language lang)
+        {
+            RiotApiCaller<MapData> caller = new RiotApiCaller<MapData>(suffix.map);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

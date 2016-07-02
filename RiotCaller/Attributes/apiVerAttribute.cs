@@ -16,11 +16,11 @@ namespace RiotCaller.Attributes
             this.value = _apigroup;
         }
 
-        public apiVer isStatic { get { return value; } }
+        public apiVer ApiVer { get { return value; } }
 
         public override string ToString()
         {
-            return isStatic.ToString();//for language-strings;
+            return ApiVer.ToString();
         }
     }
 }

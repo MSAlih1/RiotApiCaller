@@ -13,6 +13,7 @@ using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
+using RiotCaller.StaticEndPoints.Map;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,18 +24,27 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetMaps()
+        {
+            StaticApi staticapi = new StaticApi();
+            MapData data = staticapi.GetMaps(region.tr, language.tr_TR);
+            Assert.IsTrue(data.Data.Count > 0);
+        }
+
+        [TestMethod]
         public void GetLanguages()
         {
             StaticApi staticapi = new StaticApi();
             List<language> data = staticapi.GetLanguages(region.tr);
             Assert.IsTrue(data.Count > 0);
         }
+
         [TestMethod]
         public void GetLanguageStrings()
         {
             StaticApi staticapi = new StaticApi();
-            LanguageStrings data = staticapi.GetLanguageStrings(region.tr,language.tr_TR);
-            Assert.IsTrue(data.Data.Count>0);
+            LanguageStrings data = staticapi.GetLanguageStrings(region.tr, language.tr_TR);
+            Assert.IsTrue(data.Data.Count > 0);
         }
 
         [TestMethod]
