@@ -29,6 +29,13 @@ namespace RiotCaller.Enums
         game,
 
         [Version(1.2)]
-        championRotation
+        championRotation,
+
+
+        /// <summary>
+        /// static api get champions list url
+        /// </summary>
+        [Version(1.2)]
+        champion
     }
 }

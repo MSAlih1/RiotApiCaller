@@ -15,7 +15,7 @@ namespace RiotCaller.EndPoints.Match
         public string EventType { get; set; }
 
         [JsonProperty("itemId")]
-        public int İtemId { get; set; }
+        public int ItemId { get; set; }
 
         [JsonProperty("levelUpType")]
         public string LevelUpType { get; set; }
@@ -24,10 +24,10 @@ namespace RiotCaller.EndPoints.Match
         public int? SkillSlot { get; set; }
 
         [JsonProperty("itemBefore")]
-        public int? İtemBefore { get; set; }
+        public int? ItemBefore { get; set; }
 
         [JsonProperty("itemAfter")]
-        public int? İtemAfter { get; set; }
+        public int? ItemAfter { get; set; }
 
         [JsonProperty("creatorId")]
         public int? CreatorId { get; set; }

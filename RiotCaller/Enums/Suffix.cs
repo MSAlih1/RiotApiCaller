@@ -181,6 +181,24 @@ namespace RiotCaller.Enums
         [ApiType(apiType.nonStatic)]
         [apiVer(apiVer.championRotation)]
         [Value("champion/{id}?api_key={api_key}")]
-        championRotationId
+        championRotationId,
+
+
+        /// <summary>
+        /// static champion list url
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.champion)]
+        [Value("?locale={locale}&champData={champData}&dataById=true&api_key={api_key}")]
+        champions,
+
+
+        /// <summary>
+        /// static get champion byId url
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.champion)]
+        [Value("{id}?locale={locale}&champData={champData}&api_key={api_key}")]
+        championsById
     }
 }

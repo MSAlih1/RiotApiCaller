@@ -8,7 +8,7 @@ namespace RiotCaller.EndPoints.Team
     {
         [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("inviteDate")]
-        public DateTime İnviteDate { get; set; }
+        public DateTime InviteDate { get; set; }
 
         [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("joinDate")]

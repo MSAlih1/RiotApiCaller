@@ -66,7 +66,17 @@
 
         count,
 
-        freeToPlay
+        freeToPlay,
 
+        /// <summary>
+        /// such as en_US, tr_TR
+        /// </summary>
+        locale,
+
+        /// <summary>
+        /// enum:champData
+        /// </summary>
+        champData,
+        id
     }
 }

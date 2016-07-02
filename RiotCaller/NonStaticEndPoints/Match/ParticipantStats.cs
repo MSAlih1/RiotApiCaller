@@ -8,16 +8,16 @@ namespace RiotCaller.EndPoints.Match
         public int UnrealKills { get; set; }
 
         [JsonProperty("item2")]
-        public int İtem2 { get; set; }
+        public int Item2 { get; set; }
 
         [JsonProperty("item1")]
-        public int İtem1 { get; set; }
+        public int Item1 { get; set; }
 
         [JsonProperty("totalDamageTaken")]
         public int TotalDamageTaken { get; set; }
 
         [JsonProperty("item0")]
-        public int İtem0 { get; set; }
+        public int Item0 { get; set; }
 
         [JsonProperty("pentaKills")]
         public int PentaKills { get; set; }
@@ -80,7 +80,7 @@ namespace RiotCaller.EndPoints.Match
         public int LargestKillingSpree { get; set; }
 
         [JsonProperty("inhibitorKills")]
-        public int İnhibitorKills { get; set; }
+        public int InhibitorKills { get; set; }
 
         [JsonProperty("minionsKilled")]
         public int MinionsKilled { get; set; }
@@ -152,22 +152,22 @@ namespace RiotCaller.EndPoints.Match
         public int TotalHeal { get; set; }
 
         [JsonProperty("item4")]
-        public int İtem4 { get; set; }
+        public int Item4 { get; set; }
 
         [JsonProperty("item3")]
-        public int İtem3 { get; set; }
+        public int Item3 { get; set; }
 
         [JsonProperty("objectivePlayerScore")]
         public int ObjectivePlayerScore { get; set; }
 
         [JsonProperty("item6")]
-        public int İtem6 { get; set; }
+        public int Item6 { get; set; }
 
         [JsonProperty("firstTowerAssist")]
         public bool FirstTowerAssist { get; set; }
 
         [JsonProperty("item5")]
-        public int İtem5 { get; set; }
+        public int Item5 { get; set; }
 
         [JsonProperty("trueDamageTaken")]
         public int TrueDamageTaken { get; set; }

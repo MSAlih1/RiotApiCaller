@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using RiotCaller.ApiEndPoints;
+using RiotCaller.EndPoints.ChampionMastery;
+using RiotCaller.EndPoints.ChampionRotation;
+using RiotCaller.EndPoints.FuturedGames;
+using RiotCaller.EndPoints.Game;
 using RiotCaller.EndPoints.League;
 using RiotCaller.EndPoints.Match;
 using RiotCaller.EndPoints.MatchList;
@@ -12,10 +16,18 @@ namespace RiotCaller
 {
     public interface INonStaticApi
     {
-        League GetLeague(long _summonerId, region _region);
-        List<List<League>> GetLeagues(List<long> _summonerIds, region _region);
-        MatchDetail GetMatchDetail(long _matchId, region _region, bool includeTimeline = false);
-        MatchList GetMatchList(long _summonerId, region _region, List<long> _championIds = null, List<queue> _queue = null, List<season> _seasons = null, DateTime? _beginTime = default(DateTime?), DateTime? _endTime = default(DateTime?), int? _beginIndex = default(int?), int? _endIndex = default(int?));
+        List<ChampionMastery> GetChampionMasteries(long playerId, region region);
+        ChampionMastery GetChampionMastery(long playerId, long championId, region region);
+        int GetChampionMasteryScore(long playerId, region region);
+        List<ChampionMastery> GetChampionMasteryTop(long playerId, region region, int count = 3);
+        ChampionRotation GetChampionRotation(region region, bool onlyFreeToPlay = true);
+        ChampionStatus GetChampionRotationById(region region, long championId);
+        FuturedGames GetFuturedGames(region region);
+        League GetLeague(long summonerId, region region);
+        List<List<League>> GetLeagues(List<long> summonerIds, region region);
+        MatchDetail GetMatchDetail(long matchId, region region, bool includeTimeline = false);
+        MatchList GetMatchList(long summonerId, region region, List<long> championIds = null, List<queue> queue = null, List<season> seasons = null, DateTime? beginTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? beginIndex = default(int?), int? endIndex = default(int?));
+        RecentGames GetRecentGames(long summonerId, region region);
         Ranked GetStatsRanked(long summonerId, region region, season? season = default(season?));
         Summary GetStatsSummary(long summonerId, region region, season? season = default(season?));
         Summoner GetSummoner(string summonerName, region region);

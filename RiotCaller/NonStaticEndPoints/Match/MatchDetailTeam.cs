@@ -33,7 +33,7 @@ namespace RiotCaller.EndPoints.Match
         public int TeamId { get; set; }
 
         [JsonProperty("inhibitorKills")]
-        public int İnhibitorKills { get; set; }
+        public int InhibitorKills { get; set; }
 
         [JsonProperty("dominionVictoryScore")]
         public int DominionVictoryScore { get; set; }
