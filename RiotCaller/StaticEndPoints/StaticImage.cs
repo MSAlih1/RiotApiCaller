@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Item
 {
-    public class ItemImage
+    public class StaticImage
     {
         [JsonProperty("full")]
         public string Full { get; set; }
@@ -29,5 +29,10 @@ namespace RiotCaller.StaticEndPoints.Item
 
         [JsonProperty("h")]
         public int H { get; set; }
+
+        public override string ToString()
+        {
+            return Full;
+        }
     }
 }

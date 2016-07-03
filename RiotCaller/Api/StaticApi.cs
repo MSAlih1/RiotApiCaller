@@ -5,6 +5,7 @@ using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
 using RiotCaller.StaticEndPoints.Mastery;
 using RiotCaller.StaticEndPoints.Realm;
+using RiotCaller.StaticEndPoints.Runes;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -132,11 +133,32 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public Realm GetRealm(region region)
         {
             RiotApiCaller<Realm> caller = new RiotApiCaller<Realm>(suffix.realm);
             caller.AddParam(param.region, region);
 
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public Runes GetRunes(region region, language lang, runeListData runeData = runeListData.basic)
+        {
+            RiotApiCaller<Runes> caller = new RiotApiCaller<Runes>(suffix.runes);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.runeListData, runeData);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+        public RuneData GetRuneById(long runeId,region region, language lang, runeListData runeData = runeListData.basic)
+        {
+            RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.id, runeId);
+            caller.AddParam(param.runeData, runeData);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

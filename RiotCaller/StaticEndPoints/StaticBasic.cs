@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Item
 {
-    public class Basic
+    public class StaticBasic
     {
 
         [JsonProperty("colloq")]
@@ -35,7 +35,7 @@ namespace RiotCaller.StaticEndPoints.Item
 
 
         [JsonProperty("gold")]
-        public ItemGold Gold { get; set; }
+        public StaticGold Gold { get; set; }
 
 
         [JsonProperty("group")]
@@ -47,7 +47,7 @@ namespace RiotCaller.StaticEndPoints.Item
 
 
         [JsonProperty("image")]
-        public ItemImage Image { get; set; }
+        public StaticImage Image { get; set; }
 
 
         [JsonProperty("inStore")]
@@ -75,7 +75,7 @@ namespace RiotCaller.StaticEndPoints.Item
 
 
         [JsonProperty("rune")]
-        public ItemRune Rune { get; set; }
+        public StaticRune Rune { get; set; }
 
 
         [JsonProperty("sanitizedDescription")]
@@ -89,7 +89,7 @@ namespace RiotCaller.StaticEndPoints.Item
 
 
         [JsonProperty("stats")]
-        public ItemStats Stats { get; set; }
+        public StaticStats Stats { get; set; }
 
 
         [JsonProperty("tags")]

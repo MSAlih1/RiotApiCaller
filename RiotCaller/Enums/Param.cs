@@ -98,6 +98,9 @@
         /// <summary>
         /// enum:masteryListData
         /// </summary>
-        masteryData
+        masteryData,
+
+        runeListData,
+        runeData
     }
 }

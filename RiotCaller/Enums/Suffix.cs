@@ -276,6 +276,24 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Static)]
         [apiVer(apiVer.realm)]
         [Value("?")]
-        realm
+        realm,
+
+
+        /// <summary>
+        /// static-data 
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.rune)]
+        [Value("?runeListData={runeListData}")]
+        runes,
+
+
+        /// <summary>
+        /// static-data 
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.rune)]
+        [Value("{id}?runeData={runeData}")]
+        runeById
     }
 }

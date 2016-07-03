@@ -61,6 +61,7 @@
     <Compile Include="Api\IApiController.cs" />
     <Compile Include="Api\IStaticApi.cs" />
     <Compile Include="Enums\MasteryListData.cs" />
+    <Compile Include="Enums\RuneListData.cs" />
     <Compile Include="RiotApiCache.cs" />
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
@@ -148,15 +149,16 @@
     <Compile Include="StaticEndPoints\Champion\ChampionSpell.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionStats.cs" />
     <Compile Include="StaticEndPoints\Champion\SpellVar.cs" />
-    <Compile Include="StaticEndPoints\Item\Basic.cs" />
+    <Compile Include="StaticEndPoints\Runes\RuneData.cs" />
+    <Compile Include="StaticEndPoints\StaticBasic.cs" />
     <Compile Include="StaticEndPoints\Item\ItemData.cs" />
     <Compile Include="StaticEndPoints\Item\ItemEffect.cs" />
-    <Compile Include="StaticEndPoints\Item\ItemGold.cs" />
+    <Compile Include="StaticEndPoints\StaticGold.cs" />
     <Compile Include="StaticEndPoints\Item\ItemGroup.cs" />
-    <Compile Include="StaticEndPoints\Item\ItemImage.cs" />
-    <Compile Include="StaticEndPoints\Item\ItemRune.cs" />
+    <Compile Include="StaticEndPoints\StaticImage.cs" />
+    <Compile Include="StaticEndPoints\StaticRune.cs" />
     <Compile Include="StaticEndPoints\Item\Items.cs" />
-    <Compile Include="StaticEndPoints\Item\ItemStats.cs" />
+    <Compile Include="StaticEndPoints\StaticStats.cs" />
     <Compile Include="StaticEndPoints\Item\ItemTree.cs" />
     <Compile Include="StaticEndPoints\LanguageStrings\LanguageStrings.cs" />
     <Compile Include="StaticEndPoints\Map\MapData.cs" />
@@ -170,6 +172,8 @@
     <Compile Include="StaticEndPoints\Mastery\MasteryTrees.cs" />
     <Compile Include="StaticEndPoints\Realm\N.cs" />
     <Compile Include="StaticEndPoints\Realm\Realm.cs" />
+    <Compile Include="StaticEndPoints\Runes\RuneBasic.cs" />
+    <Compile Include="StaticEndPoints\Runes\Runes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

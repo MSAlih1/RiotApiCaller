@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Item
 {
-    public class ItemGold
+    public class StaticGold
     {
         [JsonProperty("base")]
         public int Base { get; set; }

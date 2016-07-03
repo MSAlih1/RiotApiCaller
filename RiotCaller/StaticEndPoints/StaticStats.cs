@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Item
 {
-    public class ItemStats
+    public class StaticStats
     {
         [JsonProperty("rFlatArmorModPerLevel")]
         public double RFlatArmorModPerLevel { get; set; }

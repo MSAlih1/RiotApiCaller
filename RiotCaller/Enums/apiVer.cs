@@ -53,6 +53,11 @@ namespace RiotCaller.Enums
         [Version(1.2)]
         mastery,
         [Version(1.2)]
-        realm
+        realm,
+        /// <summary>
+        /// static-data getrunes
+        /// </summary>
+        [Version(1.2)]
+        rune
     }
 }

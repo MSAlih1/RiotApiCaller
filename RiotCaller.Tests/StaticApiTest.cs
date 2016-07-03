@@ -16,6 +16,7 @@ using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
 using RiotCaller.StaticEndPoints.Mastery;
 using RiotCaller.StaticEndPoints.Realm;
+using RiotCaller.StaticEndPoints.Runes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,6 +26,22 @@ namespace RiotCaller.Tests
     [TestClass]
     public class StaticApiTest
     {
+        [TestMethod]
+        public void GetRuneById()
+        {
+            StaticApi staticapi = new StaticApi();
+            RuneData data = staticapi.GetRuneById(5001, region.tr, language.tr_TR, runeListData.all);
+            Assert.IsNotNull(data);
+        }
+
+        [TestMethod]
+        public void GetRunes()
+        {
+            StaticApi staticapi = new StaticApi();
+            Runes data = staticapi.GetRunes(region.tr, language.tr_TR, runeListData.all);
+            Assert.IsNotNull(data);
+        }
+
         [TestMethod]
         public void GetRealm()
         {

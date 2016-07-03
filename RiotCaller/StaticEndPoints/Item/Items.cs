@@ -16,7 +16,7 @@ namespace RiotCaller.StaticEndPoints.Item
         public string Version { get; set; }
 
         [JsonProperty("basic")]
-        public Basic Basic { get; set; }
+        public StaticBasic Basic { get; set; }
 
         [JsonProperty("data")]
         public Dictionary<int, ItemData> Data { get; set; }

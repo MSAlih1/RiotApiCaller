@@ -2,7 +2,7 @@
 
 namespace RiotCaller.StaticEndPoints.Item
 {
-    public class ItemRune
+    public class StaticRune
     {
         [JsonProperty("isRune")]
         public bool IsRune { get; set; }
