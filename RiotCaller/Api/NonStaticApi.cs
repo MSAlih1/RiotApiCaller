@@ -18,9 +18,9 @@ namespace RiotCaller.Api
 {
     public class NonStaticApi : INonStaticApi
     {
-        public RiotApiCache Cache { get; set; }
+        public ApiCache Cache { get; private set; }
 
-        public NonStaticApi(RiotApiCache _cache)
+        public NonStaticApi(ApiCache _cache)
         {
             Cache = _cache;
         }

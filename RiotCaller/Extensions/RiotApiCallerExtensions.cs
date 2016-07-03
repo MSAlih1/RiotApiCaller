@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.Api.Cache;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace RiotCaller
                 val = value.ToString();
 
             rac.Url = rac.Url.Replace(string.Format("{{{0}}}", key.ToString()), val);
-            //apiurl.Parameters.Add(key.ToString(), value);
+            rac.cacheBuild.Add(value.ToString());
         }
 
         public static void RemoveParam<T>(this RiotApiCaller<T> rac, param key) where T : class
@@ -43,7 +44,14 @@ namespace RiotCaller
             string find = string.Format("&{0}={{{0}}}", key.ToString());
             rac.Url = rac.Url.Replace(find, "");
         }
-
+        public static cacheObject<T> CreateRequest<T>(this RiotApiCaller<T> rac, TimeSpan? expiryTime) where T : class
+        {
+            CreateRequest(rac);
+            if (expiryTime != null)
+                return new cacheObject<T>(string.Join("+", rac.cacheBuild), rac.Result.FirstOrDefault(), expiryTime.Value);
+            else
+                return null;
+        }
         public static void CreateRequest<T>(this RiotApiCaller<T> rac) where T : class
         {
             string Json = string.Empty;

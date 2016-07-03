@@ -5,7 +5,10 @@ namespace RiotCaller
 {
     public class RiotApiCaller<T> : IRiotApiCaller<T> where T : class
     {
-        //public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
+        /// <summary>
+        /// cache key building for find correct datas
+        /// </summary>
+        public List<string> cacheBuild { get; set; } = new List<string>();
 
         public List<T> Result { get; set; } = new List<T>();
         public int ResultStruct { get; set; }
@@ -51,13 +54,9 @@ namespace RiotCaller
                 Url = Url.Replace("/team/team/", "/team/");//BUG: fix it (for => suffix.teamByIds)
                 Url = Url.Replace("championRotation/", "");//BUG suffix.championRotation, suffix.championRotation
             }
+            cacheBuild.Add(typeof(T).ToString());//cache key adding
         }
-
-        /// <summary>
-        /// suffixes may replace instead of CacheKey 
-        /// </summary>
-        public string CacheKey { get { return Suffix.ToString(); } }
-
+        
         /// <summary>
         /// api urls 
         /// </summary>

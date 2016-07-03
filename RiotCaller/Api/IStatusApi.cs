@@ -6,7 +6,7 @@ namespace RiotCaller.Api
 {
     public interface IStatusApi
     {
-        RiotApiCache Cache { get; set; }
+        ApiCache Cache { get; }
 
         List<Shards> GetShards();
     }

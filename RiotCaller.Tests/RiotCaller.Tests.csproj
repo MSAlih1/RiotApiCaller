@@ -64,6 +64,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="MethodExamples.cs" />
+    <Compile Include="ApiServiceTest.cs" />
     <Compile Include="StatusApiTest.cs" />
     <Compile Include="StaticApiTest.cs" />
     <Compile Include="NonStaticApiTest.cs" />

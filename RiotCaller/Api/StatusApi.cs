@@ -8,9 +8,9 @@ namespace RiotCaller.Api
 {
     public class StatusApi : IStatusApi
     {
-        public RiotApiCache Cache { get; set; }
+        public ApiCache Cache { get; private set; }
 
-        public StatusApi(RiotApiCache _cache)
+        public StatusApi(ApiCache _cache)
         {
             Cache = _cache;
         }
