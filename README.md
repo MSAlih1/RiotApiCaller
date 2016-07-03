@@ -80,10 +80,20 @@ Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends
         	 OR 	
             var ranked4 =  SummonerExtensions.GetStatsRanked(new Summoner() { Id = [summonerId] });
 ```
+## Use Of Caching
+every ApiEndPoints can use memorycaching. (default value:FALSE)
+```c#
+            ApiService svc = new ApiService();
+            Summoner data = svc.Api.GetSummoner([summonerId], [region], true); // TRUE: method is caching
+            Ranked data = svc.Api.GetStatsRanked([summonerId], [region], null, true); //caching
+            Champions data = svc.staticApi.GetChampions([region], [language], champData.all, true);//caching
+```
+
 
 ## Libraries used
 -.NET MVC and dependency injection (not  finished also half)
 - [Ninject](https://github.com/ninject/Ninject)
+- [MemoryCache](http://www.adamriddick.com/memorycache-memory-storage)
 - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
 
 
