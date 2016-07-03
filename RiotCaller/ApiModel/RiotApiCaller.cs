@@ -6,7 +6,7 @@ namespace RiotCaller
     public class RiotApiCaller<T> : IRiotApiCaller<T> where T : class
     {
         /// <summary>
-        /// cache key building for find correct datas
+        /// cache key building for find correct datas 
         /// </summary>
         public List<string> cacheBuild { get; set; } = new List<string>();
 
@@ -56,7 +56,7 @@ namespace RiotCaller
             }
             cacheBuild.Add(typeof(T).ToString());//cache key adding
         }
-        
+
         /// <summary>
         /// api urls 
         /// </summary>

@@ -8,12 +8,11 @@ namespace RiotCaller.StaticEndPoints.Item
         [JsonProperty("colloq")]
         public string Colloq { get; set; }
 
-        [JsonProperty("consumeOnFull")]
-        public bool ConsumeOnFull { get; set; }
-
         [JsonProperty("consumed")]
         public bool Consumed { get; set; }
 
+        [JsonProperty("consumeOnFull")]
+        public bool ConsumeOnFull { get; set; }
         [JsonProperty("depth")]
         public int Depth { get; set; }
 

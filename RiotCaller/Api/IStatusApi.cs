@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using RiotCaller.Api.Cache;
+﻿using RiotCaller.Api.Cache;
 using RiotCaller.StatusEndPoints.Shards;
+using System.Collections.Generic;
 
 namespace RiotCaller.Api
 {

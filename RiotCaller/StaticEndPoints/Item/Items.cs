@@ -5,12 +5,6 @@ namespace RiotCaller.StaticEndPoints.Item
 {
     public class Items
     {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
         [JsonProperty("basic")]
         public StaticBasic Basic { get; set; }
 
@@ -22,5 +16,11 @@ namespace RiotCaller.StaticEndPoints.Item
 
         [JsonProperty("tree")]
         public List<ItemTree> Tree { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
     }
 }

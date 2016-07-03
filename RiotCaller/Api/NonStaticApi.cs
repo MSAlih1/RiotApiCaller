@@ -18,8 +18,6 @@ namespace RiotCaller.Api
 {
     public class NonStaticApi : INonStaticApi
     {
-        public ApiCache Cache { get; private set; }
-
         public NonStaticApi(ApiCache _cache)
         {
             Cache = _cache;
@@ -29,22 +27,29 @@ namespace RiotCaller.Api
         {
         }
 
-        public ChampionStatus GetChampionRotationById(region region, long championId, bool useCaching = false)
+        public ApiCache Cache { get; private set; }
+        public List<ChampionMastery> GetChampionMasteries(long playerId, region region)
         {
-            ChampionStatus val = Cache.Get<ChampionStatus>(championId.ToString(), region.ToString()); //cache getting
-            if (val != null)
-                return val;
+            return new Summoner() { Id = playerId, Region = region }
+              .GetChampionMasteries();
+        }
 
-            RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotationId);
-            caller.AddParam(param.region, region);
-            caller.AddParam(param.id, championId);
+        public ChampionMastery GetChampionMastery(long playerId, long championId, region region)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+               .GetChampionMastery(championId);
+        }
 
-            if (useCaching)
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
-            else
-                caller.CreateRequest();
+        public int GetChampionMasteryScore(long playerId, region region)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+             .GetChampionScore();
+        }
 
-            return caller.Result.FirstOrDefault();
+        public List<ChampionMastery> GetChampionMasteryTop(long playerId, region region, int count = 3)
+        {
+            return new Summoner() { Id = playerId, Region = region }
+             .GetChampionTop(count);
         }
 
         public ChampionRotation GetChampionRotation(region region, bool onlyFreeToPlay = true, bool useCaching = false)
@@ -65,51 +70,29 @@ namespace RiotCaller.Api
             return caller.Result.FirstOrDefault();
         }
 
-        public int GetChampionMasteryScore(long playerId, region region)
+        public ChampionStatus GetChampionRotationById(region region, long championId, bool useCaching = false)
         {
-            return new Summoner() { Id = playerId, Region = region }
-             .GetChampionScore();
-        }
+            ChampionStatus val = Cache.Get<ChampionStatus>(championId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
 
-        public List<ChampionMastery> GetChampionMasteryTop(long playerId, region region, int count = 3)
-        {
-            return new Summoner() { Id = playerId, Region = region }
-             .GetChampionTop(count);
-        }
+            RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotationId);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.id, championId);
 
-        public ChampionMastery GetChampionMastery(long playerId, long championId, region region)
-        {
-            return new Summoner() { Id = playerId, Region = region }
-               .GetChampionMastery(championId);
-        }
+            if (useCaching)
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+            else
+                caller.CreateRequest();
 
-        public List<ChampionMastery> GetChampionMasteries(long playerId, region region)
-        {
-            return new Summoner() { Id = playerId, Region = region }
-              .GetChampionMasteries();
+            return caller.Result.FirstOrDefault();
         }
-
         public FuturedGames GetFuturedGames(region region)
         {
             RiotApiCaller<FuturedGames> caller = new RiotApiCaller<FuturedGames>(suffix.featuredGames);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
-        }
-
-        public RecentGames GetRecentGames(long summonerId, region region, bool useCaching = false)
-        {
-            RecentGames val = Cache.Get<RecentGames>(summonerId.ToString(), region.ToString()); //cache getting
-            if (val != null)
-                return val;
-
-            RecentGames data = new Summoner() { Id = summonerId, Region = region }
-              .GetRecentGames();
-
-            if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<RecentGames>(string.Join("+", typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
-
-            return data;
         }
 
         public League GetLeague(long summonerId, region region, bool useCaching = false)
@@ -123,7 +106,7 @@ namespace RiotCaller.Api
 
             if (useCaching)
                 Cache.AddOrUpdate(new cacheObject<League>(string.Join("+", typeof(League).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
-            
+
             return data;
         }
 
@@ -164,6 +147,20 @@ namespace RiotCaller.Api
             .GetMatchList(championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
         }
 
+        public RecentGames GetRecentGames(long summonerId, region region, bool useCaching = false)
+        {
+            RecentGames val = Cache.Get<RecentGames>(summonerId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            RecentGames data = new Summoner() { Id = summonerId, Region = region }
+              .GetRecentGames();
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<RecentGames>(string.Join("+", typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+
+            return data;
+        }
         public Ranked GetStatsRanked(long summonerId, region region, season? season = null, bool useCaching = false)
         {
             Ranked val = Cache.Get<Ranked>(summonerId.ToString(), region.ToString(), season.ToString()); //cache getting

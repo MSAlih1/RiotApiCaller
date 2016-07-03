@@ -1,6 +1,4 @@
-﻿using RiotCaller.Api.Cache;
-using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,9 +7,9 @@ namespace RiotCaller.Api.Cache
     public class ApiCache : IApiCache
     {
         private ConcurrentDictionary<string, string> refCacheKey { get; set; } = new ConcurrentDictionary<string, string>();
+
         public ApiCache()
         {
-
         }
 
         public void AddWithMultipleKey<T>(List<string> keys, cacheObject<T> _object)
@@ -85,7 +83,5 @@ namespace RiotCaller.Api.Cache
             MemoryCache.Cache.Flush();
             refCacheKey.Clear();
         }
-
-
     }
 }

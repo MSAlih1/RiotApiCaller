@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.Api.Cache
 {
@@ -21,6 +17,7 @@ namespace RiotCaller.Api.Cache
             Obj = value;
             ExpiryTime = expiry;
         }
+
         public cacheObject(string key, T value, TimeSpan expiry, TimeSpan forMultipleKeys)
         {
             PKey = key;

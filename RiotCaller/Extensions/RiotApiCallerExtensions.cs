@@ -44,6 +44,7 @@ namespace RiotCaller
             string find = string.Format("&{0}={{{0}}}", key.ToString());
             rac.Url = rac.Url.Replace(find, "");
         }
+
         public static cacheObject<T> CreateRequest<T>(this RiotApiCaller<T> rac, TimeSpan? expiryTime) where T : class
         {
             CreateRequest(rac);
@@ -52,6 +53,7 @@ namespace RiotCaller
             else
                 return null;
         }
+
         public static void CreateRequest<T>(this RiotApiCaller<T> rac) where T : class
         {
             string Json = string.Empty;

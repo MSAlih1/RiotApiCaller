@@ -6,11 +6,10 @@ namespace RiotCaller.Enums
     /// reference to api url 
     /// </summary>
     public enum suffix
-    { 
+    {
         /////////////////////////////////////////////
         ///////////non-STATIC DATA
         /////////////////////////////////////////////
-
 
         /// <param name="region">
         /// Region 
@@ -308,11 +307,9 @@ namespace RiotCaller.Enums
         [Value("?")]
         versionList,
 
-
         /////////////////////////////////////////////
         ///////////STATUS DATA
         /////////////////////////////////////////////
-
 
         /// <summary>
         /// version list 

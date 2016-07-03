@@ -6,11 +6,20 @@ namespace RiotCaller.StaticEndPoints.Runes
 {
     public class RuneData
     {
-        [JsonProperty("tags")]
-        public List<string> Tags { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         [JsonProperty("id")]
         public int Id { get; set; }
+
+        [JsonProperty("image")]
+        public StaticImage Image { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("rune")]
+        public StaticRune Rune { get; set; }
 
         [JsonProperty("sanitizedDescription")]
         public string SanitizedDescription { get; set; }
@@ -18,18 +27,8 @@ namespace RiotCaller.StaticEndPoints.Runes
         [JsonProperty("stats")]
         public StaticStats Stats { get; set; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("image")]
-        public StaticImage Image { get; set; }
-
-        [JsonProperty("rune")]
-        public StaticRune Rune { get; set; }
-
+        [JsonProperty("tags")]
+        public List<string> Tags { get; set; }
         public override string ToString()
         {
             return Name;

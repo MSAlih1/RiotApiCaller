@@ -25,6 +25,5 @@ namespace RiotCaller.Api
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-
     }
 }

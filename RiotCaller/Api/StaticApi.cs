@@ -15,8 +15,6 @@ namespace RiotCaller.Api
 {
     public class StaticApi : IStaticApi
     {
-        public ApiCache Cache { get; private set; }
-
         public StaticApi(ApiCache _cache)
         {
             Cache = _cache;
@@ -24,6 +22,30 @@ namespace RiotCaller.Api
 
         public StaticApi()//only for test project
         {
+        }
+
+        public ApiCache Cache { get; private set; }
+        public ChampionData GetChampion(long championId, region region, language lang, champData? chamData = null, bool useCaching = false)
+        {
+            ChampionData val = Cache.Get<ChampionData>(championId.ToString(), region.ToString(), lang.ToString(), chamData.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            RiotApiCaller<ChampionData> caller = new RiotApiCaller<ChampionData>(suffix.championsById);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.id, championId);
+            if (chamData != null)
+                caller.AddParam(param.champData, chamData.Value);
+            else
+                caller.AddParam(param.champData, "");//important for basic information
+
+            if (useCaching)//your choice
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
+            else
+                caller.CreateRequest();//everytime data coming from riotgames server
+
+            return caller.Result.FirstOrDefault();
         }
 
         public Champions GetChampions(region region, language lang, champData? chamData = null, bool useCaching = false)
@@ -47,21 +69,20 @@ namespace RiotCaller.Api
 
             return caller.Result.FirstOrDefault();
         }
-
-        public ChampionData GetChampion(long championId, region region, language lang, champData? chamData = null, bool useCaching = false)
+        public ItemData GetItem(long itemId, region region, language lang, itemListData? itemData = null, bool useCaching = false)
         {
-            ChampionData val = Cache.Get<ChampionData>(championId.ToString(), region.ToString(), lang.ToString(), chamData.ToString()); //cache getting
+            ItemData val = Cache.Get<ItemData>(itemId.ToString(), region.ToString(), lang.ToString(), itemData.ToString()); //cache getting
             if (val != null)
                 return val;
 
-            RiotApiCaller<ChampionData> caller = new RiotApiCaller<ChampionData>(suffix.championsById);
+            RiotApiCaller<ItemData> caller = new RiotApiCaller<ItemData>(suffix.item);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
-            caller.AddParam(param.id, championId);
-            if (chamData != null)
-                caller.AddParam(param.champData, chamData.Value);
+            caller.AddParam(param.id, itemId);
+            if (itemData != null)
+                caller.AddParam(param.itemData, itemData.Value);
             else
-                caller.AddParam(param.champData, "");//important for basic information
+                caller.AddParam(param.itemData, "");//important for basic information
 
             if (useCaching)//your choice
                 Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
@@ -92,21 +113,14 @@ namespace RiotCaller.Api
 
             return caller.Result.FirstOrDefault();
         }
-
-        public ItemData GetItem(long itemId, region region, language lang, itemListData? itemData = null, bool useCaching = false)
+        public List<language> GetLanguages(region region, bool useCaching = false)
         {
-            ItemData val = Cache.Get<ItemData>(itemId.ToString(), region.ToString(), lang.ToString(), itemData.ToString()); //cache getting
+            List<language> val = Cache.Get<List<language>>(region.ToString()); //cache getting
             if (val != null)
                 return val;
 
-            RiotApiCaller<ItemData> caller = new RiotApiCaller<ItemData>(suffix.item);
+            RiotApiCaller<List<language>> caller = new RiotApiCaller<List<language>>(suffix.languages);
             caller.AddParam(param.region, region);
-            caller.AddParam(param.locale, lang);
-            caller.AddParam(param.id, itemId);
-            if (itemData != null)
-                caller.AddParam(param.itemData, itemData.Value);
-            else
-                caller.AddParam(param.itemData, "");//important for basic information
 
             if (useCaching)//your choice
                 Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
@@ -133,24 +147,6 @@ namespace RiotCaller.Api
 
             return caller.Result.FirstOrDefault();
         }
-
-        public List<language> GetLanguages(region region, bool useCaching = false)
-        {
-            List<language> val = Cache.Get<List<language>>(region.ToString()); //cache getting
-            if (val != null)
-                return val;
-
-            RiotApiCaller<List<language>> caller = new RiotApiCaller<List<language>>(suffix.languages);
-            caller.AddParam(param.region, region);
-
-            if (useCaching)//your choice
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
-            else
-                caller.CreateRequest();//everytime data coming from riotgames server
-
-            return caller.Result.FirstOrDefault();
-        }
-
         public MapData GetMaps(region region, language lang, bool useCaching = false)
         {
             MapData val = Cache.Get<MapData>(region.ToString(), lang.ToString()); //cache getting
@@ -231,6 +227,26 @@ namespace RiotCaller.Api
             return caller.Result.FirstOrDefault();
         }
 
+        public RuneData GetRune(long runeId, region region, language lang, runeListData runeData = runeListData.basic, bool useCaching = false)
+        {
+            RuneData val = Cache.Get<RuneData>(runeId.ToString(), region.ToString(), lang.ToString(), runeData.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.id, runeId);
+            caller.AddParam(param.runeData, runeData);
+
+            if (useCaching)//your choice
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
+            else
+                caller.CreateRequest();//everytime data coming from riotgames server
+
+            return caller.Result.FirstOrDefault();
+        }
+
         public RuneList GetRunes(region region, language lang, runeListData runeData = runeListData.basic, bool useCaching = false)
         {
             RuneList val = Cache.Get<RuneList>(region.ToString(), lang.ToString(), runeData.ToString()); //cache getting
@@ -249,18 +265,20 @@ namespace RiotCaller.Api
 
             return caller.Result.FirstOrDefault();
         }
-
-        public RuneData GetRune(long runeId, region region, language lang, runeListData runeData = runeListData.basic, bool useCaching = false)
+        public SummonerSpellData GetSummonerSpell(long summonerSpellId, region region, language lang, spellData? spellData = null, bool useCaching = false)
         {
-            RuneData val = Cache.Get<RuneData>(runeId.ToString(), region.ToString(), lang.ToString(), runeData.ToString()); //cache getting
+            SummonerSpellData val = Cache.Get<SummonerSpellData>(summonerSpellId.ToString(), region.ToString(), lang.ToString(), spellData.ToString()); //cache getting
             if (val != null)
                 return val;
 
-            RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
+            RiotApiCaller<SummonerSpellData> caller = new RiotApiCaller<SummonerSpellData>(suffix.summonerSpellById);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
-            caller.AddParam(param.id, runeId);
-            caller.AddParam(param.runeData, runeData);
+            caller.AddParam(param.id, summonerSpellId);
+            if (spellData != null)
+                caller.AddParam(param.spellData, spellData);
+            else
+                caller.AddParam(param.spellData, "");//important for basic information
 
             if (useCaching)//your choice
                 Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
@@ -291,30 +309,6 @@ namespace RiotCaller.Api
 
             return caller.Result.FirstOrDefault();
         }
-
-        public SummonerSpellData GetSummonerSpell(long summonerSpellId, region region, language lang, spellData? spellData = null, bool useCaching = false)
-        {
-            SummonerSpellData val = Cache.Get<SummonerSpellData>(summonerSpellId.ToString(), region.ToString(), lang.ToString(), spellData.ToString()); //cache getting
-            if (val != null)
-                return val;
-
-            RiotApiCaller<SummonerSpellData> caller = new RiotApiCaller<SummonerSpellData>(suffix.summonerSpellById);
-            caller.AddParam(param.region, region);
-            caller.AddParam(param.locale, lang);
-            caller.AddParam(param.id, summonerSpellId);
-            if (spellData != null)
-                caller.AddParam(param.spellData, spellData);
-            else
-                caller.AddParam(param.spellData, "");//important for basic information
-
-            if (useCaching)//your choice
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(1, 0, 0, 0)));// cache adding
-            else
-                caller.CreateRequest();//everytime data coming from riotgames server
-
-            return caller.Result.FirstOrDefault();
-        }
-
         public List<string> GetVersions(region region, bool useCaching = false)
         {
             List<string> val = Cache.Get<List<string>>(region.ToString()); //cache getting

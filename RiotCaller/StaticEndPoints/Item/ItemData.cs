@@ -5,17 +5,14 @@ namespace RiotCaller.StaticEndPoints.Item
 {
     public class ItemData
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
         [JsonProperty("colloq")]
         public string Colloq { get; set; }
 
-        [JsonProperty("consumeOnFull")]
-        public bool ConsumOnFull { get; set; }
-
         [JsonProperty("consumed")]
         public bool Consumed { get; set; }
+
+        [JsonProperty("consumeOnFull")]
+        public bool ConsumOnFull { get; set; }
 
         [JsonProperty("depth")]
         public int Depth { get; set; }
@@ -35,6 +32,8 @@ namespace RiotCaller.StaticEndPoints.Item
         [JsonProperty("hideFromAll")]
         public bool HideFromAll { get; set; }
 
+        [JsonProperty("id")]
+        public long Id { get; set; }
         [JsonProperty("image")]
         public StaticImage Image { get; set; }
 

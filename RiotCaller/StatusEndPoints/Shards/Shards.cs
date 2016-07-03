@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Converters;
 using RiotCaller.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StatusEndPoints.Shards
 {
@@ -13,7 +9,7 @@ namespace RiotCaller.StatusEndPoints.Shards
     {
         [JsonProperty("region_tag")]
         public string RegionTag { get; set; }
-        
+
         [JsonProperty("slug")]
         public string Slug { get; set; }
 
@@ -23,7 +19,7 @@ namespace RiotCaller.StatusEndPoints.Shards
         [JsonConverter(typeof(ChampionTagConverter<language>))]
         [JsonProperty("locales")]
         public List<language> Locales { get; set; }
-        
+
         [JsonProperty("name")]
         public string Name { get; set; }
 

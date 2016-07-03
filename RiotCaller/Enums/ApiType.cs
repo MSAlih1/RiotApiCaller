@@ -6,9 +6,7 @@ namespace RiotCaller.Enums
     /// do not change this values 
     /// </summary>
 
-    /// IsStatic    =   0   (status)
-    /// IsStatic    =   1   (nonStatic)
-    /// IsStatic    =   2   (Static)
+    /// IsStatic = 0 (status) IsStatic = 1 (nonStatic) IsStatic = 2 (Static)
     public enum apiType
     {
         [IsStatic(1)]
