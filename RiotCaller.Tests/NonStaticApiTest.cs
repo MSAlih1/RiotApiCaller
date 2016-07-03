@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using RiotCaller.Api;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
@@ -11,6 +12,7 @@ using RiotCaller.EndPoints.MatchList;
 using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
+using RiotCaller.NonStaticEndPoints.CurrentGame;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,6 +22,13 @@ namespace RiotCaller.Tests
     [TestClass]
     public class NonStaticApiTest
     {
+        [TestMethod]
+        public void GetCurrentGame()
+        {
+            NonStaticApi api = new NonStaticApi();
+            CurrentGame data = api.GetCurrentGame(summonerId1, Region);
+        }
+
         [TestMethod]
         public void ExtensionGetRecentGames()
         {
@@ -43,6 +52,7 @@ namespace RiotCaller.Tests
             MatchList data1 = data.GetMatchList();//extension
             Assert.IsNotNull(data1);
         }
+
         [TestMethod]
         public void ExtensionGetTeams()
         {

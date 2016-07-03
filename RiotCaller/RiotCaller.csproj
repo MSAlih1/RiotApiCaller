@@ -84,6 +84,7 @@
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\ChampionRotation.cs" />
+    <Compile Include="NonStaticEndPoints\CurrentGame\CurrentGame.cs" />
     <Compile Include="NonStaticEndPoints\FuturedGames\BannedChampion.cs" />
     <Compile Include="NonStaticEndPoints\FuturedGames\FuturedGames.cs" />
     <Compile Include="NonStaticEndPoints\FuturedGames\GameList.cs" />

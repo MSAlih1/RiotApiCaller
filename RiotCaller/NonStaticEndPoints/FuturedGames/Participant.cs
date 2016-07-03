@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.EndPoints.Match;
 using RiotCaller.Enums;
+using System.Collections.Generic;
 
 namespace RiotCaller.EndPoints.FuturedGames
 {
@@ -25,5 +27,11 @@ namespace RiotCaller.EndPoints.FuturedGames
 
         [JsonProperty("spell1Id")]
         public int Spell1Id { get; set; }
+
+        [JsonProperty("masteries")]
+        public List<Mastery> Masteries { get; set; }
+
+        [JsonProperty("runes")]
+        public List<Rune> Runes { get; set; }
     }
 }

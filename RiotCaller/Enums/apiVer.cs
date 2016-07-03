@@ -80,6 +80,13 @@ namespace RiotCaller.Enums
         //////////////////////
 
         [Version(1.2)]
-        shards
+        shards,
+
+        //////////////////////
+        //////CurrentGame DATA
+        //////////////////////
+
+        [Version(1.0)]
+        getSpectatorGameInfo
     }
 }

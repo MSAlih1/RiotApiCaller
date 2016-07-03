@@ -30,7 +30,7 @@ namespace RiotCaller.EndPoints.FuturedGames
         public Observers Observers { get; set; }
 
         [JsonProperty("gameQueueConfigId")]
-        public int GameQueueConfigId { get; set; }
+        public queue GameQueueConfigId { get; set; }
 
         [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("gameStartTime")]

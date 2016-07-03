@@ -317,6 +317,15 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Status)]
         [apiVer(apiVer.shards)]
         [Value("?")]
-        status
+        status,
+
+        /////////////////////////////////////////////
+        ///////////currentGame DATA
+        /////////////////////////////////////////////
+
+        [ApiType(apiType.CurrentGame)]
+        [apiVer(apiVer.getSpectatorGameInfo)]
+        [Value("{platformId}/{summonerId}?")]
+        CurrentGameInfo
     }
 }

@@ -34,7 +34,16 @@ namespace RiotCaller
                        );
                 return;//ended
             }
-            if (_suffix == suffix.featuredGames || _suffix == suffix.championMasteries ||
+            else if (Suffix == suffix.CurrentGameInfo)
+            {
+                Url = string.Format("https://{0}/{1}/{2}",
+                    Suffix.GetApiType().GetValue(),
+                       Suffix.GetApiGroup().ToString2(),
+                       Suffix.GetValue()
+                       );
+                return;//ended
+            }
+            else if (_suffix == suffix.featuredGames || _suffix == suffix.championMasteries ||
                 _suffix == suffix.championMasteryScore || _suffix == suffix.championMasteryTop || _suffix == suffix.championMastery)
             {
                 Url = string.Format("https://{0}/{1}",

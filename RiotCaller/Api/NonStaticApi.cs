@@ -10,6 +10,7 @@ using RiotCaller.EndPoints.MatchList;
 using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
+using RiotCaller.NonStaticEndPoints.CurrentGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -300,6 +301,16 @@ namespace RiotCaller.Api
             caller.CreateRequest();
             //return caller.Result;//<== orginal
             return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+        }
+
+        public CurrentGame GetCurrentGame(long summonerId, region region)
+        {
+            RiotApiCaller<CurrentGame> caller = new RiotApiCaller<CurrentGame>(suffix.CurrentGameInfo);
+            caller.AddParam(param.summonerId, summonerId);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.platformId, region.ToPlatform());
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
         }
     }
 }
