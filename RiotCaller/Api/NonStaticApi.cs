@@ -29,21 +29,39 @@ namespace RiotCaller.Api
         {
         }
 
-        public ChampionStatus GetChampionRotationById(region region, long championId)
+        public ChampionStatus GetChampionRotationById(region region, long championId, bool useCaching = false)
         {
+            ChampionStatus val = Cache.Get<ChampionStatus>(championId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotationId);
             caller.AddParam(param.region, region);
             caller.AddParam(param.id, championId);
-            caller.CreateRequest();
+
+            if (useCaching)
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+            else
+                caller.CreateRequest();
+
             return caller.Result.FirstOrDefault();
         }
 
-        public ChampionRotation GetChampionRotation(region region, bool onlyFreeToPlay = true)
+        public ChampionRotation GetChampionRotation(region region, bool onlyFreeToPlay = true, bool useCaching = false)
         {
+            ChampionRotation val = Cache.Get<ChampionRotation>(region.ToString(), onlyFreeToPlay.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             RiotApiCaller<ChampionRotation> caller = new RiotApiCaller<ChampionRotation>(suffix.championRotation);
             caller.AddParam(param.region, region);
             caller.AddParam(param.freeToPlay, onlyFreeToPlay);
-            caller.CreateRequest();
+
+            if (useCaching)
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+            else
+                caller.CreateRequest();
+
             return caller.Result.FirstOrDefault();
         }
 
@@ -79,16 +97,34 @@ namespace RiotCaller.Api
             return caller.Result.FirstOrDefault();
         }
 
-        public RecentGames GetRecentGames(long summonerId, region region)
+        public RecentGames GetRecentGames(long summonerId, region region, bool useCaching = false)
         {
-            return new Summoner() { Id = summonerId, Region = region }
+            RecentGames val = Cache.Get<RecentGames>(summonerId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            RecentGames data = new Summoner() { Id = summonerId, Region = region }
               .GetRecentGames();
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<RecentGames>(string.Join("+", typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+
+            return data;
         }
 
-        public League GetLeague(long summonerId, region region)
+        public League GetLeague(long summonerId, region region, bool useCaching = false)
         {
-            return new Summoner() { Id = summonerId, Region = region }
+            League val = Cache.Get<League>(summonerId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            League data = new Summoner() { Id = summonerId, Region = region }
             .GetLeague();
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<League>(string.Join("+", typeof(League).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+            
+            return data;
         }
 
         public List<List<League>> GetLeagues(List<long> summonerIds, region region)
@@ -101,13 +137,22 @@ namespace RiotCaller.Api
             return caller.Result;
         }
 
-        public MatchDetail GetMatchDetail(long matchId, region region, bool includeTimeline = false)
+        public MatchDetail GetMatchDetail(long matchId, region region, bool includeTimeline = false, bool useCaching = false)
         {
+            MatchDetail val = Cache.Get<MatchDetail>(matchId.ToString(), region.ToString(), includeTimeline.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             RiotApiCaller<MatchDetail> caller = new RiotApiCaller<MatchDetail>(suffix.matchdetail);
             caller.AddParam(param.matchId, matchId);
             caller.AddParam(param.region, region);
             caller.AddParam(param.includeTimeline, includeTimeline);
-            caller.CreateRequest();
+
+            if (useCaching)
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+            else
+                caller.CreateRequest();
+
             return caller.Result.FirstOrDefault();
         }
 
@@ -119,32 +164,68 @@ namespace RiotCaller.Api
             .GetMatchList(championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
         }
 
-        public Ranked GetStatsRanked(long summonerId, region region, season? season = null)
+        public Ranked GetStatsRanked(long summonerId, region region, season? season = null, bool useCaching = false)
         {
-            return new Summoner() { Id = summonerId, Region = region }
+            Ranked val = Cache.Get<Ranked>(summonerId.ToString(), region.ToString(), season.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            Ranked data = new Summoner() { Id = summonerId, Region = region }
             .GetStatsRanked(season);
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<Ranked>(string.Join("+", typeof(Ranked).ToString(), summonerId, region, season.ToString()), data, new TimeSpan(0, 22, 0)));
+
+            return data;
         }
 
-        public Summary GetStatsSummary(long summonerId, region region, season? season = null)
+        public Summary GetStatsSummary(long summonerId, region region, season? season = null, bool useCaching = false)
         {
-            return new Summoner() { Id = summonerId, Region = region }
-           .GetStatsSummary(season);
+            Summary val = Cache.Get<Summary>(summonerId.ToString(), region.ToString(), season.ToString()); //cache getting
+            if (val != null)
+                return val;
+
+            Summary data = new Summoner() { Id = summonerId, Region = region }
+            .GetStatsSummary(season);
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<Summary>(string.Join("+", typeof(Summary).ToString(), summonerId, region, season.ToString()), data, new TimeSpan(0, 22, 0)));
+
+            return data;
         }
 
-        public Summoner GetSummoner(string summonerName, region region)
+        public Summoner GetSummoner(string summonerName, region region, bool useCaching = false)
         {
+            Summoner val = Cache.Get<Summoner>(summonerName, region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             List<Summoner> result = GetSummoners(new List<string>() { summonerName }, region);
             if (result.Count > 0)
+            {
+                if (useCaching)
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(string.Join("+", typeof(Summoner).ToString(), summonerName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+
                 return result.FirstOrDefault();
+            }
             else
                 return null;
         }
 
-        public Summoner GetSummoner(long summonerId, region region)
+        public Summoner GetSummoner(long summonerId, region region, bool useCaching = false)
         {
+            Summoner val = Cache.Get<Summoner>(summonerId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             List<Summoner> result = GetSummoners(new List<long>() { summonerId }, region);
             if (result.Count > 0)
+            {
+                if (useCaching)
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(string.Join("+", typeof(Summoner).ToString(), summonerId.ToString(), region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+
                 return result.FirstOrDefault();
+            }
             else
                 return null;
         }
@@ -169,20 +250,38 @@ namespace RiotCaller.Api
             return caller.Result;
         }
 
-        public Team GetTeam(string teamName, region region)
+        public Team GetTeam(string teamName, region region, bool useCaching = false)
         {
+            Team val = Cache.Get<Team>(teamName, region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             List<Team> result = GetTeams(new List<string>() { teamName }, region);
             if (result.Count > 0)
+            {
+                if (useCaching)
+                    Cache.AddOrUpdate(new cacheObject<Team>(string.Join("+", typeof(Team).ToString(), teamName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+
                 return result.FirstOrDefault();
+            }
             else
                 return null;
         }
 
-        public Team GetTeam(long teamId, region region)
+        public Team GetTeam(long teamId, region region, bool useCaching = false)
         {
+            Team val = Cache.Get<Team>(teamId.ToString(), region.ToString()); //cache getting
+            if (val != null)
+                return val;
+
             List<Team> result = GetTeams(new List<long>() { teamId }, region);
             if (result.Count > 0)
+            {
+                if (useCaching)
+                    Cache.AddOrUpdate(new cacheObject<Team>(string.Join("+", typeof(Team).ToString(), teamId.ToString(), region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+
                 return result.FirstOrDefault();
+            }
             else
                 return null;
         }
