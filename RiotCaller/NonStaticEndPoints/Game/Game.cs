@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Converters;
+using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace RiotCaller.EndPoints.Game
         public List<FellowPlayer> FellowPlayers { get; set; }
 
         [JsonProperty("gameType")]
-        public string GameType { get; set; }
+        public gameType GameType { get; set; }
 
         [JsonProperty("stats")]
         public Stats Stats { get; set; }
@@ -32,7 +33,7 @@ namespace RiotCaller.EndPoints.Game
         public int Spell2 { get; set; }
 
         [JsonProperty("gameMode")]
-        public string GameMode { get; set; }
+        public gameMode? GameMode { get; set; }
 
         [JsonProperty("mapId")]
         public int MapId { get; set; }
@@ -44,7 +45,7 @@ namespace RiotCaller.EndPoints.Game
         public bool Invalid { get; set; }
 
         [JsonProperty("subType")]
-        public string SubType { get; set; }
+        public subType? SubType { get; set; }
 
         [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("createDate")]

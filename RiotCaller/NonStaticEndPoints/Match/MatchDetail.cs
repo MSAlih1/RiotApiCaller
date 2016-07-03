@@ -12,7 +12,7 @@ namespace RiotCaller.EndPoints.Match
         public region Region { get; set; }
 
         [JsonProperty("matchType")]
-        public string MatchType { get; set; }
+        public gameType MatchType { get; set; }
 
         [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("matchCreation")]
@@ -28,7 +28,7 @@ namespace RiotCaller.EndPoints.Match
         public string PlatformId { get; set; }
 
         [JsonProperty("matchMode")]
-        public string MatchMode { get; set; }
+        public gameMode MatchMode { get; set; }
 
         [JsonProperty("participantIdentities")]
         public List<ParticipantIdentity> ParticipantIdentities { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.Enums;
 using System.Collections.Generic;
 
 namespace RiotCaller.EndPoints.Match
@@ -12,7 +13,7 @@ namespace RiotCaller.EndPoints.Match
         public int ParticipantId { get; set; }
 
         [JsonProperty("eventType")]
-        public string EventType { get; set; }
+        public eventType? EventType { get; set; }
 
         [JsonProperty("itemId")]
         public int ItemId { get; set; }
@@ -33,7 +34,7 @@ namespace RiotCaller.EndPoints.Match
         public int? CreatorId { get; set; }
 
         [JsonProperty("wardType")]
-        public string WardType { get; set; }
+        public wardType? WardType { get; set; }
 
         [JsonProperty("position")]
         public Position Position { get; set; }
@@ -48,16 +49,16 @@ namespace RiotCaller.EndPoints.Match
         public List<int> AssistingParticipantIds { get; set; }
 
         [JsonProperty("monsterType")]
-        public string MonsterType { get; set; }
+        public monsterType? MonsterType { get; set; }
 
         [JsonProperty("laneType")]
-        public string LaneType { get; set; }
+        public laneType? LaneType { get; set; }
 
         [JsonProperty("buildingType")]
-        public string BuildingType { get; set; }
+        public buildingType? BuildingType { get; set; }
 
         [JsonProperty("towerType")]
-        public string TowerType { get; set; }
+        public towerType? TowerType { get; set; }
 
         [JsonProperty("teamId")]
         public int? TeamId { get; set; }
