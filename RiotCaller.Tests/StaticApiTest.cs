@@ -15,6 +15,7 @@ using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
 using RiotCaller.StaticEndPoints.Mastery;
+using RiotCaller.StaticEndPoints.Realm;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,6 +25,14 @@ namespace RiotCaller.Tests
     [TestClass]
     public class StaticApiTest
     {
+        [TestMethod]
+        public void GetRealm()
+        {
+            StaticApi staticapi = new StaticApi();
+            Realm data = staticapi.GetRealm(region.tr);
+            Assert.IsNotNull(data);
+        }
+
         [TestMethod]
         public void GetMasteryById()
         {

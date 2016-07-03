@@ -267,6 +267,15 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Static)]
         [apiVer(apiVer.mastery)]
         [Value("{id}?masteryData={masteryData}")]
-        masteryById
+        masteryById,
+
+
+        /// <summary>
+        /// static-data 
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.realm)]
+        [Value("?")]
+        realm
     }
 }

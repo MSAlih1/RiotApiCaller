@@ -168,6 +168,8 @@
     <Compile Include="StaticEndPoints\Mastery\MasteryTreeList.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryTreeListItem.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryTrees.cs" />
+    <Compile Include="StaticEndPoints\Realm\N.cs" />
+    <Compile Include="StaticEndPoints\Realm\Realm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

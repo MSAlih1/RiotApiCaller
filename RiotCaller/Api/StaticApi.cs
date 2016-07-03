@@ -4,6 +4,7 @@ using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
 using RiotCaller.StaticEndPoints.Map;
 using RiotCaller.StaticEndPoints.Mastery;
+using RiotCaller.StaticEndPoints.Realm;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -117,7 +118,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public Mastery GetMasteryById(int masteryId,region region, language lang, masteryListData? masteryData = null)
+        public Mastery GetMasteryById(int masteryId, region region, language lang, masteryListData? masteryData = null)
         {
             RiotApiCaller<Mastery> caller = new RiotApiCaller<Mastery>(suffix.masteryById);
             caller.AddParam(param.region, region);
@@ -127,6 +128,14 @@ namespace RiotCaller
                 caller.AddParam(param.masteryData, masteryData);
             else
                 caller.AddParam(param.masteryData, "");//important for basic information
+
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+        public Realm GetRealm(region region)
+        {
+            RiotApiCaller<Realm> caller = new RiotApiCaller<Realm>(suffix.realm);
+            caller.AddParam(param.region, region);
 
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
