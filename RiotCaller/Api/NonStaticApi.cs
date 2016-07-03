@@ -63,7 +63,7 @@ namespace RiotCaller.Api
             caller.AddParam(param.freeToPlay, onlyFreeToPlay);
 
             if (useCaching)
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 22, 0)));
             else
                 caller.CreateRequest();
 
@@ -81,7 +81,7 @@ namespace RiotCaller.Api
             caller.AddParam(param.id, championId);
 
             if (useCaching)
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 22, 0)));
             else
                 caller.CreateRequest();
 
@@ -105,7 +105,7 @@ namespace RiotCaller.Api
             .GetLeague();
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<League>(string.Join("+", typeof(League).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<League>(new cacheParam(typeof(League).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -132,7 +132,7 @@ namespace RiotCaller.Api
             caller.AddParam(param.includeTimeline, includeTimeline);
 
             if (useCaching)
-                Cache.AddOrUpdate(caller.CreateRequest(new System.TimeSpan(0, 0, 21, 0)));
+                Cache.AddOrUpdate(caller.CreateRequest(new TimeSpan(0, 22, 0)));
             else
                 caller.CreateRequest();
 
@@ -157,7 +157,7 @@ namespace RiotCaller.Api
               .GetRecentGames();
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<RecentGames>(string.Join("+", typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<RecentGames>(new cacheParam(typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -171,7 +171,7 @@ namespace RiotCaller.Api
             .GetStatsRanked(season);
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<Ranked>(string.Join("+", typeof(Ranked).ToString(), summonerId, region, season.ToString()), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<Ranked>(new cacheParam(typeof(Ranked).ToString(), summonerId, region, season), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -186,7 +186,7 @@ namespace RiotCaller.Api
             .GetStatsSummary(season);
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<Summary>(string.Join("+", typeof(Summary).ToString(), summonerId, region, season.ToString()), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<Summary>(new cacheParam(typeof(Summary).ToString(), summonerId, region, season), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -201,7 +201,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Summoner>(string.Join("+", typeof(Summoner).ToString(), summonerName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam(typeof(Summoner).ToString(), summonerName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -219,7 +219,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Summoner>(string.Join("+", typeof(Summoner).ToString(), summonerId.ToString(), region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam(typeof(Summoner).ToString(), summonerId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -257,7 +257,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Team>(string.Join("+", typeof(Team).ToString(), teamName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam(typeof(Team).ToString(), teamName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -275,7 +275,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Team>(string.Join("+", typeof(Team).ToString(), teamId.ToString(), region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam(typeof(Team).ToString(), teamId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }

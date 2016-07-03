@@ -55,7 +55,7 @@ namespace RiotCaller.Api.Cache
         public T Get<T>(params string[] _pKey)
             where T : class
         {
-            string findkey = typeof(T).ToString() + "+" + string.Join("+", _pKey);
+            string findkey = string.Format("{0}+{1}", typeof(T).ToString(), string.Join("+", _pKey));
             try
             {
                 object val = MemoryCache.Cache.Get(findkey);

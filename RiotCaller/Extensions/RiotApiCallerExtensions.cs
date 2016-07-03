@@ -49,7 +49,7 @@ namespace RiotCaller
         {
             CreateRequest(rac);
             if (expiryTime != null)
-                return new cacheObject<T>(string.Join("+", rac.cacheBuild), rac.Result.FirstOrDefault(), expiryTime.Value);
+                return new cacheObject<T>(rac.cacheBuild, rac.Result.FirstOrDefault(), expiryTime.Value);
             else
                 return null;
         }

@@ -1,15 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RiotCaller.Api;
-using RiotCaller.ApiEndPoints;
-using RiotCaller.EndPoints.ChampionMastery;
-using RiotCaller.EndPoints.ChampionRotation;
-using RiotCaller.EndPoints.FuturedGames;
-using RiotCaller.EndPoints.Game;
-using RiotCaller.EndPoints.League;
-using RiotCaller.EndPoints.Match;
-using RiotCaller.EndPoints.MatchList;
-using RiotCaller.EndPoints.Stats;
-using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;

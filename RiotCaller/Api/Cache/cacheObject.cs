@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RiotCaller.Api.Cache
 {
@@ -18,12 +19,43 @@ namespace RiotCaller.Api.Cache
             ExpiryTime = expiry;
         }
 
-        public cacheObject(string key, T value, TimeSpan expiry, TimeSpan forMultipleKeys)
+        public cacheObject(cacheParam pkeybuild, T value, TimeSpan expiry)
         {
-            PKey = key;
+            PKey = pkeybuild.ToString();
             Obj = value;
             ExpiryTime = expiry;
-            keysExpiryTime = forMultipleKeys;
+        }
+
+        public cacheObject(List<String> pkeybuild, T value, TimeSpan expiry)
+        {
+            PKey = string.Join("+", pkeybuild);
+            Obj = value;
+            ExpiryTime = expiry;
+        }
+
+        //public cacheObject(string key, T value, TimeSpan expiry, TimeSpan forMultipleKeys)
+        //{
+        //    PKey = key;
+        //    Obj = value;
+        //    ExpiryTime = expiry;
+        //    keysExpiryTime = forMultipleKeys;
+        //}
+
+    }
+    public class cacheParam
+    {
+        string param = "";
+        /// <summary>
+        /// need for cache primary key generating
+        /// </summary>
+        /// <param name="parameters"></param>
+        public cacheParam(params Object[] parameters)
+        {
+            param = string.Join("+", parameters);
+        }
+        public override string ToString()
+        {
+            return param;
         }
     }
 }
