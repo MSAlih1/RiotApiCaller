@@ -60,6 +60,8 @@ namespace RiotCaller.Enums
         [Version(1.2)]
         rune,
         [Version(1.2)]
-        summoner_spell
+        summoner_spell,
+        [Version(1.2)]
+        versions
     }
 }

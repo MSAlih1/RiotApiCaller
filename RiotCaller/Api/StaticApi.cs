@@ -191,5 +191,12 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+        public List<string> GetVersions(region region)
+        {
+            RiotApiCaller<List<string>> caller = new RiotApiCaller<List<string>>(suffix.versionList);
+            caller.AddParam(param.region, region);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
     }
 }

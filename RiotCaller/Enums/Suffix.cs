@@ -312,6 +312,15 @@ namespace RiotCaller.Enums
         [ApiType(apiType.Static)]
         [apiVer(apiVer.summoner_spell)]
         [Value("{id}?spellData={spellData}")]
-        summonerSpellById
+        summonerSpellById,
+
+
+        /// <summary>
+        /// version list
+        /// </summary>
+        [ApiType(apiType.Static)]
+        [apiVer(apiVer.versions)]
+        [Value("?")]
+        versionList
     }
 }

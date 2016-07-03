@@ -28,6 +28,14 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetVersions()
+        {
+            StaticApi staticapi = new StaticApi();
+            List<string> data = staticapi.GetVersions(region.tr);
+            Assert.IsTrue(data.Count>0);
+        }
+
+        [TestMethod]
         public void GetSummonerSpell()
         {
             StaticApi staticapi = new StaticApi();
