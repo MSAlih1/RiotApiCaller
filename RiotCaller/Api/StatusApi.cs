@@ -1,11 +1,6 @@
-﻿using RiotCaller.Enums;
-using RiotCaller.StaticEndPoints.Champion;
-using System.Linq;
-
-namespace RiotCaller
+﻿namespace RiotCaller.Api
 {
     public class StatusApi
     {
-        
     }
 }

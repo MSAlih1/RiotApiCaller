@@ -11,6 +11,7 @@ namespace ExampleProject2.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using RiotCaller;
+    using RiotCaller.Api.Service;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RiotCaller.Api;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
 using RiotCaller.EndPoints.ChampionRotation;

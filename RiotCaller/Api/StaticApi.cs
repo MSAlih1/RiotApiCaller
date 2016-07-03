@@ -1,4 +1,5 @@
-﻿using RiotCaller.Enums;
+﻿using RiotCaller.Api.Cache;
+using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StaticEndPoints.Item;
 using RiotCaller.StaticEndPoints.LanguageStrings;
@@ -10,19 +11,21 @@ using RiotCaller.StaticEndPoints.SummonerSpells;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RiotCaller
+namespace RiotCaller.Api
 {
     public class StaticApi : IStaticApi
     {
         public RiotApiCache Cache { get; set; }
+
         public StaticApi(RiotApiCache _cache)
         {
             Cache = _cache;
         }
+
         public StaticApi()//only for test project
         {
-
         }
+
         public Champions GetChampions(region region, language lang, champData? chamData = null)
         {
             RiotApiCaller<Champions> caller = new RiotApiCaller<Champions>(suffix.champions);
@@ -89,6 +92,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public List<language> GetLanguages(region region)
         {
             RiotApiCaller<List<language>> caller = new RiotApiCaller<List<language>>(suffix.languages);
@@ -96,7 +100,6 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-
 
         public MapData GetMaps(region region, language lang)
         {
@@ -120,6 +123,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public Mastery GetMastery(int masteryId, region region, language lang, masteryListData? masteryData = null)
         {
             RiotApiCaller<Mastery> caller = new RiotApiCaller<Mastery>(suffix.masteryById);
@@ -153,6 +157,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public RuneData GetRune(long runeId, region region, language lang, runeListData runeData = runeListData.basic)
         {
             RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
@@ -177,7 +182,8 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public SummonerSpellData GetSummonerSpell(long summonerSpellId,region region, language lang, spellData? spellData = null)
+
+        public SummonerSpellData GetSummonerSpell(long summonerSpellId, region region, language lang, spellData? spellData = null)
         {
             RiotApiCaller<SummonerSpellData> caller = new RiotApiCaller<SummonerSpellData>(suffix.summonerSpellById);
             caller.AddParam(param.region, region);
@@ -191,6 +197,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
+
         public List<string> GetVersions(region region)
         {
             RiotApiCaller<List<string>> caller = new RiotApiCaller<List<string>>(suffix.versionList);

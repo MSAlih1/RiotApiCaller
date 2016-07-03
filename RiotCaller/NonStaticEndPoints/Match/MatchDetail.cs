@@ -43,10 +43,10 @@ namespace RiotCaller.EndPoints.Match
         public int MapId { get; set; }
 
         [JsonProperty("season")]
-        public string Season { get; set; }
+        public season Season { get; set; }
 
         [JsonProperty("queueType")]
-        public string QueueType { get; set; }
+        public queue QueueType { get; set; }
 
         [JsonProperty("matchId")]
         public long MatchId { get; set; }

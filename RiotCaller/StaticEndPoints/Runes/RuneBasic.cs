@@ -58,7 +58,7 @@ namespace RiotCaller.StaticEndPoints.Runes
         public bool Consumed { get; set; }
 
         [JsonProperty("maps")]
-        public Dictionary<string,bool> Maps { get; set; }
+        public Dictionary<string, bool> Maps { get; set; }
 
         [JsonProperty("hideFromAll")]
         public bool HideFromAll { get; set; }

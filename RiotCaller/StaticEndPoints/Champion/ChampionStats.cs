@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
@@ -69,5 +64,4 @@ namespace RiotCaller.StaticEndPoints.Champion
         [JsonProperty("armorperlevel")]
         public double Armorperlevel { get; set; }
     }
-
 }

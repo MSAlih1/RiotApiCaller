@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.Converters;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.EndPoints.Game
 {
-
     public class Game
     {
-
         [JsonProperty("fellowPlayers")]
         public List<FellowPlayer> FellowPlayers { get; set; }
 
@@ -50,8 +46,9 @@ namespace RiotCaller.EndPoints.Game
         [JsonProperty("subType")]
         public string SubType { get; set; }
 
+        [JsonConverter(typeof(DateTimeFromLong))]
         [JsonProperty("createDate")]
-        public object CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [JsonProperty("championId")]
         public int ChampionId { get; set; }

@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
+using RiotCaller.StaticEndPoints.Item;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
@@ -25,7 +22,7 @@ namespace RiotCaller.StaticEndPoints.Champion
         public List<string> EffectBurn { get; set; }
 
         [JsonProperty("image")]
-        public ChampionImage Image { get; set; }
+        public StaticImage Image { get; set; }
 
         [JsonProperty("cooldown")]
         public List<double> Cooldown { get; set; }

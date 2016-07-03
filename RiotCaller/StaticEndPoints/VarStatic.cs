@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
@@ -18,10 +14,8 @@ namespace RiotCaller.StaticEndPoints.Champion
         [JsonProperty("key")]
         public string Key { get; set; }
 
-
         [JsonProperty("ranksWith")]
         public string RanksWith { get; set; }
-
 
         [JsonProperty("dyn")]
         public string Dyn { get; set; }

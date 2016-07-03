@@ -43,7 +43,6 @@ namespace RiotCaller
                 Url = Url.Replace("/team/team/", "/team/");//BUG: fix it (for => suffix.teamByIds)
                 Url = Url.Replace("championRotation/", "");//BUG suffix.championRotation, suffix.championRotation
             }
-
         }
 
         /// <summary>

@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Converters;
 using RiotCaller.Enums;
-using System;
+using RiotCaller.StaticEndPoints.Item;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
@@ -28,7 +25,7 @@ namespace RiotCaller.StaticEndPoints.Champion
         public List<ChampionRecommended> Recommended { get; set; }
 
         [JsonProperty("image")]
-        public ChampionImage Image { get; set; }
+        public StaticImage Image { get; set; }
 
         [JsonProperty("spells")]
         public List<ChampionSpell> Spells { get; set; }

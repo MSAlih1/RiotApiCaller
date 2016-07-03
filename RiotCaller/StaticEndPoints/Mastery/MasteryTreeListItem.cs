@@ -9,6 +9,5 @@ namespace RiotCaller.StaticEndPoints.Mastery
 
         [JsonProperty("prereq")]
         public string prereq { get; set; }
-        
     }
 }

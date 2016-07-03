@@ -128,14 +128,10 @@ namespace RiotCaller.Enums
         teamByIds,
 
         /// <summary>
-        /// <param name="long"> summonerId </param>
-        /// <param name="long[]"> championIds
-        /// </param><param name="Queues[]"> rankedQueues </param>
-        /// <param name="season[]"> seasons
-        /// </param><param name="DatetTime"> beginTime </param>
-        /// <param name="DatetTime"> endTime
-        /// </param><param name="int"> beginIndex </param>
-        /// <param name="int"> endIndex
+        /// <param name="long"> summonerId </param><param name="long[]"> championIds
+        /// </param><param name="Queues[]"> rankedQueues </param><param name="season[]"> seasons
+        /// </param><param name="DatetTime"> beginTime </param><param name="DatetTime"> endTime
+        /// </param><param name="int"> beginIndex </param><param name="int"> endIndex
         /// </param><param name="region"> Region </param>
         /// </summary>
         [ApiType(apiType.nonStatic)]
@@ -187,27 +183,24 @@ namespace RiotCaller.Enums
         ///////////STATIC DATA
         /////////////////////////////////////////////
 
-
         /// <summary>
-        /// static-data champion url's list
+        /// static-data champion url's list 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.champion)]
         [Value("?locale={locale}&champData={champData}&dataById=true")]
         champions,
 
-
         /// <summary>
-        /// static-data get champion byId url
+        /// static-data get champion byId url 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.champion)]
         [Value("{id}?locale={locale}&champData={champData}")]
         championsById,
 
-
         /// <summary>
-        /// static-data item list url
+        /// static-data item list url 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.item)]
@@ -215,60 +208,52 @@ namespace RiotCaller.Enums
         items,
 
         /// <summary>
-        /// static-data item
+        /// static-data item 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.item)]
         [Value("{id}?locale={locale}&itemData={itemData}")]
         item,
 
-
-
         /// <summary>
-        /// static-data item
+        /// static-data item 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.language_strings)]
         [Value("?locale={locale}")]
         languageStrings,
 
-
-
         /// <summary>
-        /// list of every languages
+        /// list of every languages 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.languages)]
         [Value("?")]
         languages,
 
-
         /// <summary>
-        /// static-data map
+        /// static-data map 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.map)]
         [Value("?locale={locale}")]
         map,
 
-
         /// <summary>
-        /// static-data mastery
+        /// static-data mastery 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.mastery)]
         [Value("?masteryListData={masteryListData}")]
         mastery,
 
-
         /// <summary>
-        /// static-data masteryById
+        /// static-data masteryById 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.mastery)]
         [Value("{id}?masteryData={masteryData}")]
         masteryById,
-
 
         /// <summary>
         /// static-data 
@@ -278,7 +263,6 @@ namespace RiotCaller.Enums
         [Value("?")]
         realm,
 
-
         /// <summary>
         /// static-data 
         /// </summary>
@@ -286,7 +270,6 @@ namespace RiotCaller.Enums
         [apiVer(apiVer.rune)]
         [Value("?runeListData={runeListData}")]
         runes,
-
 
         /// <summary>
         /// static-data 
@@ -296,7 +279,6 @@ namespace RiotCaller.Enums
         [Value("{id}?runeData={runeData}")]
         runeById,
 
-
         /// <summary>
         /// static-data 
         /// </summary>
@@ -304,7 +286,6 @@ namespace RiotCaller.Enums
         [apiVer(apiVer.summoner_spell)]
         [Value("?spellData={spellData}")]
         summonerSpells,
-
 
         /// <summary>
         /// static-data 
@@ -314,9 +295,8 @@ namespace RiotCaller.Enums
         [Value("{id}?spellData={spellData}")]
         summonerSpellById,
 
-
         /// <summary>
-        /// version list
+        /// version list 
         /// </summary>
         [ApiType(apiType.Static)]
         [apiVer(apiVer.versions)]

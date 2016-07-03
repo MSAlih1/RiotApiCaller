@@ -50,20 +50,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiService.cs" />
+    <Compile Include="Api\Service\ApiService.cs" />
     <Compile Include="ApiModel\IRiotApiCaller.cs" />
+    <Compile Include="Api\INonStaticApi.cs" />
+    <Compile Include="Api\IStaticApi.cs" />
     <Compile Include="Api\StatusApi.cs" />
     <Compile Include="Converters\ChampionTagConverter.cs" />
     <Compile Include="Enums\champData.cs" />
     <Compile Include="Enums\ChampionTag.cs" />
     <Compile Include="Enums\ItemData.cs" />
     <Compile Include="Enums\Language.cs" />
-    <Compile Include="Api\IApiController.cs" />
-    <Compile Include="Api\IStaticApi.cs" />
+    <Compile Include="Api\Service\IApiService.cs" />
     <Compile Include="Enums\MasteryListData.cs" />
     <Compile Include="Enums\RuneListData.cs" />
     <Compile Include="Enums\SpellData.cs" />
-    <Compile Include="RiotApiCache.cs" />
+    <Compile Include="Api\Cache\RiotApiCache.cs" />
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\ChampionRotation.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="Enums\Role.cs" />
     <Compile Include="Enums\Team.cs" />
     <Compile Include="Enums\Tier.cs" />
-    <Compile Include="Api\INonStaticApi.cs" />
     <Compile Include="ApiModel\RiotApiCaller.cs" />
     <Compile Include="Converters\DateTimeFromLong.cs" />
     <Compile Include="Attributes\EnumAttributes.cs" />
@@ -141,7 +141,6 @@
     <Compile Include="StaticEndPoints\Champion\ChampionData.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionInfo.cs" />
     <Compile Include="StaticEndPoints\Champion\Champions.cs" />
-    <Compile Include="StaticEndPoints\Champion\ChampionImage.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionItems.cs" />
     <Compile Include="StaticEndPoints\LevelTipStatic.cs" />
     <Compile Include="StaticEndPoints\Champion\ChampionPassive.cs" />
@@ -167,7 +166,6 @@
     <Compile Include="StaticEndPoints\Map\MapImage.cs" />
     <Compile Include="StaticEndPoints\Mastery\Mastery.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryData.cs" />
-    <Compile Include="StaticEndPoints\Mastery\MasteryImage.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryTreeList.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryTreeListItem.cs" />
     <Compile Include="StaticEndPoints\Mastery\MasteryTrees.cs" />

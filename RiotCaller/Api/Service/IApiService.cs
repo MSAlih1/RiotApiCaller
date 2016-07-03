@@ -1,4 +1,4 @@
-﻿namespace RiotCaller
+﻿namespace RiotCaller.Api.Service
 {
     public interface IApiService
     {

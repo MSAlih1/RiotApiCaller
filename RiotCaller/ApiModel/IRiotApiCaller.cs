@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using RiotCaller.Enums;
+﻿using RiotCaller.Enums;
+using System.Collections.Generic;
 
 namespace RiotCaller
 {

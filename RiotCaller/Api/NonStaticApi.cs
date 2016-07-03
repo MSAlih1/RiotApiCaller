@@ -1,4 +1,5 @@
-﻿using RiotCaller.ApiEndPoints;
+﻿using RiotCaller.Api.Cache;
+using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
 using RiotCaller.EndPoints.ChampionRotation;
 using RiotCaller.EndPoints.FuturedGames;
@@ -13,19 +14,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RiotCaller
+namespace RiotCaller.Api
 {
     public class NonStaticApi : INonStaticApi
     {
         public RiotApiCache Cache { get; set; }
+
         public NonStaticApi(RiotApiCache _cache)
         {
             Cache = _cache;
         }
+
         public NonStaticApi()//only for test project
         {
-
         }
+
         public ChampionStatus GetChampionRotationById(region region, long championId)
         {
             RiotApiCaller<ChampionStatus> caller = new RiotApiCaller<ChampionStatus>(suffix.championRotationId);
@@ -202,6 +205,5 @@ namespace RiotCaller
             //return caller.Result;//<== orginal
             return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
-
     }
 }

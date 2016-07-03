@@ -1,15 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
     public class ChampionRecommended
     {
-
         [JsonProperty("champion")]
         public string Champion { get; set; }
 

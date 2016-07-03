@@ -69,34 +69,34 @@
         freeToPlay,
 
         /// <summary>
-        /// such as en_US, tr_TR
+        /// such as en_US, tr_TR 
         /// </summary>
         locale,
 
         /// <summary>
-        /// enum:champData
+        /// enum:champData 
         /// </summary>
         champData,
 
         id,
 
         /// <summary>
-        /// enum:itemListData
+        /// enum:itemListData 
         /// </summary>
         itemListData,
 
         /// <summary>
-        /// enum:itemListData
+        /// enum:itemListData 
         /// </summary>
         itemData,
 
         /// <summary>
-        /// enum:masteryListData
+        /// enum:masteryListData 
         /// </summary>
         masteryListData,
 
         /// <summary>
-        /// enum:masteryListData
+        /// enum:masteryListData 
         /// </summary>
         masteryData,
 

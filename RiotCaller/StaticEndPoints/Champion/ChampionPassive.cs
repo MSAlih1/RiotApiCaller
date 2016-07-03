@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RiotCaller.StaticEndPoints.Item;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
@@ -19,6 +15,6 @@ namespace RiotCaller.StaticEndPoints.Champion
         public string Name { get; set; }
 
         [JsonProperty("image")]
-        public ChampionImage Image { get; set; }
+        public StaticImage Image { get; set; }
     }
 }

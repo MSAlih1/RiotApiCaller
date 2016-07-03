@@ -1,5 +1,6 @@
 ﻿
 using RiotCaller;
+using RiotCaller.Api.Service;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints;
 using RiotCaller.EndPoints.Stats;

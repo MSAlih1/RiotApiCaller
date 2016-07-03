@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RiotCaller.Api.Cache;
 
-namespace RiotCaller
+namespace RiotCaller.Api.Service
 {
     /// <summary>
-    /// # use InSingletonScope with Ninject #
+    /// # use InSingletonScope with Ninject # 
     /// </summary>
     public class ApiService : IApiService
     {
