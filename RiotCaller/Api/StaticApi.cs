@@ -120,7 +120,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public Mastery GetMasteryById(int masteryId, region region, language lang, masteryListData? masteryData = null)
+        public Mastery GetMastery(int masteryId, region region, language lang, masteryListData? masteryData = null)
         {
             RiotApiCaller<Mastery> caller = new RiotApiCaller<Mastery>(suffix.masteryById);
             caller.AddParam(param.region, region);
@@ -153,7 +153,7 @@ namespace RiotCaller
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public RuneData GetRuneById(long runeId, region region, language lang, runeListData runeData = runeListData.basic)
+        public RuneData GetRune(long runeId, region region, language lang, runeListData runeData = runeListData.basic)
         {
             RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
             caller.AddParam(param.region, region);
@@ -169,6 +169,20 @@ namespace RiotCaller
             RiotApiCaller<SummonerSpellList> caller = new RiotApiCaller<SummonerSpellList>(suffix.summonerSpells);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
+            if (spellData != null)
+                caller.AddParam(param.spellData, spellData);
+            else
+                caller.AddParam(param.spellData, "");//important for basic information
+
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+        public SummonerSpellData GetSummonerSpell(long summonerSpellId,region region, language lang, spellData? spellData = null)
+        {
+            RiotApiCaller<SummonerSpellData> caller = new RiotApiCaller<SummonerSpellData>(suffix.summonerSpellById);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            caller.AddParam(param.id, summonerSpellId);
             if (spellData != null)
                 caller.AddParam(param.spellData, spellData);
             else

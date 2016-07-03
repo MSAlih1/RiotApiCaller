@@ -28,6 +28,14 @@ namespace RiotCaller.Tests
     public class StaticApiTest
     {
         [TestMethod]
+        public void GetSummonerSpell()
+        {
+            StaticApi staticapi = new StaticApi();
+            SummonerSpellData data = staticapi.GetSummonerSpell(1, region.tr, language.tr_TR, spellData.all);
+            Assert.IsNotNull(data);
+        }
+
+        [TestMethod]
         public void GetSummonerSpells()
         {
             StaticApi staticapi = new StaticApi();
@@ -39,7 +47,7 @@ namespace RiotCaller.Tests
         public void GetRuneById()
         {
             StaticApi staticapi = new StaticApi();
-            RuneData data = staticapi.GetRuneById(5001, region.tr, language.tr_TR, runeListData.all);
+            RuneData data = staticapi.GetRune(5001, region.tr, language.tr_TR, runeListData.all);
             Assert.IsNotNull(data);
         }
 
@@ -63,7 +71,7 @@ namespace RiotCaller.Tests
         public void GetMasteryById()
         {
             StaticApi staticapi = new StaticApi();
-            StaticEndPoints.Mastery.Mastery data = staticapi.GetMasteryById(6161, region.tr, language.tr_TR);
+            StaticEndPoints.Mastery.Mastery data = staticapi.GetMastery(6161, region.tr, language.tr_TR);
             Assert.IsNotNull(data);
         }
 
