@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Runes
 {
-    public class Runes
+    public class RuneList
     {
 
         [JsonProperty("basic")]
         public StaticBasic Basic { get; set; }
 
         [JsonProperty("data")]
-        public Dictionary<int, RuneData> Runeler { get; set; }
+        public Dictionary<int, RuneData> Runes { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

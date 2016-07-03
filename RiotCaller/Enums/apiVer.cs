@@ -58,6 +58,8 @@ namespace RiotCaller.Enums
         /// static-data getrunes
         /// </summary>
         [Version(1.2)]
-        rune
+        rune,
+        [Version(1.2)]
+        summoner_spell
     }
 }

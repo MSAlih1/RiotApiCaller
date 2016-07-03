@@ -101,6 +101,7 @@
         masteryData,
 
         runeListData,
-        runeData
+        runeData,
+        spellData
     }
 }

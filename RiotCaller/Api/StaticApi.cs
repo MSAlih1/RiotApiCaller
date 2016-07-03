@@ -6,6 +6,7 @@ using RiotCaller.StaticEndPoints.Map;
 using RiotCaller.StaticEndPoints.Mastery;
 using RiotCaller.StaticEndPoints.Realm;
 using RiotCaller.StaticEndPoints.Runes;
+using RiotCaller.StaticEndPoints.SummonerSpells;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -143,22 +144,36 @@ namespace RiotCaller
             return caller.Result.FirstOrDefault();
         }
 
-        public Runes GetRunes(region region, language lang, runeListData runeData = runeListData.basic)
+        public RuneList GetRunes(region region, language lang, runeListData runeData = runeListData.basic)
         {
-            RiotApiCaller<Runes> caller = new RiotApiCaller<Runes>(suffix.runes);
+            RiotApiCaller<RuneList> caller = new RiotApiCaller<RuneList>(suffix.runes);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
             caller.AddParam(param.runeListData, runeData);
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }
-        public RuneData GetRuneById(long runeId,region region, language lang, runeListData runeData = runeListData.basic)
+        public RuneData GetRuneById(long runeId, region region, language lang, runeListData runeData = runeListData.basic)
         {
             RiotApiCaller<RuneData> caller = new RiotApiCaller<RuneData>(suffix.runeById);
             caller.AddParam(param.region, region);
             caller.AddParam(param.locale, lang);
             caller.AddParam(param.id, runeId);
             caller.AddParam(param.runeData, runeData);
+            caller.CreateRequest();
+            return caller.Result.FirstOrDefault();
+        }
+
+        public SummonerSpellList GetSummonerSpells(region region, language lang, spellData? spellData = null)
+        {
+            RiotApiCaller<SummonerSpellList> caller = new RiotApiCaller<SummonerSpellList>(suffix.summonerSpells);
+            caller.AddParam(param.region, region);
+            caller.AddParam(param.locale, lang);
+            if (spellData != null)
+                caller.AddParam(param.spellData, spellData);
+            else
+                caller.AddParam(param.spellData, "");//important for basic information
+
             caller.CreateRequest();
             return caller.Result.FirstOrDefault();
         }

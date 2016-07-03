@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiotCaller.StaticEndPoints.Champion
 {
-    public class SpellVar
+    public class VarStatic
     {
         [JsonProperty("link")]
         public string Link { get; set; }
@@ -17,5 +17,13 @@ namespace RiotCaller.StaticEndPoints.Champion
 
         [JsonProperty("key")]
         public string Key { get; set; }
+
+
+        [JsonProperty("ranksWith")]
+        public string RanksWith { get; set; }
+
+
+        [JsonProperty("dyn")]
+        public string Dyn { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace RiotCaller.StaticEndPoints.Champion
         public List<int> Range { get; set; }
 
         [JsonProperty("leveltip")]
-        public SpellLeveltip Leveltip { get; set; }
+        public LevelTipStatic Leveltip { get; set; }
 
         [JsonProperty("resource")]
         public string Resource { get; set; }
@@ -34,7 +34,7 @@ namespace RiotCaller.StaticEndPoints.Champion
         public List<int> Cost { get; set; }
 
         [JsonProperty("vars")]
-        public List<SpellVar> Vars { get; set; }
+        public List<VarStatic> Vars { get; set; }
 
         [JsonProperty("sanitizedDescription")]
         public string SanitizedDescription { get; set; }
