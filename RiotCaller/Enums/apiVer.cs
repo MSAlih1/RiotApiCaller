@@ -7,6 +7,10 @@ namespace RiotCaller.Enums
     /// </summary>
     public enum apiVer
     {
+        //////////////////////
+        //////non-STATIC DATA
+        //////////////////////
+
         [Version(1.4)]
         summoner,
 
@@ -69,6 +73,13 @@ namespace RiotCaller.Enums
         summoner_spell,
 
         [Version(1.2)]
-        versions
+        versions,
+
+        //////////////////////
+        //////STATUS DATA
+        //////////////////////
+
+        [Version(1.2)]
+        shards
     }
 }

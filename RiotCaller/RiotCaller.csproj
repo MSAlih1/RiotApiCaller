@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\IStatusApi.cs" />
     <Compile Include="Api\Service\ApiService.cs" />
     <Compile Include="ApiModel\IRiotApiCaller.cs" />
     <Compile Include="Api\INonStaticApi.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="StaticEndPoints\Runes\RuneList.cs" />
     <Compile Include="StaticEndPoints\SummonerSpells\SummonerSpellData.cs" />
     <Compile Include="StaticEndPoints\SummonerSpells\SummonerSpellList.cs" />
+    <Compile Include="StatusEndPoints\Shards\Shards.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

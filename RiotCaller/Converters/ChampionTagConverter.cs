@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace RiotCaller.Converters
 {
-    public class ChampionTagConverter : JsonConverter
+    public class ChampionTagConverter<TEnum> : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -20,12 +20,12 @@ namespace RiotCaller.Converters
             var token = JToken.Load(reader);
             if (token.Values<string>() == null) return null;
             var liste = token.Values<string>();
-            return liste.Select(x => (championTag)Enum.Parse(typeof(championTag), x)).ToList();
+            return liste.Select(x => (TEnum)Enum.Parse(typeof(TEnum), x)).ToList();
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var liste = (value as List<championTag>).Select(p => p.ToString()).ToList();
+            var liste = (value as List<TEnum>).Select(p => p.ToString()).ToList();
             serializer.Serialize(writer, liste);
         }
     }

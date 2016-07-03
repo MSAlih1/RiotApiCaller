@@ -47,10 +47,12 @@ namespace RiotCaller
         public static void CreateRequest<T>(this RiotApiCaller<T> rac) where T : class
         {
             string Json = string.Empty;
-
-            if (!rac.Url.EndsWith("&") && !rac.Url.EndsWith("?"))
-                rac.Url += "&";
-            rac.Url += string.Format("api_key={0}", apikey.Key);//api key joining
+            if (rac.Suffix != suffix.status)
+            {
+                if (!rac.Url.EndsWith("&") && !rac.Url.EndsWith("?"))
+                    rac.Url += "&";
+                rac.Url += string.Format("api_key={0}", apikey.Key);//api key joining
+            }
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(rac.Url);
             request.Method = "GET";
@@ -81,7 +83,7 @@ namespace RiotCaller
             catch (Exception e)
             {
                 if (e.Source == "Newtonsoft.Json")
-                    rac.ResultStruct = int.Parse(Json);//only for ChampionScore() results
+                    rac.ResultStruct = int.Parse(Json);//only for ChampionScore() results, other way somethings may mistake
                 else
                     throw e;
             }

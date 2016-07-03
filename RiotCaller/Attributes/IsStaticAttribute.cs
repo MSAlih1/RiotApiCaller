@@ -11,9 +11,9 @@ namespace RiotCaller.Attributes
     {
         private readonly apiType value;
 
-        public IsStaticAttribute(bool _isStatic)
+        public IsStaticAttribute(int _isStatic)
         {
-            this.value = _isStatic == true ? apiType.Static : apiType.nonStatic;
+            this.value = _isStatic == 0 ? apiType.Status : (_isStatic == 2 ? apiType.Static : apiType.nonStatic);
         }
 
         public apiType isStatic { get { return value; } }

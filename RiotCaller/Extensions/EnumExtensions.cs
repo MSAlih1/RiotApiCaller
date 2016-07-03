@@ -25,7 +25,8 @@ namespace RiotCaller
         {
             var typeInfo = enumVal.GetType().GetTypeInfo();
             var v = typeInfo.DeclaredMembers.First(x => x.Name == enumVal.ToString());
-            return v.GetCustomAttribute<ApiTypeAttribute>().ApiType;
+            apiType a = v.GetCustomAttribute<ApiTypeAttribute>().ApiType;
+            return a;
         }
 
         public static Attribute GetValue(this Enum enumVal)

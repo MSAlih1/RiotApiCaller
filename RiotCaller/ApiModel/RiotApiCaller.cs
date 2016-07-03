@@ -23,6 +23,14 @@ namespace RiotCaller
         public RiotApiCaller(suffix _suffix)
         {
             Suffix = _suffix;
+            if (Suffix == suffix.status)
+            {
+                Url = string.Format("https://{0}/{1}",
+                    Suffix.GetApiType().GetValue(),
+                       Suffix.GetApiGroup().ToString2()
+                       );
+                return;//ended
+            }
             if (_suffix == suffix.featuredGames || _suffix == suffix.championMasteries ||
                 _suffix == suffix.championMasteryScore || _suffix == suffix.championMasteryTop || _suffix == suffix.championMastery)
             {
