@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,7 @@
     <Compile Include="Enums\ItemData.cs" />
     <Compile Include="Enums\LaneType.cs" />
     <Compile Include="Enums\Language.cs" />
+    <Compile Include="Enums\MapType.cs" />
     <Compile Include="Enums\MasteryListData.cs" />
     <Compile Include="Enums\MonsterType.cs" />
     <Compile Include="Enums\RuneListData.cs" />

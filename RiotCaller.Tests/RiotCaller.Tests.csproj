@@ -63,8 +63,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SmartPropertyTest.cs" />
     <Compile Include="MethodExamples.cs" />
-    <Compile Include="ApiServiceTest.cs" />
+    <Compile Include="ApiCacheTest.cs" />
     <Compile Include="StatusApiTest.cs" />
     <Compile Include="StaticApiTest.cs" />
     <Compile Include="NonStaticApiTest.cs" />

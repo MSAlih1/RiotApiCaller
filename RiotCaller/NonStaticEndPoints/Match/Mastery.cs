@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.StaticEndPoints.Mastery;
 
 namespace RiotCaller.EndPoints.Match
 {
@@ -9,5 +10,11 @@ namespace RiotCaller.EndPoints.Match
 
         [JsonProperty("masteryId")]
         public int MasteryId { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public RiotCaller.StaticEndPoints.Mastery.Mastery MasteryInfo { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RiotCaller.StaticEndPoints.Runes;
 
 namespace RiotCaller.EndPoints.Match
 {
@@ -9,5 +10,11 @@ namespace RiotCaller.EndPoints.Match
 
         [JsonProperty("runeId")]
         public int RuneId { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public RuneData RuneInfo { get; set; }
     }
 }

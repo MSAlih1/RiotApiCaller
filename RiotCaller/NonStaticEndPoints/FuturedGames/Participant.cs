@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.EndPoints.Match;
 using RiotCaller.Enums;
+using RiotCaller.StaticEndPoints.Champion;
+using RiotCaller.StaticEndPoints.SummonerSpells;
 using System.Collections.Generic;
 
 namespace RiotCaller.EndPoints.FuturedGames
@@ -33,5 +35,28 @@ namespace RiotCaller.EndPoints.FuturedGames
 
         [JsonProperty("runes")]
         public List<Rune> Runes { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public SummonerSpellData Spell1 { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public SummonerSpellData Spell2 { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public ChampionData Champion { get; set; }
+
+        public override string ToString()
+        {
+            return SummonerName;
+        }
     }
 }

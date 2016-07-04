@@ -75,5 +75,10 @@ namespace RiotCaller.StaticEndPoints.SummonerSpells
 
         [JsonProperty("vars")]
         public List<VarStatic> Vars { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

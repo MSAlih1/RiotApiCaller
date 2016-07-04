@@ -15,7 +15,7 @@ namespace RiotCaller.EndPoints.FuturedGames
         public gameMode GameMode { get; set; }
 
         [JsonProperty("mapId")]
-        public int MapId { get; set; }
+        public mapType MapId { get; set; }
 
         [JsonProperty("bannedChampions")]
         public List<BannedChampion> BannedChampions { get; set; }

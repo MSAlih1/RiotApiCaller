@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Enums;
+using RiotCaller.StaticEndPoints.Champion;
+using System.Web.Script.Serialization;
 
 namespace RiotCaller.EndPoints.FuturedGames
 {
@@ -13,5 +15,11 @@ namespace RiotCaller.EndPoints.FuturedGames
 
         [JsonProperty("teamId")]
         public team TeamId { get; set; }
+
+        /// <summary>
+        /// smarty property
+        /// </summary>
+        [JsonIgnore]
+        public ChampionData Champion { get; set; }
     }
 }

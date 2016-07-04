@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using RiotCaller.Api;
 using RiotCaller.Api.Service;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
+using RiotCaller.NonStaticEndPoints.CurrentGame;
 using RiotCaller.StaticEndPoints.Champion;
 using RiotCaller.StatusEndPoints.Shards;
 using System;
@@ -14,7 +16,7 @@ using System.Configuration;
 namespace RiotCaller.Tests
 {
     [TestClass]
-    public class ApiServiceTest
+    public class ApiCacheTest
     {
         private long championId1 = long.Parse(ConfigurationSettings.AppSettings["championId1"]);
 
@@ -35,6 +37,7 @@ namespace RiotCaller.Tests
         private string teamName1 = ConfigurationSettings.AppSettings["teamId1"];
 
         private string teamName2 = ConfigurationSettings.AppSettings["teamId2"];
+
 
         [TestMethod]
         public void CGetChampions()

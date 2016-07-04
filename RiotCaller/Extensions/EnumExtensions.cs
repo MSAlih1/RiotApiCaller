@@ -121,5 +121,17 @@ namespace RiotCaller
                     return region.tr;
             }
         }
+
+        public static language ToLanguage(this Platform enumVal)
+        {
+            switch (enumVal)
+            {
+                case Platform.TR1:
+                    return language.tr_TR;
+                    
+                default:
+                    return language.en_US;
+            }
+        }
     }
 }

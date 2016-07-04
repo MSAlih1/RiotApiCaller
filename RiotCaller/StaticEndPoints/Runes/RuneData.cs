@@ -29,6 +29,7 @@ namespace RiotCaller.StaticEndPoints.Runes
 
         [JsonProperty("tags")]
         public List<string> Tags { get; set; }
+
         public override string ToString()
         {
             return Name;
