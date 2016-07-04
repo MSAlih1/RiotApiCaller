@@ -6,9 +6,7 @@ using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.Stats;
 using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
-using RiotCaller.NonStaticEndPoints.CurrentGame;
 using RiotCaller.StaticEndPoints.Champion;
-using RiotCaller.StatusEndPoints.Shards;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,15 +37,24 @@ namespace RiotCaller.Tests
         private string teamName2 = ConfigurationSettings.AppSettings["teamId2"];
 
 
+        /// <summary>
+        /// CacheMemory's multipleKey ADD / GET test method
+        /// </summary>
         [TestMethod]
         public void CGetChampions()
         {
             ApiService svc = new ApiService();
-            Champions data = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);
-            Assert.IsTrue(data.Data.Count > 0);
+            Champions getting_from_server = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);
 
-            data = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);//data coming from cache
-            Assert.IsTrue(data.Data.Count > 0);
+            Assert.IsTrue(getting_from_server.Data.Count > 0);
+
+            svc.apiCache.AddWithMultipleKey("test123", "RiotCaller.StaticEndPoints.Champion.Champions+tr+tr_TR+all");//adding test key with orginkey(do not change manual orginkey)
+
+            var getting_from_cache = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);//data coming from cache
+            var geting_with_multiple_key = svc.apiCache.GetWithMultipleKey<Champions>("test123");
+
+            Assert.IsNotNull(geting_with_multiple_key);
+            Assert.IsTrue(geting_with_multiple_key.Data.Count > 0);
         }
 
         [TestMethod]

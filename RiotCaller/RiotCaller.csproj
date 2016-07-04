@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Api\Cache\cacheObject.cs" />
     <Compile Include="Api\Cache\IApiCache.cs" />
+    <Compile Include="Api\Cache\RefCacheItem.cs" />
+    <Compile Include="Api\Cache\RiotApiCache.cs" />
     <Compile Include="Api\INonStaticApi.cs" />
     <Compile Include="Api\IStaticApi.cs" />
     <Compile Include="Api\IStatusApi.cs" />
@@ -79,7 +81,6 @@
     <Compile Include="Enums\MonsterType.cs" />
     <Compile Include="Enums\RuneListData.cs" />
     <Compile Include="Enums\SpellData.cs" />
-    <Compile Include="Api\Cache\RiotApiCache.cs" />
     <Compile Include="Enums\SubType.cs" />
     <Compile Include="Enums\TowerType.cs" />
     <Compile Include="Enums\wardType.cs" />
