@@ -36,7 +36,7 @@ namespace RiotCaller
                 val = value.ToString();
 
             rac.Url = rac.Url.Replace(string.Format("{{{0}}}", key.ToString()), val);
-            rac.cacheBuild.Add(value.ToString());
+            rac.cacheBuild.Add(value.ToString().ToLower());
         }
 
         public static void RemoveParam<T>(this RiotApiCaller<T> rac, param key) where T : class
@@ -95,7 +95,9 @@ namespace RiotCaller
                 if (e.Source == "Newtonsoft.Json")
                     rac.ResultStruct = int.Parse(Json);//only for ChampionScore() results, other way somethings may mistake
                 else
+                {
                     throw e;
+                }
             }
         }
     }

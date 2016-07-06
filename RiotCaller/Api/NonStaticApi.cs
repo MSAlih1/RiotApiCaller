@@ -106,7 +106,7 @@ namespace RiotCaller.Api
             .GetLeague();
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<League>(new cacheParam(typeof(League).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<League>(new cacheParam<League>(summonerId, region), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -158,7 +158,7 @@ namespace RiotCaller.Api
               .GetRecentGames();
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<RecentGames>(new cacheParam(typeof(RecentGames).ToString(), summonerId, region), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<RecentGames>(new cacheParam<RecentGames>(summonerId, region), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -172,7 +172,7 @@ namespace RiotCaller.Api
             .GetStatsRanked(season);
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<Ranked>(new cacheParam(typeof(Ranked).ToString(), summonerId, region, season), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<Ranked>(new cacheParam<Ranked>(summonerId, region, season), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -187,7 +187,7 @@ namespace RiotCaller.Api
             .GetStatsSummary(season);
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<Summary>(new cacheParam(typeof(Summary).ToString(), summonerId, region, season), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<Summary>(new cacheParam<Summary>(summonerId, region, season), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -202,7 +202,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam(typeof(Summoner).ToString(), summonerName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam<Summoner>(summonerName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -220,7 +220,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam(typeof(Summoner).ToString(), summonerId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Summoner>(new cacheParam<Summoner>(summonerId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -258,7 +258,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam(typeof(Team).ToString(), teamName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam<Team>(teamName, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -276,7 +276,7 @@ namespace RiotCaller.Api
             if (result.Count > 0)
             {
                 if (useCaching)
-                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam(typeof(Team).ToString(), teamId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
+                    Cache.AddOrUpdate(new cacheObject<Team>(new cacheParam<Team>(teamId, region), result.FirstOrDefault(), new TimeSpan(0, 22, 0)));
 
                 return result.FirstOrDefault();
             }
@@ -303,13 +303,40 @@ namespace RiotCaller.Api
             return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
         }
 
-        public CurrentGame GetCurrentGame(long summonerId, region region)
+        public CurrentGame GetCurrentGame(string summonerName, region region, bool useCaching = false)
+        {
+            CurrentGame val = Cache.GetWithMultipleKey<CurrentGame>(summonerName, region.ToString(), region.ToPlatform().ToString()); //cache getting
+            if (val != null)
+                return val;
+            Summoner sum = GetSummoner(summonerName, region, useCaching);
+            return GetCurrentGame(sum.Id, region, useCaching);
+        }
+
+        public CurrentGame GetCurrentGame(long summonerId, region region, bool useCaching = false)
         {
             RiotApiCaller<CurrentGame> caller = new RiotApiCaller<CurrentGame>(suffix.CurrentGameInfo);
             caller.AddParam(param.summonerId, summonerId);
             caller.AddParam(param.region, region);
             caller.AddParam(param.platformId, region.ToPlatform());
-            caller.CreateRequest();
+
+            if (useCaching)
+            {
+                cacheObject<CurrentGame> cache = caller.CreateRequest(new TimeSpan(0, 22, 0));
+                Cache.AddOrUpdate(cache);
+                foreach (var item in caller.Result.FirstOrDefault().Participants)
+                {
+                    Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
+                        item.SummonerName, 
+                        caller.Result.FirstOrDefault().PlatformId.ToRegion(), 
+                        caller.Result.FirstOrDefault().PlatformId.ToString()
+                        ).ToString(), cache.PKey);
+                }
+            }
+            else
+            {
+                caller.CreateRequest();
+            }
+
             return caller.Result.FirstOrDefault();
         }
     }

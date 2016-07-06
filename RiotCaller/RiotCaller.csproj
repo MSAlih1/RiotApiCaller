@@ -84,6 +84,7 @@
     <Compile Include="Enums\SubType.cs" />
     <Compile Include="Enums\TowerType.cs" />
     <Compile Include="Enums\wardType.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="NonStaticEndPoints\ChampionMastery\ChampionMastery.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\Champion.cs" />
     <Compile Include="NonStaticEndPoints\ChampionRotation\ChampionRotation.cs" />
@@ -202,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StaticEndPoints\Languages\" />
+    <Folder Include="StaticEndPoints\Versions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

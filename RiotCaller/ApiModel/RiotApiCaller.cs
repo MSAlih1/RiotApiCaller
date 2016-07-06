@@ -25,6 +25,7 @@ namespace RiotCaller
         /// </param>
         public RiotApiCaller(suffix _suffix)
         {
+            cacheBuild.Add(typeof(T).ToCacheParam());//cache key adding
             Suffix = _suffix;
             if (Suffix == suffix.status)
             {
@@ -63,7 +64,6 @@ namespace RiotCaller
                 Url = Url.Replace("/team/team/", "/team/");//BUG: fix it (for => suffix.teamByIds)
                 Url = Url.Replace("championRotation/", "");//BUG suffix.championRotation, suffix.championRotation
             }
-            cacheBuild.Add(typeof(T).ToString());//cache key adding
         }
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace RiotCaller.Api.Cache
         public RefCacheItem(TimeSpan ts,string refkeyValue)
         {
             ExpiryTime = DateTime.Now.Add(ts);
-            OriginKey = refkeyValue;
+            OriginKey = refkeyValue.ToLower();
         }
     }
 }

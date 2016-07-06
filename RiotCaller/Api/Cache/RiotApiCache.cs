@@ -22,7 +22,7 @@ namespace RiotCaller.Api.Cache
         {
             foreach (var key in keys)//multiple keys one value
             {
-                while (!AddWithMultipleKey(key, OrginKey)) ;//if false try remove again
+                while (!AddWithMultipleKey(key.ToLower(), OrginKey)) ;//if false try remove again
             }
             RemoveExpiredItems();
         }
@@ -38,7 +38,7 @@ namespace RiotCaller.Api.Cache
         {
             bool status = refCacheKey.TryAdd(key, new RefCacheItem(new TimeSpan(0, 22, 0), OrginKey));//adding reference key
             if (!status)//if already exists, firstly removes and set false for check again
-                RemoveWithRefKey(key);
+                RemoveWithRefKey(key.ToLower());
             return status;
         }
 
@@ -52,6 +52,12 @@ namespace RiotCaller.Api.Cache
                 RemoveWithRefKey(item.Key);
         }
 
+        public T GetWithMultipleKey<T>(params string[] _pKey)
+            where T : class
+        {
+            string findkey = new cacheParam<T>(_pKey).ToString();
+            return GetWithMultipleKey<T>(findkey);
+        }
         /// <summary>
         /// getting data with multiple key
         /// </summary>
@@ -66,7 +72,6 @@ namespace RiotCaller.Api.Cache
             bool isExists = refCacheKey.TryGetValue(pKey.ToLower(), out data);
             if (isExists)
             {
-
                 return Get<T>(data.OriginKey);//orginkey searching in cache memory
             }
             else
@@ -110,6 +115,9 @@ namespace RiotCaller.Api.Cache
         public void AddOrUpdate<T>(cacheObject<T> _object)
             where T : class
         {
+            if (Get<T>(_object.PKey) != null)
+                MemoryCache.Cache.Remove(_object.PKey);
+
             MemoryCache.Cache.Store(_object.PKey, _object, (int)_object.ExpiryTime.TotalMilliseconds);
         }
 
@@ -122,7 +130,7 @@ namespace RiotCaller.Api.Cache
         public T Get<T>(params string[] _pKey)
             where T : class
         {
-            string findkey = string.Format("{0}+{1}", typeof(T).ToString(), string.Join("+", _pKey));
+            string findkey = new cacheParam<T>(_pKey).ToString();
             try
             {
                 return Get<T>(findkey);
@@ -142,8 +150,16 @@ namespace RiotCaller.Api.Cache
         public T Get<T>(string PKey)
             where T : class
         {
-            object val = MemoryCache.Cache.Get(PKey);
-            return (val as cacheObject<T>).Obj;
+            object val;
+            try
+            {
+                val = MemoryCache.Cache.Get(PKey);
+                return (val as cacheObject<T>).Obj;
+            }
+            catch (MemoryCache.MemoryCacheException ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>

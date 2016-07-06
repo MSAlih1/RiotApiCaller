@@ -19,7 +19,7 @@ namespace RiotCaller.Api.Cache
             ExpiryTime = expiry;
         }
 
-        public cacheObject(cacheParam pkeybuild, T value, TimeSpan expiry)
+        public cacheObject(cacheParam<T> pkeybuild, T value, TimeSpan expiry)
         {
             PKey = pkeybuild.ToString();
             Obj = value;
@@ -28,7 +28,7 @@ namespace RiotCaller.Api.Cache
 
         public cacheObject(List<String> pkeybuild, T value, TimeSpan expiry)
         {
-            PKey = string.Join("+", pkeybuild);
+            PKey = string.Join("+", pkeybuild).ToLower();
             Obj = value;
             ExpiryTime = expiry;
         }
@@ -42,7 +42,7 @@ namespace RiotCaller.Api.Cache
         //}
 
     }
-    public class cacheParam
+    public class cacheParam<T> where T : class
     {
         string param = "";
         /// <summary>
@@ -51,11 +51,11 @@ namespace RiotCaller.Api.Cache
         /// <param name="parameters"></param>
         public cacheParam(params Object[] parameters)
         {
-            param = string.Join("+", parameters);
+            param = string.Format("{0}+{1}", typeof(T).ToCacheParam(), string.Join("+", parameters));
         }
         public override string ToString()
         {
-            return param;
+            return param.ToLower();
         }
     }
 }

@@ -122,6 +122,11 @@ namespace RiotCaller
             }
         }
 
+        public static language ToLanguage(this region enumVal)
+        {
+            return enumVal.ToPlatform().ToLanguage();
+        }
+
         public static language ToLanguage(this Platform enumVal)
         {
             switch (enumVal)

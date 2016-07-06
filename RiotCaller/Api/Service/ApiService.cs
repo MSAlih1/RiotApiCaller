@@ -27,11 +27,17 @@ namespace RiotCaller.Api.Service
             Status = new StatusApi(apiCache);
         }
 
+        ~ApiService()
+        {
+            apiCache.MemoryClear();
+        }
+
+
         /// <summary>
         /// all values searching in cached values
         /// </summary>
         /// <param name="c"></param>
-        public void SmartProperty(GameList c)
+        public void Smartproperty(CurrentGame c)
         {
             foreach (BannedChampion _champion in c.BannedChampions)
             {
@@ -70,15 +76,9 @@ namespace RiotCaller.Api.Service
                 }
 
             }
+
         }
-        /// <summary>
-        /// all values searching in cached values
-        /// </summary>
-        /// <param name="c"></param>
-        public void Smartproperty(CurrentGame c)
-        {
-            SmartProperty(c as GameList);
-        }
+
 
     }
 }
