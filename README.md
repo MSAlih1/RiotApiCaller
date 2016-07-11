@@ -1,4 +1,6 @@
-# RiotApiCaller
+# RiotCaller
+[![NuGet version](https://badge.fury.io/nu/RiotCaller.svg)](https://badge.fury.io/nu/RiotCaller)
+
 Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends game)
 
   - generic class and method were used
