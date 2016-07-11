@@ -25,7 +25,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetCurrentGame()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             CurrentGame data = api.GetCurrentGame(summonerId1, Region);
         }
 
@@ -72,7 +72,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionRotation()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionRotation data = api.GetChampionRotation(region.tr, true);
             Assert.IsTrue(data.Champions.Count > 0);
         }
@@ -80,7 +80,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionRotationByChampId()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionStatus data = api.GetChampionRotationById(region.tr, championId1);
             Assert.IsNotNull(data);
         }
@@ -88,7 +88,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionScore()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             int data = api.GetChampionMasteryScore(summonerId1, Region);
             Assert.IsTrue(data > 0);
 
@@ -97,7 +97,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionTop()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<ChampionMastery> data = api.GetChampionMasteryTop(summonerId1, Region, 4);
             Assert.IsTrue(data.Count == 4);
 
@@ -106,7 +106,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionMastery()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionMastery data = api.GetChampionMastery(summonerId1, championId1, Region);
             Assert.IsNotNull(data);
         }
@@ -114,7 +114,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionMasteries()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<ChampionMastery> data = api.GetChampionMasteries(summonerId1, Region);
             Assert.IsTrue(data.Count > 0);
         }
@@ -122,7 +122,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetFuturedGames()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             FuturedGames data = api.GetFuturedGames(Region);
             Assert.IsNotNull(data);
         }
@@ -130,7 +130,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetMatchDetail()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             MatchDetail data = api.GetMatchDetail(gameId1, Region, true);
             Assert.IsNotNull(data);
         }
@@ -138,7 +138,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetLeagueId()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             League data = api.GetLeague(summonerId1, Region);
             Assert.IsNotNull(data);
         }
@@ -146,7 +146,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetLeagueByIds()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<List<League>> data = api.GetLeagues(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 1);
         }
@@ -154,7 +154,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetMatchList()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             MatchList data = api.GetMatchList(summonerId1, region.tr);
             Assert.IsNotNull(data);
         }
@@ -162,7 +162,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetStatsRanked()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             var data = api.GetStatsRanked(summonerId1, Region);
             Assert.IsNotNull(data);
         }
@@ -170,7 +170,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetStatsSummary()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Summary data = api.GetStatsSummary(summonerId1, Region);
             Assert.IsNotNull(data);
         }
@@ -178,7 +178,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetSummonerByName()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Summoner data = api.GetSummoner(summonerName1, Region);
             Assert.IsNotNull(data);
         }
@@ -186,7 +186,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetSummonerByNames()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Summoner> data = api.GetSummoners(new List<string>() { summonerName1, summonerName2 }, Region);
             Assert.IsTrue(data.Count > 1);
         }
@@ -194,7 +194,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamByName()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Team data = api.GetTeam(teamName1, Region);
             Assert.IsNotNull(data);
         }
@@ -202,7 +202,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamById()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Team data = api.GetTeam(summonerId1, Region);
             Assert.IsNotNull(data);
         }
@@ -210,7 +210,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamByNames()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Team> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }
@@ -218,7 +218,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamsByIds()
         {
-            NonStaticApi api = new NonStaticApi();
+            NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Team> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 0);
         }

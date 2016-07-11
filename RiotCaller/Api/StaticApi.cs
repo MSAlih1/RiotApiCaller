@@ -20,9 +20,9 @@ namespace RiotCaller.Api
             Cache = _cache;
         }
 
-        public StaticApi()//only for test project
-        {
-        }
+        //public StaticApi()//only for test project
+        //{
+        //}
 
         public ApiCache Cache { get; private set; }
         public ChampionData GetChampion(long championId, region region, language lang, champData? chamData = null, bool useCaching = false)

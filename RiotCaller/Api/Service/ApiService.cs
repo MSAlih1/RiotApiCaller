@@ -10,10 +10,11 @@ using System.Reflection;
 namespace RiotCaller.Api.Service
 {
     /// <summary>
-    /// # use InSingletonScope with Ninject # 
+    /// # use InSingletonScope with Ninject on mvcsite # 
     /// </summary>
     public class ApiService : IApiService
     {
+        public static string ApiKey { get; set; } = apikey.Key;//use self apikey. also you can delete apikey.cs from solution
         public StatusApi Status { get; private set; }
         public NonStaticApi Api { get; private set; }
         public StaticApi staticApi { get; private set; }

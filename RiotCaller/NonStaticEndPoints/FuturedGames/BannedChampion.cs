@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Enums;
 using RiotCaller.StaticEndPoints.Champion;
-using System.Web.Script.Serialization;
 
 namespace RiotCaller.EndPoints.FuturedGames
 {

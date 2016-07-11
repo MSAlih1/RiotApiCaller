@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
 using RiotCaller.Api.Cache;
+using RiotCaller.Api.Service;
 using RiotCaller.Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 
 namespace RiotCaller
 {
@@ -61,39 +63,39 @@ namespace RiotCaller
             {
                 if (!rac.Url.EndsWith("&") && !rac.Url.EndsWith("?"))
                     rac.Url += "&";
-                rac.Url += string.Format("api_key={0}", apikey.Key);//api key joining
+                rac.Url += string.Format("api_key={0}", ApiService.ApiKey);//api key joining
             }
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(rac.Url);
-            request.Method = "GET";
-            request.UserAgent = "RiotCaller";
-            request.Headers.Add("Accept-Language", "en-US");
-            request.Headers.Add("Accept-Charset", "ISO-8859-1,utf-8");
-            request.ContentType = "application/json";
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, rac.Url);
+                request.Headers.Add("UserAgent", "RiotCaller");
+                request.Headers.Add("Accept-Language", "en-US");
+                request.Headers.Add("Accept-Charset", "ISO-8859-1,utf-8");
+                HttpClient httpClient = new HttpClient();
+                using (HttpResponseMessage response = httpClient.GetAsync(request.RequestUri).Result)
                 {
-                    Stream dataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(dataStream, System.Text.Encoding.UTF8);
-                    Json = reader.ReadToEnd();
-                    reader.Close();
-                    dataStream.Close();
+                    if (!response.IsSuccessStatusCode)
+                        throw new Exception("ERROR: " + response.StatusCode.ToString());
+
+                    using (HttpContent content = response.Content)
+                    {
+                        Json = content.ReadAsStringAsync().Result;
+                    }
                 }
                 try
                 {
-                    rac.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();
+                    rac.Result = JsonConvert.DeserializeObject<Dictionary<string, T>>(Json).Values.ToList();//method 1
                 }
                 catch (Exception ex)
                 {
                     if (ex.Source == "Newtonsoft.Json")
-                        rac.Result.Add(JsonConvert.DeserializeObject<T>(Json));
+                        rac.Result.Add(JsonConvert.DeserializeObject<T>(Json));//method 2
                 }
             }
             catch (Exception e)
             {
                 if (e.Source == "Newtonsoft.Json")
-                    rac.ResultStruct = int.Parse(Json);//only for ChampionScore() results, other way somethings may mistake
+                    rac.ResultStruct = int.Parse(Json);//method 3 //only for ChampionScore() results, other way somethings may mistake
                 else
                 {
                     throw e;

@@ -216,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RiotCaller\RiotCaller.csproj">
-      <Project>{1d398266-3e42-4dcf-b833-4d4719975deb}</Project>
+      <Project>{f26675f0-5846-4991-9e24-f134beab3d02}</Project>
       <Name>RiotCaller</Name>
     </ProjectReference>
   </ItemGroup>

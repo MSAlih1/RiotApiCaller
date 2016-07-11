@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Reflection;
 
 namespace RiotCaller.Converters
 {
@@ -7,7 +8,7 @@ namespace RiotCaller.Converters
     {
         public override bool CanConvert(Type objectType)
         {
-            return typeof(long).IsAssignableFrom(objectType);
+            return typeof(long).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

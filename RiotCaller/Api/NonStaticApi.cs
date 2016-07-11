@@ -12,6 +12,7 @@ using RiotCaller.EndPoints.Team;
 using RiotCaller.Enums;
 using RiotCaller.NonStaticEndPoints.CurrentGame;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,9 +25,9 @@ namespace RiotCaller.Api
             Cache = _cache;
         }
 
-        public NonStaticApi()//only for test project
-        {
-        }
+        //public NonStaticApi()//only for test project
+        //{
+        //}
 
         public ApiCache Cache { get; private set; }
         public List<ChampionMastery> GetChampionMasteries(long playerId, region region)
@@ -234,17 +235,24 @@ namespace RiotCaller.Api
             caller.AddParam(param.summonerNames, summonerNames);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
-            caller.Result.ForEach(p => p.Region = region);
+            foreach (var item in caller.Result)
+            {
+                item.Region = region;
+            }
             return caller.Result;
         }
 
         public List<Summoner> GetSummoners(List<long> summonerIds, region region)
         {
+            
             RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerIds);
             caller.AddParam(param.summonerIds, summonerIds);
             caller.AddParam(param.region, region);
             caller.CreateRequest();
-            caller.Result.ForEach(p => p.Region = region);
+            foreach (var item in caller.Result)
+            {
+                item.Region = region;
+            }
             return caller.Result;
         }
 

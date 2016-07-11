@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +12,25 @@ namespace RiotCaller
         public static string ToCacheParam(this Type typeVal)
         {
             string val = "";
-            if (typeVal.Name.StartsWith("List`"))//"List`1" (it is list)
+            TypeInfo findProperties = typeVal.GetTypeInfo();
+            foreach (MemberInfo item in findProperties.DeclaredMembers)
             {
-                val = string.Format("{0}[{1}]", typeVal.Name, typeVal.GetProperties()[2].PropertyType);
+                string MemberType = item.ToString();
+                if (MemberType.StartsWith("System.Collections.Generic.List`"))
+                {
+                    val = string.Format("{0}[{1}]", typeVal.GetTypeInfo().BaseType.Name, typeVal.GetTypeInfo().Name);
+                    break;
+                }
+                else if (MemberType.StartsWith("System.Collections.Generic.Dictionary`"))
+                {
+                    val = string.Format("{0}<{1}>", typeVal.GetTypeInfo().BaseType.Name, typeVal.GetTypeInfo().Name);
+                    break;
+                }
             }
-            else
-                val = string.Format("{0}.{1}", typeVal.BaseType.Name, typeVal.Name);
-
+            if (val == "")
+            {
+                throw new Exception("undefined property type for reflection", new Exception("RiotCaller.TypeExtensions.ToCacheParam=" + typeVal.ToString()));
+            }
             return val;
         }
     }

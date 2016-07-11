@@ -48,7 +48,7 @@ namespace RiotCaller.Tests
 
             Assert.IsTrue(getting_from_server.Data.Count > 0);
 
-            svc.apiCache.AddWithMultipleKey("test123", "RiotCaller.StaticEndPoints.Champion.Champions+tr+tr_TR+all");//adding test key with orginkey(do not change manual orginkey)
+            svc.apiCache.AddWithMultipleKey("test123", "Object<Champions>+tr+tr_TR+all");//adding test key with orginkey(do not change manual orginkey)
 
             var getting_from_cache = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);//data coming from cache
             var geting_with_multiple_key = svc.apiCache.GetWithMultipleKey<Champions>("test123");
