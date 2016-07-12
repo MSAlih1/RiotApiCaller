@@ -1,5 +1,5 @@
 # RiotCaller
-![NuGet version](https://badge.fury.io/nu/riotcaller.svg)
+[![NuGet version](https://badge.fury.io/nu/riotcaller.svg)](https://badge.fury.io/nu/riotcaller)
 
 Project for [Riot Games](https://developer.riotgames.com) API (League Of Legends game)
 
