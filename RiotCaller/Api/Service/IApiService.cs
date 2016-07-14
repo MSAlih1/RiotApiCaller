@@ -1,4 +1,5 @@
 ﻿using RiotCaller.Api.Cache;
+using RiotCaller.NonStaticEndPoints.CurrentGame;
 
 namespace RiotCaller.Api.Service
 {
@@ -8,5 +9,7 @@ namespace RiotCaller.Api.Service
         ApiCache apiCache { get; }
         StaticApi staticApi { get; }
         StatusApi Status { get; }
+
+        void Smartproperty(CurrentGame c);
     }
 }
