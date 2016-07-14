@@ -235,3 +235,4 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 RiotCaller/apikey.cs
+RiotCaller.Tests/apikey.cs

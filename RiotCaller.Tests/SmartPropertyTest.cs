@@ -13,6 +13,8 @@ namespace RiotCaller.Tests
     [TestClass]
     public class SmartPropertyTest
     {
+        private string APIKEY = apikey.Key;
+
         private long championId1 = long.Parse(ConfigurationSettings.AppSettings["championId1"]);
 
         private long gameId1 = long.Parse(ConfigurationSettings.AppSettings["gameId1"]);
@@ -38,7 +40,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void SmartProperty_CurrentGameWithName()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             CurrentGame data = svc.Api.GetCurrentGame(summonerName1, region.tr, true); //from cache if exists (for other match searcher). other way uses classic CustomGameEndPoint 
             svc.Smartproperty(data);//[from server] after first query, smartproperty faster than first one
             svc.Smartproperty(data);//from cache
@@ -56,7 +58,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CacheMemoryTest()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
 
             //one region's all static-datas take 21MB from physical memory
             svc.staticApi.GetChampions(Region, Region.ToLanguage(), champData.all, true);
@@ -78,7 +80,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void SmartProperty_CurrentGame()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             //CurrentGame data  = svc.Api.GetCurrentGame(summonerId1, region.tr); //frpom server
             CurrentGame data = JsonConvert.DeserializeObject<CurrentGame>(JsonCurrentGame);
             svc.Smartproperty(data);//[from server] after first query, smartproperty faster than first one

@@ -14,14 +14,19 @@ namespace RiotCaller.Api.Service
     /// </summary>
     public class ApiService : IApiService
     {
-        public static string ApiKey { get; set; } = apikey.Key;//use self apikey. also you can delete apikey.cs from solution
+        public static string ApiKey { get; set; }
         public StatusApi Status { get; private set; }
         public NonStaticApi Api { get; private set; }
         public StaticApi staticApi { get; private set; }
         public ApiCache apiCache { get; private set; }
-
-        public ApiService()
+        
+        /// <summary>
+        /// custom set RiotGames API Key
+        /// </summary>
+        /// <param name="RiotApiKey"></param>
+        public ApiService(string RiotApiKey)
         {
+            ApiKey = RiotApiKey;
             apiCache = new ApiCache();
             Api = new NonStaticApi(apiCache);
             staticApi = new StaticApi(apiCache);

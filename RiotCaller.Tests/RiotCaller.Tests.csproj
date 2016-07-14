@@ -60,6 +60,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="apikey.cs" />
+    <Compile Include="ApiServiceTest.cs" />
     <Compile Include="SmartPropertyTest.cs" />
     <Compile Include="MethodExamples.cs" />
     <Compile Include="ApiCacheTest.cs" />

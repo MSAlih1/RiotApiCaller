@@ -16,6 +16,8 @@ namespace RiotCaller.Tests
     [TestClass]
     public class ApiCacheTest
     {
+        private string APIKEY = apikey.Key;
+
         private long championId1 = long.Parse(ConfigurationSettings.AppSettings["championId1"]);
 
         private long gameId1 = long.Parse(ConfigurationSettings.AppSettings["gameId1"]);
@@ -43,7 +45,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CGetChampions()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             Champions getting_from_server = svc.staticApi.GetChampions(region.tr, language.tr_TR, champData.all, true);
 
             Assert.IsTrue(getting_from_server.Data.Count > 0);
@@ -60,7 +62,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CGetStatsRanked()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             Ranked data = svc.Api.GetStatsRanked(summonerId1, region.tr, null, true);
             Assert.IsNotNull(data);
 
@@ -71,7 +73,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CGetSummoner()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             Summoner data = svc.Api.GetSummoner(summonerId1, region.tr, true);
             Assert.IsNotNull(data);
 
@@ -82,7 +84,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CGetTeam()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             Team data = svc.Api.GetTeam(teamName1, region.tr, true);
             Assert.IsNotNull(data);
 
@@ -93,7 +95,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void CGetVersions()
         {
-            ApiService svc = new ApiService();
+            ApiService svc = new ApiService(APIKEY);
             List<string> data = svc.staticApi.GetVersions(region.tr, true);
             Assert.IsTrue(data.Count > 0);
 
