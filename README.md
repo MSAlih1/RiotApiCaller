@@ -1,4 +1,7 @@
-[![NuGet version](https://badge.fury.io/nu/riotcaller.svg)](https://badge.fury.io/nu/riotcaller)
+
+[![NuGet](https://img.shields.io/nuget/v/RiotCaller.svg?maxAge=2592000)](https://www.nuget.org/packages/RiotCaller)
+[![nuget](https://img.shields.io/badge/Nuget-RiotCaller-brightgreen.svg?maxAge=2592000)](https://www.nuget.org/packages/RiotCaller)
+[![license](https://img.shields.io/github/license/msalih1/riotapicaller.svg?maxAge=2592000)](https://github.com/MSAlih1/RiotApiCaller/blob/master/LICENSE)
 
 # RiotCaller
 
