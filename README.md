@@ -1,7 +1,7 @@
 
-[![NuGet](https://img.shields.io/nuget/v/RiotCaller.svg?maxAge=2592000)](https://www.nuget.org/packages/RiotCaller)
-[![nuget](https://img.shields.io/badge/Nuget-RiotCaller-brightgreen.svg?maxAge=2592000)](https://www.nuget.org/packages/RiotCaller)
-[![license](https://img.shields.io/github/license/msalih1/riotapicaller.svg?maxAge=2592000)](https://github.com/MSAlih1/RiotApiCaller/blob/master/LICENSE)
+[![NuGet](https://img.shields.io/nuget/v/RiotCaller.svg?maxAge=259200)](https://www.nuget.org/packages/RiotCaller)
+[![nuget](https://img.shields.io/badge/Nuget-RiotCaller-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/RiotCaller)
+[![license](https://img.shields.io/github/license/msalih1/riotapicaller.svg?maxAge=259200)](https://github.com/MSAlih1/RiotApiCaller/blob/master/LICENSE)
 
 # RiotCaller
 
