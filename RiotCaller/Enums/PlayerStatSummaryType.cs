@@ -48,6 +48,8 @@
 
         Unranked,
 
-        SummonersRift6x6
+        SummonersRift6x6,
+
+        Siege
     }
 }
