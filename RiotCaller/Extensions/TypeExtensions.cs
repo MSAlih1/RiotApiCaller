@@ -29,7 +29,8 @@ namespace RiotCaller
             }
             if (val == "")
             {
-                throw new Exception("undefined property type for reflection", new Exception("RiotCaller.TypeExtensions.ToCacheParam=" + typeVal.ToString()));
+                val = typeVal.Name;
+                //throw new Exception("undefined property type for reflection", new Exception("RiotCaller.TypeExtensions.ToCacheParam=" + typeVal.ToString()));
             }
             return val;
         }

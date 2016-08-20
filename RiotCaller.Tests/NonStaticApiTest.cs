@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using RiotCaller.Api;
+using RiotCaller.Api.Service;
 using RiotCaller.ApiEndPoints;
 using RiotCaller.EndPoints.ChampionMastery;
 using RiotCaller.EndPoints.ChampionRotation;
@@ -22,9 +23,11 @@ namespace RiotCaller.Tests
     [TestClass]
     public class NonStaticApiTest
     {
+        private string APIKEY = apikey.Key;
         [TestMethod]
         public void GetCurrentGame()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             CurrentGame data = api.GetCurrentGame(summonerId1, Region);
         }
@@ -32,6 +35,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void ExtensionGetRecentGames()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             RecentGames data1 = data.GetRecentGames();//extension
             Assert.IsNotNull(data1);
@@ -40,6 +44,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void ExtensionGetLeague()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             League data1 = data.GetLeague();//extension
             Assert.IsNotNull(data1);
@@ -48,6 +53,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void ExtensionGetMatchList()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             MatchList data1 = data.GetMatchList();//extension
             Assert.IsNotNull(data1);
@@ -56,6 +62,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void ExtensionGetTeams()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             List<Team> data1 = data.GetTeams();//extension
             Assert.IsTrue(data1.Count > 0);
@@ -64,6 +71,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void ExtensionGetStatsSummary()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             Summoner data = new Summoner() { Id = summonerId1, Region = Region };
             Summary data1 = data.GetStatsSummary();//extension
             Assert.IsNotNull(data1);
@@ -72,6 +80,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionRotation()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionRotation data = api.GetChampionRotation(region.tr, true);
             Assert.IsTrue(data.Champions.Count > 0);
@@ -80,6 +89,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionRotationByChampId()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionStatus data = api.GetChampionRotationById(region.tr, championId1);
             Assert.IsNotNull(data);
@@ -88,6 +98,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionScore()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             int data = api.GetChampionMasteryScore(summonerId1, Region);
             Assert.IsTrue(data > 0);
@@ -97,6 +108,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionTop()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<ChampionMastery> data = api.GetChampionMasteryTop(summonerId1, Region, 4);
             Assert.IsTrue(data.Count == 4);
@@ -106,6 +118,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionMastery()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             ChampionMastery data = api.GetChampionMastery(summonerId1, championId1, Region);
             Assert.IsNotNull(data);
@@ -114,6 +127,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetChampionMasteries()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<ChampionMastery> data = api.GetChampionMasteries(summonerId1, Region);
             Assert.IsTrue(data.Count > 0);
@@ -122,6 +136,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetFuturedGames()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             FuturedGames data = api.GetFuturedGames(Region);
             Assert.IsNotNull(data);
@@ -130,6 +145,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetMatchDetail()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             MatchDetail data = api.GetMatchDetail(gameId1, Region, true);
             Assert.IsNotNull(data);
@@ -138,6 +154,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetLeagueId()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             League data = api.GetLeague(summonerId1, Region);
             Assert.IsNotNull(data);
@@ -146,6 +163,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetLeagueByIds()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<List<League>> data = api.GetLeagues(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 1);
@@ -154,6 +172,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetMatchList()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             MatchList data = api.GetMatchList(summonerId1, region.tr);
             Assert.IsNotNull(data);
@@ -162,6 +181,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetStatsRanked()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             var data = api.GetStatsRanked(summonerId1, Region);
             Assert.IsNotNull(data);
@@ -170,6 +190,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetStatsSummary()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Summary data = api.GetStatsSummary(summonerId1, Region);
             Assert.IsNotNull(data);
@@ -178,6 +199,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetSummonerByName()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Summoner data = api.GetSummoner(summonerName1, Region);
             Assert.IsNotNull(data);
@@ -186,6 +208,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetSummonerByNames()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Summoner> data = api.GetSummoners(new List<string>() { summonerName1, summonerName2 }, Region);
             Assert.IsTrue(data.Count > 1);
@@ -194,6 +217,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamByName()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Team data = api.GetTeam(teamName1, Region);
             Assert.IsNotNull(data);
@@ -202,6 +226,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamById()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             Team data = api.GetTeam(summonerId1, Region);
             Assert.IsNotNull(data);
@@ -210,6 +235,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamByNames()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Team> data = api.GetTeams(new List<string>() { teamName1, teamName2 }, Region);
             Assert.IsTrue(data.Count > 0);
@@ -218,6 +244,7 @@ namespace RiotCaller.Tests
         [TestMethod]
         public void GetTeamsByIds()
         {
+            ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
             List<Team> data = api.GetTeams(new List<long>() { summonerId1, summonerId2 }, Region);
             Assert.IsTrue(data.Count > 0);

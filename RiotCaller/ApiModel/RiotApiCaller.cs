@@ -25,6 +25,7 @@ namespace RiotCaller
         /// </param>
         public RiotApiCaller(suffix _suffix)
         {
+
             cacheBuild.Add(typeof(T).ToCacheParam());//cache key adding
             Suffix = _suffix;
             if (Suffix == suffix.status)
