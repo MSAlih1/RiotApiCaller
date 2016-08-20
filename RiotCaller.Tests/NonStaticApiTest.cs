@@ -175,7 +175,7 @@ namespace RiotCaller.Tests
         {
             ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
-            MatchList data = api.GetMatchList(summonerId1, region.tr);
+            MatchList data = api.GetMatchList(summonerId1, region.tr,null,null,null,null,null,null,null,true);
             Assert.IsNotNull(data);
         }
 

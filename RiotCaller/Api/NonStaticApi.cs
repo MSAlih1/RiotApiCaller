@@ -146,6 +146,9 @@ namespace RiotCaller.Api
             int? beginIndex = null, int? endIndex = null, bool useCaching = false)
         {
             List<string> cacheKey = new List<string>();
+
+            cacheKey.Add(summonerId.ToString());
+            cacheKey.Add(region.ToString());
             if (championIds == null)
                 cacheKey.Add("n");
             else
@@ -180,16 +183,15 @@ namespace RiotCaller.Api
                 cacheKey.Add("n");
             else
                 cacheKey.Add(endIndex.ToString());
-
-            MatchList val = Cache.Get<MatchList>(string.Join("-", cacheKey)); //cache getting
+            MatchList val = Cache.Get<MatchList>(new cacheParam<MatchList>(cacheKey.ToArray()).ToString()); //cache getting
             if (val != null)
                 return val;
 
-            MatchList data= new Summoner() { Id = summonerId, Region = region }
+            MatchList data = new Summoner() { Id = summonerId, Region = region }
             .GetMatchList(championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
 
             if (useCaching)
-                Cache.AddOrUpdate(new cacheObject<MatchList>(new cacheParam<MatchList>(cacheKey), data, new TimeSpan(0, 22, 0)));
+                Cache.AddOrUpdate(new cacheObject<MatchList>(new cacheParam<MatchList>(cacheKey.ToArray()), data, new TimeSpan(0, 22, 0)));
 
             return data;
         }
@@ -367,6 +369,9 @@ namespace RiotCaller.Api
 
         public CurrentGame GetCurrentGame(long summonerId, region region, bool useCaching = false)
         {
+            CurrentGame val = Cache.GetWithMultipleKey<CurrentGame>(summonerId.ToString(), region.ToString(), region.ToPlatform().ToString()); //cache getting
+            if (val != null)
+                return val;
             RiotApiCaller<CurrentGame> caller = new RiotApiCaller<CurrentGame>(suffix.CurrentGameInfo);
             caller.AddParam(param.summonerId, summonerId);
             caller.AddParam(param.region, region);
@@ -376,14 +381,22 @@ namespace RiotCaller.Api
             {
                 cacheObject<CurrentGame> cache = caller.CreateRequest(new TimeSpan(0, 22, 0));
                 Cache.AddOrUpdate(cache);
-                foreach (var item in caller.Result.FirstOrDefault().Participants)
+                List<RiotCaller.ApiEndPoints.Summoner> summoner = GetSummoners(caller.Result.FirstOrDefault().Participants.Select(p => p.SummonerName).ToList(), region);
+                for (int i = 0; i < summoner.Count; i++)
                 {
                     Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
-                        item.SummonerName,
+                        summoner[i].Name,
+                        caller.Result.FirstOrDefault().PlatformId.ToRegion(),
+                        caller.Result.FirstOrDefault().PlatformId.ToString()
+                        ).ToString(), cache.PKey);
+
+                    Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
+                        summoner[i].Id,
                         caller.Result.FirstOrDefault().PlatformId.ToRegion(),
                         caller.Result.FirstOrDefault().PlatformId.ToString()
                         ).ToString(), cache.PKey);
                 }
+
             }
             else
             {
