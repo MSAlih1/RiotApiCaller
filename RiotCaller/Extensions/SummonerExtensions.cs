@@ -66,11 +66,11 @@ namespace RiotCaller.ApiEndPoints
 
         public static League GetLeague(this Summoner sum)
         {
-            RiotApiCaller<League> caller = new RiotApiCaller<League>(suffix.leagueByIds);
+            RiotApiCaller<List<League>> caller = new RiotApiCaller<List<League>>(suffix.leagueByIds);
             caller.AddParam(param.summonerIds, sum.Id);
             caller.AddParam(param.region, sum.Region);
             caller.CreateRequest();
-            return caller.Result.FirstOrDefault();
+            return caller.Result.FirstOrDefault().FirstOrDefault();
         }
 
         public static MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,

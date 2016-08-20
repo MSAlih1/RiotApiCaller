@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace RiotCaller.Api
 {
-    public class NonStaticApi : INonStaticApi
+    public class NonStaticApi
     {
         public NonStaticApi(ApiCache _cache)
         {
@@ -99,9 +99,9 @@ namespace RiotCaller.Api
 
         public League GetLeague(long summonerId, region region, bool useCaching = false)
         {
-            League val = Cache.Get<League>(summonerId.ToString(), region.ToString()); //cache getting
+            List<League> val = Cache.Get<List<League>>(summonerId.ToString(), region.ToString()); //cache getting
             if (val != null)
-                return val;
+                return val.FirstOrDefault();
 
             League data = new Summoner() { Id = summonerId, Region = region }
             .GetLeague();
@@ -143,10 +143,55 @@ namespace RiotCaller.Api
 
         public MatchList GetMatchList(long summonerId, region region, List<long> championIds = null,
             List<queue> queue = null, List<season> seasons = null, DateTime? beginTime = null, DateTime? endTime = null,
-            int? beginIndex = null, int? endIndex = null)
+            int? beginIndex = null, int? endIndex = null, bool useCaching = false)
         {
-            return new Summoner() { Id = summonerId, Region = region }
+            List<string> cacheKey = new List<string>();
+            if (championIds == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(string.Join(",", championIds.ToArray()));
+            //
+            if (queue == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(queue.ToString());
+            //
+            if (seasons == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(seasons.ToString());
+            //
+            if (beginTime == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(beginTime.ToString());
+            //
+            if (endTime == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(endTime.ToString());
+            //
+            if (beginIndex == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(beginIndex.ToString());
+            //
+            if (endIndex == null)
+                cacheKey.Add("n");
+            else
+                cacheKey.Add(endIndex.ToString());
+
+            MatchList val = Cache.Get<MatchList>(string.Join("-", cacheKey)); //cache getting
+            if (val != null)
+                return val;
+
+            MatchList data= new Summoner() { Id = summonerId, Region = region }
             .GetMatchList(championIds, queue, seasons, beginTime, endTime, beginIndex, endIndex);
+
+            if (useCaching)
+                Cache.AddOrUpdate(new cacheObject<MatchList>(new cacheParam<MatchList>(cacheKey), data, new TimeSpan(0, 22, 0)));
+
+            return data;
         }
 
         public RecentGames GetRecentGames(long summonerId, region region, bool useCaching = false)
@@ -244,7 +289,7 @@ namespace RiotCaller.Api
 
         public List<Summoner> GetSummoners(List<long> summonerIds, region region)
         {
-            
+
             RiotApiCaller<Summoner> caller = new RiotApiCaller<Summoner>(suffix.summonerIds);
             caller.AddParam(param.summonerIds, summonerIds);
             caller.AddParam(param.region, region);
@@ -334,8 +379,8 @@ namespace RiotCaller.Api
                 foreach (var item in caller.Result.FirstOrDefault().Participants)
                 {
                     Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
-                        item.SummonerName, 
-                        caller.Result.FirstOrDefault().PlatformId.ToRegion(), 
+                        item.SummonerName,
+                        caller.Result.FirstOrDefault().PlatformId.ToRegion(),
                         caller.Result.FirstOrDefault().PlatformId.ToString()
                         ).ToString(), cache.PKey);
                 }

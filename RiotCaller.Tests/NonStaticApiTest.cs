@@ -156,6 +156,7 @@ namespace RiotCaller.Tests
         {
             ApiService.ApiKey = APIKEY;//you must add your project, if you dont use ninject
             NonStaticApi api = new NonStaticApi(new Api.Cache.ApiCache());
+            summonerId1 = 1781187;
             League data = api.GetLeague(summonerId1, Region);
             Assert.IsNotNull(data);
         }
