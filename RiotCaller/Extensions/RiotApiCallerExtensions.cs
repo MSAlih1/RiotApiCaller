@@ -75,7 +75,20 @@ namespace RiotCaller
                 using (HttpResponseMessage response = httpClient.GetAsync(request.RequestUri).Result)
                 {
                     if (!response.IsSuccessStatusCode)
-                        throw new Exception("ERROR: " + response.StatusCode.ToString());
+                    {
+                        if ((int)response.StatusCode == 404)
+                        {
+                            return;//not found
+                        }
+                        else if ((int)response.StatusCode == 429)
+                        {
+                            return;//limit exceeded
+                        }
+                        else
+                        {
+                            throw new Exception("ERROR: " + response.StatusCode.ToString());
+                        }
+                    }
 
                     using (HttpContent content = response.Content)
                     {

@@ -70,7 +70,10 @@ namespace RiotCaller.ApiEndPoints
             caller.AddParam(param.summonerIds, sum.Id);
             caller.AddParam(param.region, sum.Region);
             caller.CreateRequest();
-            return caller.Result.FirstOrDefault().FirstOrDefault();
+            if (caller.Result.Count > 0)
+                return caller.Result.FirstOrDefault().FirstOrDefault();
+            else
+                return null;
         }
 
         public static MatchList GetMatchList(this Summoner sum, List<long> _championIds = null,
@@ -154,7 +157,10 @@ namespace RiotCaller.ApiEndPoints
             caller.AddParam(param.region, sum.Region);
             caller.CreateRequest();
             //return caller.Result;//<== orginal
-            return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+            if (caller.Result.Count > 0)
+                return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+            else
+                return null;
         }
     }
 }

@@ -115,6 +115,9 @@ namespace RiotCaller.Api.Cache
         public void AddOrUpdate<T>(cacheObject<T> _object)
             where T : class
         {
+            if (_object == null)
+                return;
+
             if (Get<T>(_object.PKey) != null)
                 MemoryCache.Cache.Remove(_object.PKey);
 

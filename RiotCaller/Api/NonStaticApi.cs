@@ -183,6 +183,7 @@ namespace RiotCaller.Api
                 cacheKey.Add("n");
             else
                 cacheKey.Add(endIndex.ToString());
+
             MatchList val = Cache.Get<MatchList>(new cacheParam<MatchList>(cacheKey.ToArray()).ToString()); //cache getting
             if (val != null)
                 return val;
@@ -355,7 +356,10 @@ namespace RiotCaller.Api
             caller.AddParam(param.region, region);
             caller.CreateRequest();
             //return caller.Result;//<== orginal
-            return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+            if (caller.Result.Count > 0)
+                return caller.Result.Select(p => p.FirstOrDefault()).ToList();//[CONFLICT] summoners' teams grouped but i combined to one list ( [A][1,2] + [B][1,2] = [C][1,2,3,4] )
+            else
+                return null;
         }
 
         public CurrentGame GetCurrentGame(string summonerName, region region, bool useCaching = false)
@@ -372,6 +376,7 @@ namespace RiotCaller.Api
             CurrentGame val = Cache.GetWithMultipleKey<CurrentGame>(summonerId.ToString(), region.ToString(), region.ToPlatform().ToString()); //cache getting
             if (val != null)
                 return val;
+
             RiotApiCaller<CurrentGame> caller = new RiotApiCaller<CurrentGame>(suffix.CurrentGameInfo);
             caller.AddParam(param.summonerId, summonerId);
             caller.AddParam(param.region, region);
@@ -380,21 +385,24 @@ namespace RiotCaller.Api
             if (useCaching)
             {
                 cacheObject<CurrentGame> cache = caller.CreateRequest(new TimeSpan(0, 22, 0));
-                Cache.AddOrUpdate(cache);
-                List<RiotCaller.ApiEndPoints.Summoner> summoner = GetSummoners(caller.Result.FirstOrDefault().Participants.Select(p => p.SummonerName).ToList(), region);
-                for (int i = 0; i < summoner.Count; i++)
+                if (caller.Result.Count > 0)
                 {
-                    Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
-                        summoner[i].Name,
-                        caller.Result.FirstOrDefault().PlatformId.ToRegion(),
-                        caller.Result.FirstOrDefault().PlatformId.ToString()
-                        ).ToString(), cache.PKey);
+                    Cache.AddOrUpdate(cache);
+                    List<RiotCaller.ApiEndPoints.Summoner> summoner = GetSummoners(caller.Result.FirstOrDefault().Participants.Select(p => p.SummonerName).ToList(), region);
+                    for (int i = 0; i < summoner.Count; i++)
+                    {
+                        Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
+                            summoner[i].Name,
+                            caller.Result.FirstOrDefault().PlatformId.ToRegion(),
+                            caller.Result.FirstOrDefault().PlatformId.ToString()
+                            ).ToString(), cache.PKey);
 
-                    Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
-                        summoner[i].Id,
-                        caller.Result.FirstOrDefault().PlatformId.ToRegion(),
-                        caller.Result.FirstOrDefault().PlatformId.ToString()
-                        ).ToString(), cache.PKey);
+                        Cache.AddWithMultipleKey(new cacheParam<CurrentGame>(
+                            summoner[i].Id,
+                            caller.Result.FirstOrDefault().PlatformId.ToRegion(),
+                            caller.Result.FirstOrDefault().PlatformId.ToString()
+                            ).ToString(), cache.PKey);
+                    }
                 }
 
             }
@@ -402,8 +410,10 @@ namespace RiotCaller.Api
             {
                 caller.CreateRequest();
             }
-
-            return caller.Result.FirstOrDefault();
+            if (caller.Result.Count > 0)
+                return caller.Result.FirstOrDefault();
+            else
+                return null;
         }
     }
 }
